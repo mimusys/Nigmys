@@ -19,15 +19,15 @@ namespace Homer_MVC.App_Start
 
         private static void ConfigureUserSQL(IUnityContainer container)
         {
-            NameValueCollection section = (NameValueCollection)System.Configuration.ConfigurationManager.GetSection("mySQLUserConfig");
+            Configurations.SQLConfig config = (Configurations.SQLConfig)System.Configuration.ConfigurationManager.GetSection("sqlConfigurations/mySQLUserConfig");
             container.RegisterType<MySqlConnection>();
             container.RegisterType<ISqlDatabase, SqlUserDatabase>("UserDB",
                 new InjectionConstructor(
                     new ResolvedParameter<MySqlConnection>(),
-                    section["server"],
-                    section["username"],
-                    section["password"],
-                    section["database"]));
+                    config.Database.Address,
+                    config.Database.Username,
+                    config.Database.Password,
+                    config.Database.Name));
         }
     }
 }
