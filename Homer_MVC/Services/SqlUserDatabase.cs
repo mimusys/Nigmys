@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace Homer_MVC {
-    public class SqlUserDatabase : ISqlUserDatabase {
-        private MySqlConnection conn = null;
+    public class SqlUserDatabase : ISqlDatabase {
+        private MySqlConnection conn;
 
         // setup our SQL connection.  For testing locally, sane values would be 127.0.0.1, root, "", <database name>
-        public void Connect(String server, String user, String password, String database) {
-            conn = new MySqlConnection();
-
-            String connString = "server="+ server + ";uid=" + user + ";database=" + database + ";";
+        public SqlUserDatabase(MySqlConnection conn, String server, String user, String password, String database)
+        {
+            this.conn = conn;
+            String connString = "server=" + server + ";uid=" + user + ";database=" + database + ";";
             conn.ConnectionString = connString;
         }
 
