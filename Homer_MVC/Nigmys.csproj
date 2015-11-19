@@ -2560,9 +2560,6 @@
     <Content Include="Views\CommonViews\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\CommonViews\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\CommonViews\Error_One.cshtml" />
   </ItemGroup>
   <ItemGroup>
