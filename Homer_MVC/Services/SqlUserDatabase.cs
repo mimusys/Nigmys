@@ -7,11 +7,9 @@ namespace Homer_MVC {
         private MySqlConnection conn;
 
         // setup our SQL connection.  For testing locally, sane values would be 127.0.0.1, root, "", <database name>
-        public SqlUserDatabase(MySqlConnection conn, String server, String user, String password, String database)
+        public SqlUserDatabase(MySqlConnection conn)
         {
             this.conn = conn;
-            String connString = "server=" + server + ";uid=" + user + ";database=" + database + ";";
-            conn.ConnectionString = connString;
         }
 
         // open the connection if not already open
