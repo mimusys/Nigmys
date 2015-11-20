@@ -237,6 +237,7 @@
     <Content Include="Images\profile.jpg" />
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\homer.js" />
+    <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animate.css\Gruntfile.js" />
