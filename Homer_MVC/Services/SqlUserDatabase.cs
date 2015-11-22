@@ -125,5 +125,10 @@ namespace Homer_MVC {
                 }
             } else return false;
         }
+
+        public string GetConnString()
+        {
+            return conn.ConnectionString;
+        }
     }
 }
