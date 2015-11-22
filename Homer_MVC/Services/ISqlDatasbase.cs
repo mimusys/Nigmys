@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Homer_MVC {
-    interface ISqlDatabase {
+    public interface ISqlDatabase {
 
         bool Open();
 
         bool Close();
+
+        string GetConnString();
 
     }
 }
