@@ -30,12 +30,15 @@ namespace Homer_MVC.Controllers
 
             
             List<string> userNameList = userSql.getUserNames();
-
-            if(userNameList == null)
+            String message = "";
+            if (userNameList == null)
             {
                 System.Diagnostics.Debug.WriteLine("No users in the list!");
+                message = "No users in the list!";
+                return null;
             }
-
+            
+            message = "Users Exists";
             if (userNameList.Contains(username))
             {
                 System.Diagnostics.Debug.WriteLine("Login was Successful!");
@@ -46,8 +49,8 @@ namespace Homer_MVC.Controllers
 
                 //Figure out the salt/hash system and compare it to the 'password' parameter
                 //If password == password in db,
-                    //Redirect to Dashboard  
-                    //@Url.Action("Index", "SignUp")
+                //Redirect to Dashboard  
+                //@Url.Action("Index", "SignUp")
 
 
             }
@@ -55,8 +58,8 @@ namespace Homer_MVC.Controllers
             {
                 System.Diagnostics.Debug.WriteLine("Login was NOT Successful!");
             }
-
-            return Json(new { Message = userSql.GetConnString(), Username = username, Password = password });
+            
+            return Json(new { Message = message, Username = username, Password = password });
 
         }
 
