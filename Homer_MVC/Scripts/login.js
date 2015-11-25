@@ -1,16 +1,19 @@
 ﻿//Login Ajax Call
-$("#loginForm").submit(function(e){
+$("#loginForm").submit(function (e) {
+    var data = $('#loginForm').serialize();
+
     $.ajax({
         type: 'POST',
         url: '/Login/CheckLogin',
         datatype: 'json',
-        data: { username: 'john', password: 'doe' },
+        cache: false,
+        data,
         contenttype: 'application/json',
-        success: function(data) {
-            alert(data.Username + " | " + data.Password + " | " + data.Message);
+        success: function (data) {
+            alert("SUCCESS, YO");
         },
         error: function(data) {
-            alert("ERROR");
+            alert("ERROR, YO");
         }
 
     })

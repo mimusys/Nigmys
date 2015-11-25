@@ -70,6 +70,28 @@ namespace Homer_MVC {
             return null;
         }
 
+        // retrieve all the data for our users
+        public List<string> getUserNames()
+        {
+            if (Open())
+            {
+                List<string> list = new List<string>();
+
+                MySqlCommand cmd = new MySqlCommand("select * from users;", conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(reader["username"] + "");
+                }
+
+                reader.Close();
+                Close();
+                return list;
+            }
+            return null;
+        }
+
         // given a user's username or email address, retrieve the applicable password information
         public String[] getPasswordInfo(String usernameOrEmail) {
             if (Open()) {
@@ -88,7 +110,6 @@ namespace Homer_MVC {
                     passwordInfo[0] = reader["passwordHash"] + "";
                     passwordInfo[1] = reader["salt"] + "";
                 }
-
                 reader.Close();
                 Close();
                 return passwordInfo;
@@ -124,6 +145,13 @@ namespace Homer_MVC {
                     return false;
                 }
             } else return false;
+        }
+
+        //Check the user's credentials
+        public bool checkUser(String username, String password)
+        {
+            
+            return true;
         }
 
         public string GetConnString()
