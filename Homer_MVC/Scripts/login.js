@@ -1,5 +1,5 @@
 ﻿//Login Ajax Call
-$("#Login_Button").on('submit', function(e){
+$("#loginForm").submit(function(e){
     $.ajax({
         type: 'POST',
         url: '/Login/CheckLogin',
