@@ -49,9 +49,6 @@ namespace Homer_MVC.Services {
                 String[] passwordInfo = null;  // keep null until we're sure we have info to return
 
                 // select passwordInfo for a given username or email
-                //MySqlCommand cmd = new MySqlCommand("select P.passwordHash, P.salt from passwordInformation P, Users U where (U.username ='" +
-                //    usernameOrEmail + "' or U.email = '" + usernameOrEmail + "') and P.passwordID = U.passwordID;", conn);
-
                 MySqlCommand cmd = new MySqlCommand("select P.passwordHash, P.salt from passwordInformation P, Users U where (U.username = @username" +
                     " or U.email = @email) and P.passwordID = U.passwordID;", conn);
                 cmd.Parameters.AddWithValue("@username", usernameOrEmail);
@@ -79,9 +76,6 @@ namespace Homer_MVC.Services {
                 // first we insert the password information so we have a passwordID key to insert into users table
                 // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
                 // password row
-                //MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES ('" + passwordHash + "', '" + 
-                //        passwordSalt + "'); select LAST_INSERT_ID();", conn);
-
                 MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
                 cmd.Prepare();
@@ -95,8 +89,6 @@ namespace Homer_MVC.Services {
                     // construct our insert statement
                     String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, pictureUrl) VALUES ";
                     query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @pictureUrl);";
-                    //query += "('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', {7}-{8}-{9}, '{10}', '{11}');";
-                    //query = string.Format(query, username, firstName, lastName, passwordID, address, zip, email, bdayYear, bdayMonth, bdayDay, company, pictureUrl);
                     cmd.CommandText = query;
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@username", username);
@@ -123,12 +115,30 @@ namespace Homer_MVC.Services {
             } else return false;
         }
 
+        // return true if username exists in database, false otherwise
         public bool doesUsernameExist(String username) {
-            return false;
+            if (Open()) {
+                MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.username = @username;", conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                int num = Convert.ToInt32(cmd.ExecuteScalar());
+                Close();
+
+                return num != 0; // if 0 username does not exist
+            }
+            return true;
         }
 
+        // return true if email exists in database, false otherwise
         public bool doesEmailExist(String email) {
-            return false;
+            if (Open()) {
+                MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.email = @email;", conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                int num = Convert.ToInt32(cmd.ExecuteScalar());
+                Close();
+
+                return num != 0; // if 0 email does not exist
+            }
+            return true;
         }
 
         public string generateSalt() {
