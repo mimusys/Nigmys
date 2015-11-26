@@ -28,7 +28,7 @@ $("#loginForm").submit(function (e) {
 
     var passWithSalt = pass + salt;
     var newHash = Sha256.hash(passWithSalt);
-    if (newHash = hash) {
+    if (newHash == hash) {
         // do redirect
         alert("Login Success");
     } else {
