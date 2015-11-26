@@ -10,9 +10,9 @@ namespace Homer_MVC.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly ISqlDatabase userSql;
+        private readonly ISqlUserDatabase userSql;
         [InjectionConstructor]
-        public LoginController(SqlUserDatabase userSql)
+        public LoginController(ISqlUserDatabase userSql)
         {
             this.userSql = userSql;
         }
@@ -28,39 +28,21 @@ namespace Homer_MVC.Controllers
         {
             System.Diagnostics.Debug.WriteLine("Checking Login");
 
-            
-            List<string> userNameList = userSql.getUserNames();
-            String message = "";
-            if (userNameList == null)
+
+            String[] passwordInfo = userSql.getPasswordInfo(username);
+            String salt = "";
+            String hash = "";
+            if (passwordInfo != null)
             {
-                System.Diagnostics.Debug.WriteLine("No users in the list!");
-                message = "No users in the list!";
-                return null;
-            }
-            
-            message = "Users Exists";
-            if (userNameList.Contains(username))
-            {
-                System.Diagnostics.Debug.WriteLine("Login was Successful!");
-                String[] dbPass = userSql.getPasswordInfo(username);
-                String salt = dbPass[1];
-                String hash = dbPass[0];
-
-
-                //Figure out the salt/hash system and compare it to the 'password' parameter
-                //If password == password in db,
-                //Redirect to Dashboard  
-                //@Url.Action("Index", "SignUp")
-
-
+                hash = passwordInfo[0];
+                salt = passwordInfo[1];
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Login was NOT Successful!");
             }
-            
-            return Json(new { Message = message, Username = username, Password = password });
 
+            return Json(new { Hash = hash, Salt = salt });
         }
 
     }

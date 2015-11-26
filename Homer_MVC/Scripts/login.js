@@ -2,6 +2,8 @@
 $("#loginForm").submit(function (e) {
     var user = document.getElementById("username").value;
     var pass = document.getElementById("password").value;
+    var hash = "";
+    var salt = "";
 
     $.ajax({
         type: 'POST',
@@ -12,11 +14,20 @@ $("#loginForm").submit(function (e) {
         data: {username: user, password: pass},
         contenttype: 'application/json',
         success: function (data) {
-            alert(data.Message);
+            hash = data.Hash;
+            salt = data.Salt;
+            alert(data.Hash);
         },
         error: function (data) {
             alert("ERROR, YO");
         }
 
     });
+
+    var passWithSalt = pass + salt;
+    var newHash = Sha256.hash(passWithSalt);
+    if (newHash = hash) {
+        // do redirect
+        alert("Login Success");
+    }
 });
