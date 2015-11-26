@@ -1,4 +1,6 @@
 ﻿//Login Ajax Call
+// test username = username1 password = password
+// the database stores it as a hash
 $("#loginForm").submit(function (e) {
     var user = document.getElementById("username").value;
     var pass = document.getElementById("password").value;
@@ -29,5 +31,7 @@ $("#loginForm").submit(function (e) {
     if (newHash = hash) {
         // do redirect
         alert("Login Success");
+    } else {
+        alert("Login failure");
     }
 });
