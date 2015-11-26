@@ -196,6 +196,9 @@ namespace Homer_MVC
             //Login Custom
             bundles.Add(new ScriptBundle("~/bundles/login-page/js").Include(
                 "~/Scripts/login.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(
+                "~/Scripts/sha256.js"));
         }
 
     }
