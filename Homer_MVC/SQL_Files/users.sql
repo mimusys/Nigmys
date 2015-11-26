@@ -19,9 +19,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `users`
 --
-CREATE DATABASE IF NOT EXISTS `users` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `users`;
+DROP DATABASE IF EXISTS `mimusys_users_dev`;
+CREATE DATABASE IF NOT EXISTS `mimusys_users_dev` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `mimusys_users_dev`;
 
+DROP DATABASE IF EXISTS `users`;
 -- --------------------------------------------------------
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `passwordinformation` (
 --
 
 INSERT INTO `passwordinformation` (`passwordID`, `passwordHash`, `salt`) VALUES
-(1, 'fakehash', '1111');
+(1, '55f8d19cbb291b70b2fcdd06c6dcfed537184ab8c2e19ab98bfe3cd49e23a9ca', '1111');
 
 -- --------------------------------------------------------
 

@@ -13,9 +13,5 @@ namespace Homer_MVC {
 
         string GetConnString();
 
-        String[] getPasswordInfo(String usernameOrEmail);
-
-        List<string> getUserNames();
-
     }
 }
