@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Web.Mvc;
 using Nigmys.Support;
 using Homer_MVC.Controllers;
+using Homer_MVC.Services;
 
 namespace Homer_MVC.App_Start
 {
@@ -28,7 +29,7 @@ namespace Homer_MVC.App_Start
                 + ";database=" + config.Database.Name + ";";
 
             container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(connString));
-            container.RegisterType<ISqlDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
+            container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
             container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
         }
     }

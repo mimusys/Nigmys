@@ -173,6 +173,8 @@
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
     <Compile Include="Services\ISqlDatasbase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ISqlUserDatabase.cs" />
+    <Compile Include="Services\SqlDatabase.cs" />
     <Compile Include="Services\SqlUserDatabase.cs" />
     <Compile Include="Support\NigmysDependencyResolver.cs" />
   </ItemGroup>
