@@ -31,19 +31,19 @@ namespace Homer_MVC.Controllers
 
 
             String[] passwordInfo = userSql.getPasswordInfo(username);
-            //String salt = "";
-            //String hash = "";
-            //if (passwordInfo != null)
-            //{
-            //    hash = passwordInfo[0];
-            //    salt = passwordInfo[1];
-            //}
-            //else
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Login was NOT Successful!");
-            //}
+            String salt = "";
+            String hash = "";
+            if (passwordInfo != null)
+            {
+                hash = passwordInfo[0];
+                salt = passwordInfo[1];
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Login was NOT Successful!");
+            }
 
-            return Json(new { Hash = "hash", Salt = "salt" });
+            return Json(new { Hash = hash, Salt = salt });
         }
 
     }
