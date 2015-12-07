@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using System.Data.Odbc;
 
 namespace Homer_MVC.Services {
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
         
-        public SqlUserDatabase(MySqlConnection conn) : base(conn) {
+        public SqlUserDatabase(OdbcConnection conn) : base(conn) {
 
         }
 
@@ -18,8 +18,8 @@ namespace Homer_MVC.Services {
                     list[i] = new List<string>();
                 }
 
-                MySqlCommand cmd = new MySqlCommand("select * from users;", conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                OdbcCommand cmd = new OdbcCommand("select * from users;", conn);
+                OdbcDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read()) {
                     list[0].Add(reader["customerID"] + "");
@@ -49,11 +49,11 @@ namespace Homer_MVC.Services {
                 String[] passwordInfo = null;  // keep null until we're sure we have info to return
 
                 // select passwordInfo for a given username or email
-                MySqlCommand cmd = new MySqlCommand("select P.passwordHash, P.salt from passwordInformation P, Users U where (U.username = @username" +
+                OdbcCommand cmd = new OdbcCommand("select P.passwordHash, P.salt from passwordInformation P, Users U where (U.username = @username" +
                     " or U.email = @email) and P.passwordID = U.passwordID;", conn);
                 cmd.Parameters.AddWithValue("@username", usernameOrEmail);
                 cmd.Parameters.AddWithValue("@email", usernameOrEmail);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                OdbcDataReader reader = cmd.ExecuteReader();
 
                 // if Read() returns false we have no record of the username or email
                 if (reader.Read()) {
@@ -76,7 +76,7 @@ namespace Homer_MVC.Services {
                 // first we insert the password information so we have a passwordID key to insert into users table
                 // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
                 // password row
-                MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
+                OdbcCommand cmd = new OdbcCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
@@ -118,7 +118,7 @@ namespace Homer_MVC.Services {
         // return true if username exists in database, false otherwise
         public bool doesUsernameExist(String username) {
             if (Open()) {
-                MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.username = @username;", conn);
+                OdbcCommand cmd = new OdbcCommand("select count(*) from users U where U.username = @username;", conn);
                 cmd.Parameters.AddWithValue("@username", username);
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
@@ -131,7 +131,7 @@ namespace Homer_MVC.Services {
         // return true if email exists in database, false otherwise
         public bool doesEmailExist(String email) {
             if (Open()) {
-                MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.email = @email;", conn);
+                OdbcCommand cmd = new OdbcCommand("select count(*) from users U where U.email = @email;", conn);
                 cmd.Parameters.AddWithValue("@email", email);
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
