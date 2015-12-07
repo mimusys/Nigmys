@@ -193,12 +193,17 @@ namespace Homer_MVC
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
 
-            //Login Custom
+            //Login Custom Script
             bundles.Add(new ScriptBundle("~/bundles/login-page/js").Include(
                 "~/Scripts/login.js"));
 
+            //Salt and Hash Script
             bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(
                 "~/Scripts/sha256.js"));
+
+            //Login Custom Style
+            bundles.Add(new StyleBundle("~/bundles/login-page/css").Include(
+                "~/Content/loginCustom.css", new CssRewriteUrlTransform()));
         }
 
     }

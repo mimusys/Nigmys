@@ -1,0 +1,8 @@
+﻿/*Errors*/
+.hidden-error {
+    display: none;
+}
+
+.error {
+    color: #d62c1a;
+}
