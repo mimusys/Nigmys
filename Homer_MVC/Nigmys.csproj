@@ -36,6 +36,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
@@ -185,6 +190,7 @@
     <Content Include="Content\img\green%402x.png" />
     <Content Include="Content\img\green.png" />
     <Content Include="Content\landingStyle.css" />
+    <Content Include="Content\loginCustom.css" />
     <Content Include="Content\style.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\helper.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\pe-icon-7-stroke.css" />
@@ -427,14 +433,6 @@
     <Content Include="Vendor\bootstrap-touchspin\Gruntfile.js" />
     <Content Include="Vendor\bootstrap-touchspin\src\jquery.bootstrap-touchspin.css" />
     <Content Include="Vendor\bootstrap-touchspin\src\jquery.bootstrap-touchspin.js" />
-    <Content Include="Vendor\bootstrap-tour\build\css\bootstrap-tour-standalone.css" />
-    <Content Include="Vendor\bootstrap-tour\build\css\bootstrap-tour-standalone.min.css" />
-    <Content Include="Vendor\bootstrap-tour\build\css\bootstrap-tour.css" />
-    <Content Include="Vendor\bootstrap-tour\build\css\bootstrap-tour.min.css" />
-    <Content Include="Vendor\bootstrap-tour\build\js\bootstrap-tour-standalone.js" />
-    <Content Include="Vendor\bootstrap-tour\build\js\bootstrap-tour-standalone.min.js" />
-    <Content Include="Vendor\bootstrap-tour\build\js\bootstrap-tour.js" />
-    <Content Include="Vendor\bootstrap-tour\build\js\bootstrap-tour.min.js" />
     <Content Include="Vendor\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Vendor\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Vendor\bootstrap\dist\css\bootstrap.css" />
@@ -1957,7 +1955,6 @@
     <Content Include="Vendor\slimScroll\jquery.slimscroll.js" />
     <Content Include="Vendor\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="Vendor\sparkline\index.js" />
-    <Content Include="Vendor\summernote\build\grunt-build.js" />
     <Content Include="Vendor\summernote\dist\summernote-bs2.css" />
     <Content Include="Vendor\summernote\dist\summernote-bs3.css" />
     <Content Include="Vendor\summernote\dist\summernote.css" />
@@ -2058,8 +2055,6 @@
     <Content Include="Vendor\sweetalert\lib\sweet-alert.js" />
     <Content Include="Vendor\sweetalert\lib\sweet-alert.min.js" />
     <Content Include="Vendor\sweetalert\sweetalert.gif" />
-    <Content Include="Vendor\toastr\build\toastr.min.css" />
-    <Content Include="Vendor\toastr\build\toastr.min.js" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\css\bootstrap-editable.css" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\img\clear.png" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\img\loading.gif" />
@@ -2092,6 +2087,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Vendor\bootstrap-tour\build\css\" />
+    <Folder Include="Vendor\bootstrap-tour\build\js\" />
+    <Folder Include="Vendor\peity\bin\" />
+    <Folder Include="Vendor\peity\test\bin\" />
+    <Folder Include="Vendor\summernote\build\" />
+    <Folder Include="Vendor\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\" />
+    <Folder Include="Vendor\toastr\build\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -2452,7 +2454,6 @@
     <Content Include="Vendor\moment\scripts\npm_prepublish.sh" />
     <Content Include="Vendor\peity\.bower.json" />
     <Content Include="Vendor\peity\.travis.yml" />
-    <Content Include="Vendor\peity\bin\update_docs" />
     <Content Include="Vendor\peity\bower.json" />
     <Content Include="Vendor\peity\CHANGELOG.md" />
     <Content Include="Vendor\peity\Gemfile" />
@@ -2462,7 +2463,6 @@
     <Content Include="Vendor\peity\package.json" />
     <Content Include="Vendor\peity\peity.jquery.json" />
     <Content Include="Vendor\peity\README.markdown" />
-    <Content Include="Vendor\peity\test\bin\screenshot" />
     <Content Include="Vendor\peity\test\charts.json" />
     <Content Include="Vendor\peity\test\comparisons\.gitkeep" />
     <Content Include="Vendor\peity\test\images\.gitkeep" />
@@ -2499,11 +2499,9 @@
     <Content Include="Vendor\sweetalert\.editorconfig" />
     <Content Include="Vendor\sweetalert\bower.json" />
     <Content Include="Vendor\sweetalert\example\example.scss" />
-    <Content Include="Vendor\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\sweet-alert.scssc" />
     <Content Include="Vendor\sweetalert\lib\sweet-alert.scss" />
     <Content Include="Vendor\sweetalert\LICENSE" />
     <Content Include="Vendor\sweetalert\README.md" />
-    <Content Include="Vendor\toastr\build\toastr.js.map" />
     <Content Include="Vendor\xeditable\LICENSE-MIT" />
     <Content Include="Vendor\xeditable\README.md" />
   </ItemGroup>
@@ -2713,12 +2711,19 @@
   <ItemGroup>
     <Content Include="Views\SignUp\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -2740,6 +2745,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:51307/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

@@ -11,6 +11,7 @@ namespace Homer_MVC.Controllers
     public class LoginController : Controller
     {
         private readonly ISqlUserDatabase userSql;
+
         [InjectionConstructor]
         public LoginController(ISqlUserDatabase userSql)
         {
