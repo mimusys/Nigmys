@@ -1,4 +1,4 @@
-﻿using System.Data.Odbc;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Homer_MVC.Services {
     public class SqlDatabase : ISqlDatabase {
-        protected OdbcConnection conn;
+        protected MySqlConnection conn;
 
-        public SqlDatabase(OdbcConnection conn) {
+        public SqlDatabase(MySqlConnection conn) {
             this.conn = conn;
         }
 
@@ -21,7 +21,7 @@ namespace Homer_MVC.Services {
                     conn.Close();
                     conn.Open();
                     return true;
-                } catch (OdbcException ex) {
+                } catch (MySqlException ex) {
                     System.Diagnostics.Trace.WriteLine("Error: failed to connect to database");
                     return false;
                 }
