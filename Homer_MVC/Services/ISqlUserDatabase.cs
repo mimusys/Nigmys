@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homer_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,9 @@ namespace Homer_MVC {
 
         String[] getPasswordInfo(String usernameOrEmail);
 
-        bool addNewUser(String username, String firstName, String lastName, String passwordHash, String passwordSalt,
-            String address, String zip, String email, int bdayMonth, int bdayDay, int bdayYear, String company, String pictureUrl);
+        int addNewUser(User user);
+
+        bool setProfileUrl(String userId, String url);
 
         bool doesUsernameExist(String username);
 

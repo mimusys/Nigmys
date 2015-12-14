@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using Homer_MVC.Models;
 
 namespace Homer_MVC.Services {
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
@@ -70,8 +71,8 @@ namespace Homer_MVC.Services {
             return null;
         }
 
-        public bool addNewUser(String username, String firstName, String lastName, String passwordHash, String passwordSalt,
-                String address, String zip, String email, int bdayMonth, int bdayDay, int bdayYear, String company, String pictureUrl) {
+        public int addNewUser(User user) { 
+            int userId = -1;
             if (Open()) {
                 // first we insert the password information so we have a passwordID key to insert into users table
                 // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
@@ -79,40 +80,62 @@ namespace Homer_MVC.Services {
                 MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
                 cmd.Prepare();
-                cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
-                cmd.Parameters.AddWithValue("@passwordSalt", passwordSalt);
+                cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
+                cmd.Parameters.AddWithValue("@passwordSalt", user.Salt);
 
                 object passwordIdRet = cmd.ExecuteScalar();
                 if (passwordIdRet != null) {
+                    if (user.CompanyName == null) {
+                        user.CompanyName = "None";
+                    }
+
                     int passwordID = Convert.ToInt32(passwordIdRet);
-                    DateTime bday = new DateTime(bdayYear, bdayMonth, bdayDay);
                     // construct our insert statement
-                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, pictureUrl) VALUES ";
-                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @pictureUrl);";
+                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName) VALUES ";
+                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName); select LAST_INSERT_ID();";
                     cmd.CommandText = query;
                     cmd.Prepare();
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@firstName", firstName);
-                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@firstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("@lastName", user.LastName);
                     cmd.Parameters.AddWithValue("@passwordID", passwordID);
-                    cmd.Parameters.AddWithValue("@address", address);
-                    cmd.Parameters.AddWithValue("@zip", zip);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@birthday", bday);
-                    cmd.Parameters.AddWithValue("@companyName", company);
-                    cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
+                    cmd.Parameters.AddWithValue("@address", user.Address);
+                    cmd.Parameters.AddWithValue("@zip", user.Zipcode);
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@birthday", user.Birthday);
+                    cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
+                    //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
-                    // ExecuteNonQuery returns numbers of rows affected, in this case should be 1
-                    int ret = cmd.ExecuteNonQuery();
+                    // ExecuteScalar should return the id of the user added, null otherwise
+                    object userIdRet = cmd.ExecuteScalar();
                     Close();
 
-                    return (ret == 1);  // 1 row affected == success
+                    if (userIdRet != null) {
+                        userId = Convert.ToInt32(userIdRet);
+                    }
                 } else {
                     // failed to insert password for some reason
                     Close();
-                    return false;
                 }
-            } else return false;
+            }
+            return userId;
+        }
+
+        public bool setProfileUrl(String userId, String url) {
+            bool success = false;
+
+            if (Open()) {
+                MySqlCommand cmd = new MySqlCommand("UPDATE users SET pictureUrl = @url WHERE customerID = @customerID", conn);
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@url", url);
+                cmd.Parameters.AddWithValue("@customerID", userId);
+
+                //int ret = Convert.ToInt32(cmd.ExecuteScalar());
+                int ret = cmd.ExecuteNonQuery();
+                success = (ret == 1);
+                Close();
+            }
+            return success;
         }
 
         // return true if username exists in database, false otherwise
