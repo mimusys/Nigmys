@@ -31,6 +31,8 @@ namespace Homer_MVC.App_Start
             container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(connString));
             container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
             container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
+
+            container.RegisterType<IController, SignUpController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
         }
     }
 }
