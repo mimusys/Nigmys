@@ -48,9 +48,11 @@ namespace Homer_MVC.Controllers
             if (Session["userId"] != null && file != null) {
                 string userId = (string)Session["userId"];
                 var filename = userId + Path.GetExtension(file.FileName);
+                string urlPath = "~/Images/Profile/" + filename;
+                Directory.CreateDirectory(Server.MapPath("~/Images/Profile"));
                 var path = Path.Combine(Server.MapPath("~/Images/Profile/"), filename);
                 file.SaveAs(path);
-                if (userSql.setProfileUrl(userId, path)) {
+                if (userSql.setProfileUrl(userId, urlPath)) {
                     return Json(true);
                 }
             }
