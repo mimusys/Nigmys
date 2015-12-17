@@ -163,10 +163,5 @@ namespace Homer_MVC.Services {
             }
             return true;
         }
-
-        public string generateSalt() {
-            int salt = rnd.Next(1000, 9999);
-            return salt.ToString();
-        }
     }
 }

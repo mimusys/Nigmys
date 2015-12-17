@@ -16,7 +16,5 @@ namespace Homer_MVC {
         bool doesUsernameExist(String username);
 
         bool doesEmailExist(String email);
-
-        String generateSalt();
     }
 }
