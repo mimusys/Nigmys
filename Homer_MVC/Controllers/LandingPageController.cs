@@ -23,5 +23,13 @@ namespace Homer_MVC.Controllers
                 return "Login/Signup";
             }
         }
+
+        public String GetLoginUrl() {
+            if (Session["user"] == null) {
+                return "/CommonViews/Login";
+            } else {
+                return "/Profile/Index";
+            }
+        }
     }
 }
