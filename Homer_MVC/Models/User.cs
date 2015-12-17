@@ -16,6 +16,6 @@ namespace Homer_MVC.Models {
         public string Zipcode { get; set; }
         public DateTime Birthday { get; set; }
         public string CompanyName { get; set; }
-        public string ProfileUrl { get; set; }
+        public string PictureURL { get; set; }
     }
 }
