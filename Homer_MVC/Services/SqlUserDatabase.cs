@@ -43,6 +43,36 @@ namespace Homer_MVC.Services {
             return null;
         }
 
+        // construct User from SQL data
+        public User getUser(String usernameOrEmail) {
+            User user = null;
+            if (Open()) {
+                MySqlCommand cmd = new MySqlCommand("select * from users U where (U.username = @username or U.email = @email);", conn);
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@username", usernameOrEmail);
+                cmd.Parameters.AddWithValue("@email", usernameOrEmail);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) {
+                    user = new User();
+                    user.UserID = reader["customerID"] + "";
+                    user.Username = reader["username"] + "";
+                    user.FirstName = reader["firstName"] + "";
+                    user.LastName = reader["lastName"] + "";
+                    user.Email = reader["email"] + "";
+                    user.Address = reader["address"] + "";
+                    user.Zipcode = reader["zip"] + "";
+                    user.CompanyName = reader["companyName"] + "";
+                    user.PictureURL = reader["pictureURL"] + "";
+                    user.Birthday = DateTime.Parse(reader["birthDate"] + "");
+                }
+                reader.Close();
+
+                Close();
+            }
+            return user;
+        }
+
         // given a user's username or email address, retrieve the applicable password information
         // return null if username/email does not exist
         public String[] getPasswordInfo(String usernameOrEmail) {
