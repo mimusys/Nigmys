@@ -50,6 +50,7 @@ namespace Homer_MVC.Controllers
                 User user = (User)Session["user"];
                 var filename = user.UserID + Path.GetExtension(file.FileName);
                 string urlPath = "~/Images/Profile/" + filename;
+                user.PictureURL = urlPath;
                 Directory.CreateDirectory(Server.MapPath("~/Images/Profile"));
                 var path = Path.Combine(Server.MapPath("~/Images/Profile/"), filename);
                 file.SaveAs(path);
