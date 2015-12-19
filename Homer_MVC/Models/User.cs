@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Homer_MVC.Models {
     public class User {
+        public string UserID { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
@@ -15,6 +16,6 @@ namespace Homer_MVC.Models {
         public string Zipcode { get; set; }
         public DateTime Birthday { get; set; }
         public string CompanyName { get; set; }
-        public string ProfileUrl { get; set; }
+        public string PictureURL { get; set; }
     }
 }

@@ -124,7 +124,7 @@ function doFullValidation() {
         if (personalInfoValidator.valid()) {
             var salt = generateSalt();
             var hash = hashPass($("#password").val(), salt);
-
+            var success = false;
             // create user object to pass through ajax
             var user = {
                 Username: $("#username").val(),
@@ -150,8 +150,8 @@ function doFullValidation() {
                 contenttype: 'application/json',
                 success: function (data) {
                     if (data == true) {
-                        alert("success");
-                    } else alert("failed");
+                        success = true;
+                    } else alert("Failed to create new user.");
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(xhr.status);
@@ -161,7 +161,7 @@ function doFullValidation() {
 
             // do image upload if file selected
             var fileInput = document.getElementById("fileUpload");
-            if (fileInput.files.length == 1) {
+            if (fileInput.files.length == 1 && success) {
                 var formData = new FormData();
                 formData.append("file", fileInput.files[0]);
                 $.ajax({
@@ -172,15 +172,19 @@ function doFullValidation() {
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        if (data == true) {
-                            alert("success");
-                        } else alert("failed");
+                        if (data == false) {
+                            alert("Failed to upload profile picture.");
+                        }
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert(xhr.status);
                         alert(thrownError);
                     }
                 })
+            }
+
+            if (success) {
+                window.location.href = "/Dashboard/Index";
             }
         } else {
             $('[href=#step2]').tab('show');

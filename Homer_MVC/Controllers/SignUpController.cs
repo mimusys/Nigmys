@@ -36,7 +36,8 @@ namespace Homer_MVC.Controllers
         public JsonResult NewUser(User user) {
             int userId = userSql.addNewUser(user);
             if (userId != -1) {
-                Session["userId"] = userId.ToString();
+                user.UserID = userId.ToString();
+                Session["user"] = user;
                 return Json(true);
             }
             return Json(false);
@@ -45,14 +46,15 @@ namespace Homer_MVC.Controllers
         [HttpPost]
         public JsonResult UploadPicture() {
             var file = Request.Files[0];
-            if (Session["userId"] != null && file != null) {
-                string userId = (string)Session["userId"];
-                var filename = userId + Path.GetExtension(file.FileName);
+            if (Session["user"] != null && file != null) {
+                User user = (User)Session["user"];
+                var filename = user.UserID + Path.GetExtension(file.FileName);
                 string urlPath = "~/Images/Profile/" + filename;
+                user.PictureURL = urlPath;
                 Directory.CreateDirectory(Server.MapPath("~/Images/Profile"));
                 var path = Path.Combine(Server.MapPath("~/Images/Profile/"), filename);
                 file.SaveAs(path);
-                if (userSql.setProfileUrl(userId, urlPath)) {
+                if (userSql.setProfileUrl(user.UserID, urlPath)) {
                     return Json(true);
                 }
             }

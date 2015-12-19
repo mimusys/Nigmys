@@ -80,7 +80,7 @@ namespace Homer_MVC.Controllers
                 // compare the expected value with the stored value
                 if (hashString.Equals(hashWithNonce)) {
                     success = true;
-                    // TODO: add session authentication stuff
+                    Session["user"] = userSql.getUser(username);
                 }
             }
 
