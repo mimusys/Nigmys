@@ -20,7 +20,7 @@
                 <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
                 <li><a class="page-scroll" href="#components">Application</a></li>
                 <li><a class="page-scroll" href="#tutorial">Tutorial</a></li>
-                <li><a class="page-scroll" href='@Url.Action("Index", "SignUp")'>Pricing</a></li>
+                <li><a class="page-scroll" href='#pricing'>Pricing</a></li>
                 <li><a class="page-scroll" href="#">Blog</a></li>
                 <li><a class="page-scroll" href="#support">Support </a></li>
                 <li><a href='@Html.Action("GetLoginURL", "LandingPage")'>@Html.Action("GetUsername", "LandingPage")</a></li>
@@ -150,7 +150,7 @@
                     <li>Investment Management</li>
                     <li>Dashboard</li>
                     <li>Analytics</li>
-                    <li><a class="btn btn-primary btn-sm">Signup Now</a></li>
+                    <li><a href='@Url.Action("Index", "SignUp")' class="btn btn-primary btn-sm">Signup Now</a></li>
                 </ul>
             </div>
         </div>
