@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Add New Investment";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/add-new-investment/js")
+}
+
+<div class="content animate-panel">
+    <div class="row">
+        <div class="col-lg-12 text-center m-t-md">
+            <h2>
+                Add New Investment
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="purchaseInformation">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Purchase Information
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="form-group col-lg-2">
+                                        <label for="purchasePrice">Purchase Price</label>
+                                        <input type="text" value="" id="purchasePrice" class="form-control" name="purchasePrice" placeholder="$0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="downPayment">Down Payment</label>
+                                        <input type="text" value="" id="downPayment" class="form-control" name="downPayment" placeholder="$0.00">
+                                    </div>
+
+                                    <div class="form-group col-lg-2">
+                                        <label for="marketPrice">Market Price</label>
+                                        <input type="text" value="" id="marketPrice" class="form-control" name="marketPrice" placeholder="$0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="landValue">Land Value</label>
+                                        <input type="text" value="" id="landValue" class="form-control" name="landValue" placeholder="$0.00">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-2">
+                                        <label for="closingCost">Closing Cost</label>
+                                        <input type="text" value="" id="closingCost" class="form-control" name="closingCost" placeholder="$0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="rehabCost">Rehab Cost</label>
+                                        <input type="text" value="" id="rehabCost" class="form-control" name="rehabCost" placeholder="$0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="holdoverCost">Holdover Cost</label>
+                                        <input type="text" value="" id="holdoverCost" class="form-control" name="holdoverCost" placeholder="$0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="otherCost">Other Cost</label>
+                                        <input type="text" value="" id="otherCost" class="form-control" name="otherCost" placeholder="$0.00">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-4">
+                                        <label for="purchaseDate">Purchase Date</label>
+                                        <input type="date" value="" id="purchaseDate" class="form-control" name="purchaseDate">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-4">
+                                        <label for="totalInvestmentCost">Total Investment Cost</label>
+                                        <input type="text" value="" id="totalInvestmentCost" class="form-control" name="totalInvestmentCost" placeholder="$0.00" readonly>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Debt Partners
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="form-group col-lg-4">
+                                        <label for="lenderName">Lender Name</label>
+                                        <input type="text" value="" id="lenderName" class="form-control" name="lenderName">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="annualPercentageRate">Annual Percentage Rate</label>
+                                        <input type="text" value="" id="annualPercentageRate" class="form-control" name="annualPercentageRate" placeholder="%0.00">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="loanStartDate">Loan Start Date</label>
+                                        <input type="date" value="" id="loanStartDate" class="form-control" name="loanStartDate">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <label for="termLength">Term Length (months)</label>
+                                        <input type="text" valud="" id="termLength" class="form-control" name="termLength" placeholder="Months">
+                                        
+                                    </div>
+                                    <div class="form-group col-lg-1">
+                                        <br />
+                                        <a href="#" class="btn pull-down btn-default btn-circle" type="button"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                <div class="row" id="addDebtPartnerLinkRow">
+                                    <a href="#" id="addDebtPartnerLink">Add Debt Partner</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Collapsible Group Item #3
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Collapsible Group Item #4
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Collapsible Group Item #5
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -207,6 +207,10 @@ namespace Homer_MVC
             //Sign Up Script
             bundles.Add(new ScriptBundle("~/bundles/sign-up/js").Include(
                 "~/Scripts/signup.js"));
+
+            //Add New Investment Script
+            bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
+                "~/Scripts/addInvestment.js"));
         }
 
     }

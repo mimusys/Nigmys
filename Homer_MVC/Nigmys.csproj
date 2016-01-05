@@ -167,6 +167,7 @@
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\GridSystemController.cs" />
     <Compile Include="Controllers\InterfaceController.cs" />
+    <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
@@ -246,6 +247,7 @@
     <Content Include="Images\p1.jpg" />
     <Content Include="Images\p2.jpg" />
     <Content Include="Images\profile.jpg" />
+    <Content Include="Scripts\addInvestment.js" />
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\login.js" />
@@ -2076,6 +2078,7 @@
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\wysihtml5.js" />
+    <Content Include="Views\Investments\AddInvestment.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
