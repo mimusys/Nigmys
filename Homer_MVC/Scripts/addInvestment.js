@@ -20,11 +20,72 @@
         <input type="text" valud="" id="termLength" class="form-control" name="termLength" placeholder="Months">\
     </div>\
     <div class="form-group col-lg-1">\
-        <br />\
-        <a href="#" class="btn pull-down btn-default btn-circle" type="button"><i class="fa fa-times"></i></a>\
+        <span style="min-height:42px; display:inline-block;"></span>\
+        <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
     </div>\
 </div>\
-<hr />');
+');
         return false;
     });
+
+    $('a#addEquityPartnerLink').click(function (e) {
+        e.preventDefault();
+        $('#addEquityPartnerLinkRow').before('\
+<div class="row">\
+    <div class="form-group col-lg-2">\
+        <label for="lenderName">Partner Name</label>\
+        <input type="text" value="" id="partnerName" class="form-control" name="partnerName">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <label for="cashFlowPercent">Cash Flow</label>\
+        <input type="text" value="" id="cashFlowPercent" class="form-control" name="cashFlowPercent" placeholder="%0.00">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <label for="appreciationPercent">Appreciation</label>\
+        <input type="text" value="" id="appreciationPercent" class="form-control" name="appreciationPercent" placeholder="%0.00">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="principlePaydownPercent">Principle Paydown</label>\
+        <input type="text" value="" id="principlePaydownPercent" class="form-control" name="principlePaydownPercent" placeholder="%0.00">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <label for="taxDeductionPercent">Tax Deduction</label>\
+        <input type="text" value="" id="taxDeductionPercent" class="form-control" name="taxDeductionPercent" placeholder="%0.00">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="equityInvestment">Equity Investment</label>\
+        <input type="text" value="" id="equityInvestment" class="form-control" name="equityInvestment" placeholder="$0.00">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <span style="min-height:42px; display:inline-block;"></span>\
+        <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+    </div>\
+</div>\
+');
+        return false;
+    });
+
+    $('a#addOtherCostLink').click(function (e) {
+        e.preventDefault();
+        $('#addOtherCostLinkRow').before('\
+<div class="row">\
+    <div class="form-group col-lg-6">\
+        <label for="otherCostName">Name</label>\
+        <input type="text" value="" class="form-control" id="otherCostName"></input>\
+    </div>\
+    <div class="form-group col-lg-4">\
+        <label for="otherCostValue">Amount</label>\
+        <input type="text" value="" class="form-control" id="otherCostValue" placeholder="$0.00"></input>\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <span style="min-height:22px; display:inline-block;"></span>\
+        <a href="#" class="btn pull-down btn-default btn-circle removeButton" onclick="test()" type="button"><i class="fa fa-times"></i></a>\
+    </div>\
+</div>');
+        return false;
+    });
+});
+
+$(document).on("click", ".removeButton", function () {
+    $(this).parent().parent().remove();
 });
