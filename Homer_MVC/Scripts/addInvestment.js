@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    // add new debt partner list item
     $('a#addDebtPartnerLink').click(function (e) {
         e.preventDefault();
         $('#addDebtPartnerLinkRow').before('\
@@ -28,6 +29,7 @@
         return false;
     });
 
+    // add new equity partner list item
     $('a#addEquityPartnerLink').click(function (e) {
         e.preventDefault();
         $('#addEquityPartnerLinkRow').before('\
@@ -65,6 +67,7 @@
         return false;
     });
 
+    // add depreciation list item
     $('a#addDepreciationLink').click(function (e) {
         e.preventDefault();
         $('#addDepreciationLinkRow').before('\
@@ -90,6 +93,7 @@
         return false;
     });
 
+    // add custom cost item
     $('a#addOtherCostLink').click(function (e) {
         e.preventDefault();
         $('#addOtherCostLinkRow').before('\
@@ -109,8 +113,27 @@
 </div>');
         return false;
     });
+
+    // toggle tab colors
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('a[data-toggle="tab"]').removeClass('btn-primary');
+        $('a[data-toggle="tab"]').addClass('btn-default');
+        $(this).removeClass('btn-default');
+        $(this).addClass('btn-primary');
+    });
+
+    $('.next').click(function () {
+        var nextId = $(this).parents('.tab-pane').next().attr("id");
+        $('[href=#' + nextId + ']').tab('show');
+    })
+
+    $('.prev').click(function () {
+        var prevId = $(this).parents('.tab-pane').prev().attr("id");
+        $('[href=#' + prevId + ']').tab('show');
+    })
 });
 
+// remove an added list item field
 $(document).on("click", ".removeButton", function () {
     $(this).parent().parent().remove();
 });
