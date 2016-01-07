@@ -9,16 +9,16 @@
         <input type="text" value="" id="lenderName" class="form-control" name="lenderName">\
     </div>\
     <div class="form-group col-lg-2">\
-        <label for="annualPercentageRate">Annual Percentage Rate</label>\
+        <label for="annualPercentageRate">Annual Percent</label>\
         <input type="text" value="" id="annualPercentageRate" class="form-control" name="annualPercentageRate" placeholder="%0.00">\
     </div>\
-    <div class="form-group col-lg-2">\
+    <div class="form-group col-lg-3">\
         <label for="loanStartDate">Loan Start Date</label>\
         <input type="date" value="" id="loanStartDate" class="form-control" name="loanStartDate">\
     </div>\
     <div class="form-group col-lg-2">\
-        <label for="termLength">Term Length (months)</label>\
-        <input type="text" valud="" id="termLength" class="form-control" name="termLength" placeholder="Months">\
+        <label for="termLength">Term Length</label>\
+        <input type="text" valud="" id="termLength" class="form-control" name="termLength" placeholder="Years">\
     </div>\
     <div class="form-group col-lg-1">\
         <span style="min-height:42px; display:inline-block;"></span>\
@@ -38,11 +38,11 @@
         <label for="lenderName">Partner Name</label>\
         <input type="text" value="" id="partnerName" class="form-control" name="partnerName">\
     </div>\
-    <div class="form-group col-lg-1">\
+    <div class="form-group col-lg-2">\
         <label for="cashFlowPercent">Cash Flow</label>\
         <input type="text" value="" id="cashFlowPercent" class="form-control" name="cashFlowPercent" placeholder="%0.00">\
     </div>\
-    <div class="form-group col-lg-1">\
+    <div class="form-group col-lg-2">\
         <label for="appreciationPercent">Appreciation</label>\
         <input type="text" value="" id="appreciationPercent" class="form-control" name="appreciationPercent" placeholder="%0.00">\
     </div>\
@@ -50,7 +50,7 @@
         <label for="principlePaydownPercent">Principle Paydown</label>\
         <input type="text" value="" id="principlePaydownPercent" class="form-control" name="principlePaydownPercent" placeholder="%0.00">\
     </div>\
-    <div class="form-group col-lg-1">\
+    <div class="form-group col-lg-2">\
         <label for="taxDeductionPercent">Tax Deduction</label>\
         <input type="text" value="" id="taxDeductionPercent" class="form-control" name="taxDeductionPercent" placeholder="%0.00">\
     </div>\
@@ -73,15 +73,15 @@
         $('#addDepreciationLinkRow').before('\
 <div class="row">\
     <div class="form-group col-lg-2">\
-        <label for="depreciationName">Depreciation Name</label>\
+        <label for="depreciationName">Name</label>\
         <input type="text" value="" id="depreciationName" class="form-control" name="depreciationName">\
     </div>\
     <div class="form-group col-lg-2">\
-        <label for="depreciationValue">Depreciation Value</label>\
+        <label for="depreciationValue">Value</label>\
         <input type="text" value="" id="depreciationValue" class="form-control" name="depreciationValue" placeholder="$0.00">\
     </div>\
     <div class="form-group col-lg-2">\
-        <label for="timeDuration">Time Duration</label>\
+        <label for="timeDuration">Duration</label>\
         <input type="text" value="" id="timeDuration" class="form-control" name="timeDuration" placeholder="">\
     </div>\
     <div class="form-group col-lg-1">\
