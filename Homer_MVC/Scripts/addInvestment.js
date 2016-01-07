@@ -65,6 +65,31 @@
         return false;
     });
 
+    $('a#addDepreciationLink').click(function (e) {
+        e.preventDefault();
+        $('#addDepreciationLinkRow').before('\
+<div class="row">\
+    <div class="form-group col-lg-2">\
+        <label for="depreciationName">Depreciation Name</label>\
+        <input type="text" value="" id="depreciationName" class="form-control" name="depreciationName">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="depreciationValue">Depreciation Value</label>\
+        <input type="text" value="" id="depreciationValue" class="form-control" name="depreciationValue" placeholder="$0.00">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="timeDuration">Time Duration</label>\
+        <input type="text" value="" id="timeDuration" class="form-control" name="timeDuration" placeholder="">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <span style="min-height:42px; display:inline-block;"></span>\
+        <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+    </div>\
+</div>\
+');
+        return false;
+    });
+
     $('a#addOtherCostLink').click(function (e) {
         e.preventDefault();
         $('#addOtherCostLinkRow').before('\
