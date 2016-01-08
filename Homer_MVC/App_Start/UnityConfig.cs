@@ -24,15 +24,23 @@ namespace Homer_MVC.App_Start
 
         private static void ConfigureUserSQL(IUnityContainer container)
         {
-            Configurations.SQLConfig config = (Configurations.SQLConfig)System.Configuration.ConfigurationManager.GetSection("sqlConfigurations/mySQLUserConfig");
-            String connString = "Server=" + config.Database.Address + ";User=" + config.Database.Username + ";Password=" + config.Database.Password 
-                + ";Database=" + config.Database.Name + ";";
-            
-            container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(connString));
-            container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
-            container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
+            Configurations.SQLConfig userConfig = (Configurations.SQLConfig)System.Configuration.ConfigurationManager.GetSection("sqlConfigurations/mySQLUserConfig");
+            String userConnString = "Server=" + userConfig.Database.Address + ";User=" + userConfig.Database.Username + ";Password=" + userConfig.Database.Password 
+                + ";Database=" + userConfig.Database.Name + ";";
 
-            container.RegisterType<IController, SignUpController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
+            Configurations.SQLConfig portfolioConfig = (Configurations.SQLConfig)System.Configuration.ConfigurationManager.GetSection("sqlConfigurations/mySQLPortfolioConfig");
+            String portfolioConnString = "Server=" + portfolioConfig.Database.Address + ";User=" + portfolioConfig.Database.Username + ";Password=" + portfolioConfig.Database.Password
+                + ";Database=" + portfolioConfig.Database.Name + ";";
+
+            container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(userConnString));
+            container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
+
+            container.RegisterType<MySqlConnection>("PortfolioConnect", new InjectionConstructor(portfolioConnString));
+            container.RegisterType<ISqlPortfolioDatabase, SqlPortfolioDatabase>("PortfolioDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("PortfolioConnect")));
+
+            container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
+            container.RegisterType<IController, SignUpController>(
+                new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB"), new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")));
         }
     }
 }
