@@ -9,6 +9,8 @@ namespace Homer_MVC {
 
         int createNewPortfolioID();
 
-        void deletePortfolioID(int id);
+        bool deletePortfolioID(int id);
+
+        bool create
     }
 }

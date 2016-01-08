@@ -26,15 +26,17 @@ namespace Homer_MVC.Services {
             return portfolioID;
         }
 
-        public void deletePortfolioID(int id) {
+        public bool deletePortfolioID(int id) {
+            bool success = false;
             if (Open()) {
                 MySqlCommand cmd = new MySqlCommand("DELETE FROM portfolio WHERE portfolioID = @portfolioID", conn);
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@portfolioID", id);
 
-                cmd.ExecuteNonQuery();
+                success = (cmd.ExecuteNonQuery() == 1);
                 Close();
             }
+            return success;
         }
     }
 }
