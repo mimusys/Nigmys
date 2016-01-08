@@ -13,7 +13,7 @@ namespace Homer_MVC.Services {
         public int createNewPortfolioID() {
             int portfolioID = -1;
             if (Open()) {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO portfolio VALUES(null);", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO portfolio VALUES (null); select LAST_INSERT_ID();", conn);
                 cmd.Prepare();
 
                 object portfolioIDObj = cmd.ExecuteScalar();
