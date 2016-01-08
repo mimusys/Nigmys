@@ -32,11 +32,25 @@ namespace Homer_MVC.App_Start
             String portfolioConnString = "Server=" + portfolioConfig.Database.Address + ";User=" + portfolioConfig.Database.Username + ";Password=" + portfolioConfig.Database.Password
                 + ";Database=" + portfolioConfig.Database.Name + ";";
 
+            Configurations.SQLConfig investmentInformationConfig = 
+                (Configurations.SQLConfig)System.Configuration.ConfigurationManager.GetSection("sqlConfigurations/mySQLInvestmentInformationConfig");
+            String investmentInformationConnString = 
+                "Server=" + investmentInformationConfig.Database.Address + 
+                ";User=" + investmentInformationConfig.Database.Username + 
+                ";Password=" + investmentInformationConfig.Database.Password +
+                ";Database=" + investmentInformationConfig.Database.Name + ";";
+
             container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(userConnString));
-            container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
+            container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB", 
+                new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
 
             container.RegisterType<MySqlConnection>("PortfolioConnect", new InjectionConstructor(portfolioConnString));
-            container.RegisterType<ISqlPortfolioDatabase, SqlPortfolioDatabase>("PortfolioDB", new InjectionConstructor(new ResolvedParameter<MySqlConnection>("PortfolioConnect")));
+            container.RegisterType<ISqlPortfolioDatabase, SqlPortfolioDatabase>("PortfolioDB", 
+                new InjectionConstructor(new ResolvedParameter<MySqlConnection>("PortfolioConnect")));
+
+            container.RegisterType<MySqlConnection>("InvestmentInformationConnect", new InjectionConstructor(investmentInformationConnString));
+            container.RegisterType<ISqlInvestmentInformationDatabase, SqlInvestmentInformationDatabase>("InvestmentInformationDB", 
+                new InjectionConstructor(new ResolvedParameter<MySqlConnection>("InvestmentInformationConnect")));
 
             container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
             container.RegisterType<IController, SignUpController>(
