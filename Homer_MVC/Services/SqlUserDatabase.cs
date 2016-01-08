@@ -65,6 +65,7 @@ namespace Homer_MVC.Services {
                     user.CompanyName = reader["companyName"] + "";
                     user.PictureURL = reader["pictureURL"] + "";
                     user.Birthday = DateTime.Parse(reader["birthDate"] + "");
+                    user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
                 }
                 reader.Close();
 
