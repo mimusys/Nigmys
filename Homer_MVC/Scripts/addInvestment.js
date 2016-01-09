@@ -1,4 +1,10 @@
-﻿$(document).ready(function () {
+﻿function ammortizeLoan(loanAmount, years, annualPercent) {
+    var monthlyPercent = annualPercent / 12.0;
+    var numPayments = years * 12;
+    return (monthlyPercent * loanAmount * Math.pow((1 + monthlyPercent), numPayments)) / (Math.pow(1 + monthlyPercent, numPayments) - 1);
+}
+
+$(document).ready(function () {
     // add new debt partner list item
     $('a#addDebtPartnerLink').click(function (e) {
         e.preventDefault();
