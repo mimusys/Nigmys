@@ -179,6 +179,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
+    <Compile Include="Models\CostItem.cs" />
+    <Compile Include="Models\DebtPartner.cs" />
+    <Compile Include="Models\DepreciationItem.cs" />
+    <Compile Include="Models\EquityPartner.cs" />
+    <Compile Include="Models\InvestmentInformation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\ISqlDatasbase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
