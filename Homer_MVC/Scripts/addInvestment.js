@@ -4,9 +4,15 @@
         e.preventDefault();
         $('#addDebtPartnerLinkRow').before('\
 <div class="row">\
-    <div class="form-group col-lg-4">\
-        <label for="lenderName">Lender Name</label>\
-        <input type="text" value="" id="lenderName" class="form-control" name="lenderName">\
+    <div class="row nested-row">\
+        <div class="form-group col-lg-4">\
+            <label for="lenderName">Lender Name</label>\
+            <input type="text" value="" id="lenderName" class="form-control" name="lenderName">\
+        </div>\
+        <div class="form-group col-lg-1">\
+            <span style="min-height:42px; display:inline-block;"></span>\
+            <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
+        </div>\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="annualPercentageRate">Annual Percent</label>\
@@ -20,10 +26,6 @@
         <label for="termLength">Term Length</label>\
         <input type="text" valud="" id="termLength" class="form-control" name="termLength" placeholder="Years">\
     </div>\
-    <div class="form-group col-lg-1">\
-        <span style="min-height:42px; display:inline-block;"></span>\
-        <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
-    </div>\
 </div>\
 ');
         return false;
@@ -34,9 +36,15 @@
         e.preventDefault();
         $('#addEquityPartnerLinkRow').before('\
 <div class="row">\
-    <div class="form-group col-lg-2">\
-        <label for="lenderName">Partner Name</label>\
-        <input type="text" value="" id="partnerName" class="form-control" name="partnerName">\
+    <div class="row nested-row">\
+        <div class="form-group col-lg-4">\
+            <label for="lenderName">Partner Name</label>\
+            <input type="text" value="" id="partnerName" class="form-control" name="partnerName">\
+        </div>\
+        <div class="form-group col-lg-1">\
+            <span style="min-height:42px; display:inline-block;"></span>\
+            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+        </div>\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="cashFlowPercent">Cash Flow</label>\
@@ -58,10 +66,6 @@
         <label for="equityInvestment">Equity Investment</label>\
         <input type="text" value="" id="equityInvestment" class="form-control" name="equityInvestment" placeholder="$0.00">\
     </div>\
-    <div class="form-group col-lg-1">\
-        <span style="min-height:42px; display:inline-block;"></span>\
-        <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-    </div>\
 </div>\
 ');
         return false;
@@ -72,9 +76,15 @@
         e.preventDefault();
         $('#addDepreciationLinkRow').before('\
 <div class="row">\
-    <div class="form-group col-lg-2">\
-        <label for="depreciationName">Name</label>\
-        <input type="text" value="" id="depreciationName" class="form-control" name="depreciationName">\
+    <div class="row nested-row">\
+        <div class="form-group col-lg-4">\
+            <label for="depreciationName">Name</label>\
+            <input type="text" value="" id="depreciationName" class="form-control" name="depreciationName">\
+        </div>\
+        <div class="form-group col-lg-1">\
+            <span style="min-height:42px; display:inline-block;"></span>\
+            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+        </div>\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="depreciationValue">Value</label>\
@@ -83,10 +93,6 @@
     <div class="form-group col-lg-2">\
         <label for="timeDuration">Duration</label>\
         <input type="text" value="" id="timeDuration" class="form-control" name="timeDuration" placeholder="">\
-    </div>\
-    <div class="form-group col-lg-1">\
-        <span style="min-height:42px; display:inline-block;"></span>\
-        <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
     </div>\
 </div>\
 ');
@@ -135,5 +141,5 @@
 
 // remove an added list item field
 $(document).on("click", ".removeButton", function () {
-    $(this).parent().parent().remove();
+    $(this).parent().parent().parent().remove();
 });
