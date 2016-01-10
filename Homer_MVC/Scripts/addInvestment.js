@@ -115,18 +115,20 @@ $(document).ready(function () {
     $('a#addOtherCostLink').click(function (e) {
         e.preventDefault();
         $('#addOtherCostLinkRow').before('\
-<div class="row">\
-    <div class="form-group col-lg-6">\
-        <label for="otherCostName">Name</label>\
-        <input type="text" value="" class="form-control" id="otherCostName"></input>\
-    </div>\
-    <div class="form-group col-lg-4">\
-        <label for="otherCostValue">Amount</label>\
-        <input type="text" value="" class="form-control" id="otherCostValue" placeholder="$0.00"></input>\
-    </div>\
-    <div class="form-group col-lg-1">\
-        <span style="min-height:22px; display:inline-block;"></span>\
-        <a href="#" class="btn pull-down btn-default btn-circle removeButton" onclick="test()" type="button"><i class="fa fa-times"></i></a>\
+<div class="row other-cost-row">\
+    <div>\
+        <div class="form-group col-lg-6">\
+            <label for="otherCostName">Name</label>\
+            <input type="text" value="" class="form-control otherCostName"></input>\
+        </div>\
+        <div class="form-group col-lg-4">\
+            <label for="otherCostValue">Amount</label>\
+            <input type="text" value="" class="form-control otherCostValue" placeholder="$0.00"></input>\
+        </div>\
+        <div class="form-group col-lg-1">\
+            <span style="min-height:42px; display:inline-block;"></span>\
+            <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
+        </div>\
     </div>\
 </div>');
         return false;
