@@ -10,6 +10,7 @@ namespace Homer_MVC.Models {
         public int Term { get; set; }
         public double AnnualPercentageRate { get; set; }
         public DateTime LoanStartDate { get; set; }
+        public double LoanAmount { get; set; }
         public double Payment { get; set; }
     }
 }
