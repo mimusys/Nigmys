@@ -47,11 +47,11 @@ $(document).ready(function () {
     $('a#addEquityPartnerLink').click(function (e) {
         e.preventDefault();
         $('#addEquityPartnerLinkRow').before('\
-<div class="row">\
+<div class="row equity-partner-row">\
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
             <label for="lenderName">Partner Name</label>\
-            <input type="text" value="" id="partnerName" class="form-control" name="partnerName">\
+            <input type="text" value="" class="form-control partnerName">\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -60,23 +60,23 @@ $(document).ready(function () {
     </div>\
     <div class="form-group col-lg-2">\
         <label for="cashFlowPercent">Cash Flow</label>\
-        <input type="text" value="" id="cashFlowPercent" class="form-control" name="cashFlowPercent" placeholder="%0.00">\
+        <input type="text" value="" class="form-control cashFlowPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="appreciationPercent">Appreciation</label>\
-        <input type="text" value="" id="appreciationPercent" class="form-control" name="appreciationPercent" placeholder="%0.00">\
+        <input type="text" value="" class="form-control appreciationPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="principlePaydownPercent">Principle Paydown</label>\
-        <input type="text" value="" id="principlePaydownPercent" class="form-control" name="principlePaydownPercent" placeholder="%0.00">\
+        <input type="text" value="" class="form-control principlePaydownPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="taxDeductionPercent">Tax Deduction</label>\
-        <input type="text" value="" id="taxDeductionPercent" class="form-control" name="taxDeductionPercent" placeholder="%0.00">\
+        <input type="text" value="" class="form-control taxDeductionPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="equityInvestment">Equity Investment</label>\
-        <input type="text" value="" id="equityInvestment" class="form-control" name="equityInvestment" placeholder="$0.00">\
+        <input type="text" value="" class="form-control equityInvestment" placeholder="$0.00">\
     </div>\
 </div>\
 ');
