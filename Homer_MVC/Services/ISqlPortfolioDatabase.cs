@@ -11,6 +11,5 @@ namespace Homer_MVC {
 
         bool deletePortfolioID(int id);
 
-        bool create
     }
 }
