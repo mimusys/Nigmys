@@ -87,11 +87,11 @@ $(document).ready(function () {
     $('a#addDepreciationLink').click(function (e) {
         e.preventDefault();
         $('#addDepreciationLinkRow').before('\
-<div class="row">\
+<div class="row depreciation-item-row">\
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
             <label for="depreciationName">Name</label>\
-            <input type="text" value="" id="depreciationName" class="form-control" name="depreciationName">\
+            <input type="text" value="" class="form-control depreciationName">\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -100,11 +100,11 @@ $(document).ready(function () {
     </div>\
     <div class="form-group col-lg-2">\
         <label for="depreciationValue">Value</label>\
-        <input type="text" value="" id="depreciationValue" class="form-control" name="depreciationValue" placeholder="$0.00">\
+        <input type="text" value="" class="form-control depreciationValue" placeholder="$0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="timeDuration">Duration</label>\
-        <input type="text" value="" id="timeDuration" class="form-control" name="timeDuration" placeholder="">\
+        <input type="text" value="" class="form-control timeDuration" placeholder="">\
     </div>\
 </div>\
 ');
