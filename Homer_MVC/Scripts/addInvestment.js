@@ -10,12 +10,134 @@ function testDebtPartnerClass() {
     });
 }
 
+function addNewInvestment() {
+    // todo: add input validation
+
+    // assemble debt partner class array
+    var debtPartners = [];
+    $('.debt-partner-row').each(function (i, obj) {
+        var termLength = $(this).find('.termLength').val();
+        var annualPercentageRate = $(this).find('.annualPercentageRate').val()/100.0;
+        var loanAmount = $(this).find('.loanAmount').val();
+        var payment = ammortizeLoan(loanAmount, termLength, annualPercentageRate);
+        debtPartners.push(
+            {
+                LenderName: $(this).find('.lenderName').val(),
+                Term: termLength,
+                AnnualPercentageRate: annualPercentageRate,
+                LoanStartDate: $(this).find('.loanStartDate').val(),
+                LoanAmount: loanAmount,
+                Payment: payment
+            });
+    });
+    
+    // assemble cost item class array
+    var costItems = [];
+    costItems.push({
+        CostItemName: "Closing Cost",
+        CostItemValue: $('#closingCost').val()
+    });
+
+    costItems.push({
+        CostItemName: "Rehab Cost",
+        CostItemValue: $('#rehabCost').val()
+    });
+
+    costItems.push({
+        CostItemName: "Holdover Cost",
+        CostItemValue: $('#holdoverCost').val()
+    });
+
+    $('.other-cost-row').each(function (i, obj) {
+        costItems.push(
+            {
+                CostItemName: $(this).find('.otherCostName').val(),
+                CostItemValue: $(this).find('.otherCostValue').val()
+            });
+    });
+
+    // assemble equity partner class array
+    var equityPartners = [];
+    $('.equity-partner-row').each(function (i, obj) {
+        equityPartners.push({
+            EquityPartnerName: $(this).find('.partnerName').val(),
+            CashFlowPercent: $(this).find('.cashFlowPercent').val() / 100.0,
+            AppreciationPercent: $(this).find('.appreciationPercent').val() / 100.0,
+            PrincipalPaydownPercent: $(this).find('.principalPaydownPercent').val() / 100.0,
+            TaxDeductionPercent: $(this).find('.taxDeductionPercent').val() / 100.0,
+            EquityInvestment: $(this).find('.equityInvestment').val()
+        });
+    });
+
+    // assemble depreciation item class array
+    var depreciationItems = [];
+    $('.depreciation-item-row').each(function (i, obj) {
+        depreciationItems.push({
+            DepreciationItemName: $(this).find('.depreciationName').val(),
+            DepreciationItemValue: $(this).find('.depreciationValue').val(),
+            DepreciationItemTimeDuration: $(this).find('.timeDuration').val()
+        });
+    });
+
+    // construct investment information object
+    var investmentInformation = {
+        // purchase info
+        PurchasePrice: $('#purchasePrice').val(),
+        PurchaseDate: $('#purchaseDate').val(),
+        MarketPrice: $('#marketPrice').val(),
+        LandValue: $('#landValue').val(),
+        DownPayment: $('.downPayment').first().val(),
+        TotalInvestmentCost: $('#totalInvestmentCost').val(),
+
+        // property info
+        Address: $('#address').val(),
+        City: $('#city').val(),
+        State: $('#state').val(),
+        Bedrooms: $('#bedrooms').val(),
+        Baths: $('#baths').val(),
+        SquareFootage: $('#squareFootage').val(),
+        PricePerSqFoot: $('#pricePerSqFoot').val(),
+
+        // potential return info
+        AnnualAppreciationRate: $('#annualAppreciationRate').val() / 100.0,
+        SalesCommission: $('#salesCommission').val() / 100.0,
+        CapitalGainsTax: $('#capitalGainsTax').val() / 100.0,
+        IncomeTaxRate: $('#incomeTaxRate').val() / 100.0,
+        DiscountRate: $('#discountRate').val(),
+
+        CostItems: costItems,
+        DebtPartners: debtPartners,
+        EquityPartners: equityPartners,
+        DepreciationItems: depreciationItems
+    };
+
+    $.ajax({
+        url: '/Investments/AddInvestment',
+        type: 'POST',
+        dataType: 'json',
+        cache: false,
+        async: false,
+        data: JSON.stringify(investmentInformation),
+        contentType: 'application/json',
+        success: function (data) {
+            if (data == true) {
+                success = true;
+            } else alert("Failed to create new user.");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+}
+
 $(document).ready(function () {
     // add new debt partner list item
     $('a#addDebtPartnerLink').click(function (e) {
         e.preventDefault();
         $('#addDebtPartnerLinkRow').before('\
 <div class="row debt-partner-row">\
+    <hr />\
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
             <label for="lenderName">Lender Name</label>\
@@ -27,16 +149,20 @@ $(document).ready(function () {
         </div>\
     </div>\
     <div class="form-group col-lg-2">\
-        <label for="annualPercentageRate">Annual Percent</label>\
-        <input type="text" value="" class="form-control annualPercentageRate" placeholder="%0.00">\
+        <label for="loanAmount">Loan Amount</label>\
+        <input type="text" value="" class="form-control loanAmount" placeholder="$0.00" />\
     </div>\
-    <div class="form-group col-lg-3">\
+    <div class="form-group col-lg-2">\
+        <label for="annualPercentageRate">Annual Percent</label>\
+        <input type="text" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
+    </div>\
+    <div class="form-group col-lg-2">\
         <label for="loanStartDate">Loan Start Date</label>\
-        <input type="date" value="" class="form-control loanStartDate">\
+        <input type="date" value="" class="form-control loanStartDate" />\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="termLength">Term Length</label>\
-        <input type="text" valud="" class="form-control termLength" placeholder="Years">\
+        <input type="text" valud="" class="form-control termLength" placeholder="Years" />\
     </div>\
 </div>\
 ');
@@ -50,7 +176,7 @@ $(document).ready(function () {
 <div class="row equity-partner-row">\
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
-            <label for="lenderName">Partner Name</label>\
+            <label for="partnerName">Partner Name</label>\
             <input type="text" value="" class="form-control partnerName">\
         </div>\
         <div class="form-group col-lg-1">\
@@ -68,7 +194,7 @@ $(document).ready(function () {
     </div>\
     <div class="form-group col-lg-2">\
         <label for="principlePaydownPercent">Principle Paydown</label>\
-        <input type="text" value="" class="form-control principlePaydownPercent" placeholder="%0.00">\
+        <input type="text" value="" class="form-control principalPaydownPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="taxDeductionPercent">Tax Deduction</label>\
@@ -145,12 +271,17 @@ $(document).ready(function () {
     $('.next').click(function () {
         var nextId = $(this).parents('.tab-pane').next().attr("id");
         $('[href=#' + nextId + ']').tab('show');
-        testDebtPartnerClass();
     })
 
     $('.prev').click(function () {
         var prevId = $(this).parents('.tab-pane').prev().attr("id");
         $('[href=#' + prevId + ']').tab('show');
+    })
+
+    $('.submit').click(function (e) {
+        e.preventDefault();
+        addNewInvestment();
+        return false;
     })
 });
 
