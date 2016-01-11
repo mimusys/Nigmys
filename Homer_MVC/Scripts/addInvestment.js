@@ -52,7 +52,7 @@ function addNewInvestment() {
         costItems.push(
             {
                 CostItemName: $(this).find('.otherCostName').val(),
-                CostItemValue: $(this).find('.otherCostValue').val()
+                CostItemValue: $(this).find('.costItemAmount').val()
             });
     });
 
@@ -129,6 +129,40 @@ function addNewInvestment() {
             alert(thrownError);
         }
     });
+}
+
+function updateDownPayment(e) {
+    var totalLender = 0;
+    $('.loanAmount').each(function (i, obj) {
+        totalLender += parseInt($(this).val());
+    });
+
+    var totalEquityInvestment = 0;
+    $('.equityInvestment').each(function (i, obj) {
+        totalEquityInvestment += parseInt($(this).val());
+    });
+
+    var downPayment = parseInt($('#purchasePrice').val());
+    downPayment -= totalLender;
+    downPayment -= totalEquityInvestment;
+
+    $('.downPayment').each(function (i, obj) {
+        $(this).text("$" + downPayment);
+    });
+}
+
+function updateTotalInvestment(e) {
+    var total = parseInt($("#purchasePrice").val());
+    if (!isNaN(total)) {
+        $('.costItemAmount').each(function (i, obj) {
+            var val = parseInt($(this).val());
+            if (!isNaN(val)) {
+                total += val;
+            }
+        });
+
+        $('#totalInvestmentCost').text("$" + total);
+    }
 }
 
 $(document).ready(function () {
@@ -249,7 +283,7 @@ $(document).ready(function () {
         </div>\
         <div class="form-group col-lg-4">\
             <label for="otherCostValue">Amount</label>\
-            <input type="text" value="" class="form-control otherCostValue" placeholder="$0.00"></input>\
+            <input type="text" value="" class="form-control costItemAmount" placeholder="$0.00"></input>\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -271,21 +305,35 @@ $(document).ready(function () {
     $('.next').click(function () {
         var nextId = $(this).parents('.tab-pane').next().attr("id");
         $('[href=#' + nextId + ']').tab('show');
-    })
+    });
 
     $('.prev').click(function () {
         var prevId = $(this).parents('.tab-pane').prev().attr("id");
         $('[href=#' + prevId + ']').tab('show');
-    })
+    });
 
     $('.submit').click(function (e) {
         e.preventDefault();
         addNewInvestment();
         return false;
-    })
+    });
+
+    
 });
 
 // remove an added list item field
 $(document).on("click", ".removeButton", function () {
     $(this).parent().parent().parent().remove();
+    updateDownPayment();
+    updateTotalInvestment();
 });
+
+$(document).on("change keyup paste", ".loanAmount", updateDownPayment);
+$(document).on("change keyup paste", ".equityInvestment", updateDownPayment);
+$(document).on("change", "#purchasePrice", function () {
+    updateDownPayment();
+    updateTotalInvestment();
+});
+
+$(document).on("keyup paste", "#purchasePrice", updateTotalInvestment);
+$(document).on("change keyup paste", '.costItemAmount', updateTotalInvestment);
