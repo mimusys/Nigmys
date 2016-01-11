@@ -53,8 +53,16 @@ namespace Homer_MVC.App_Start
                 new InjectionConstructor(new ResolvedParameter<MySqlConnection>("InvestmentInformationConnect")));
 
             container.RegisterType<IController, LoginController>(new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB")));
-            container.RegisterType<IController, SignUpController>(
-                new InjectionConstructor(new ResolvedParameter<SqlUserDatabase>("UserDB"), new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")));
+
+            container.RegisterType<IController, SignUpController>(new InjectionConstructor(
+                new ResolvedParameter<SqlUserDatabase>("UserDB"),
+                new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
+                ));
+
+            container.RegisterType<IController, InvestmentsController>(new InjectionConstructor(
+                new ResolvedParameter<SqlInvestmentInformationDatabase>("InvestmentInformationDB"),
+                new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
+                ));
         }
     }
 }

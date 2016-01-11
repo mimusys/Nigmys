@@ -38,5 +38,21 @@ namespace Homer_MVC.Services {
             }
             return success;
         }
+
+        public bool addInvestmentID(int portfolioID, int investmentID) {
+            bool success = false;
+            if (Open()) {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO portfolioInvestmentInformation (investmentInformationID, portfolioID) " + 
+                    "VALUES (@investmentInformationID, @portfolioID);", conn);
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@investmentInformationID", investmentID);
+                cmd.Parameters.AddWithValue("@portfolioID", portfolioID);
+
+                if (cmd.ExecuteNonQuery() == 1) {
+                    success = true;
+                }
+            }
+            return success;
+        }
     }
 }

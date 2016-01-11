@@ -11,5 +11,6 @@ namespace Homer_MVC {
 
         bool deletePortfolioID(int id);
 
+        bool addInvestmentID(int portfolioID, int investmentID);
     }
 }
