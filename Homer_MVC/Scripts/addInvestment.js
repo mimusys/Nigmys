@@ -16,9 +16,9 @@ function addNewInvestment() {
     // assemble debt partner class array
     var debtPartners = [];
     $('.debt-partner-row').each(function (i, obj) {
-        var termLength = $(this).find('.termLength').val();
-        var annualPercentageRate = $(this).find('.annualPercentageRate').val()/100.0;
-        var loanAmount = $(this).find('.loanAmount').val();
+        var termLength = parseInt($(this).find('.termLength').val());
+        var annualPercentageRate = parseInt($(this).find('.annualPercentageRate').val())/100.0;
+        var loanAmount = parseInt($(this).find('.loanAmount').val());
         var payment = ammortizeLoan(loanAmount, termLength, annualPercentageRate);
         debtPartners.push(
             {
@@ -99,11 +99,11 @@ function addNewInvestment() {
         PricePerSqFoot: $('#pricePerSqFoot').val(),
 
         // potential return info
-        AnnualAppreciationRate: $('#annualAppreciationRate').val() / 100.0,
-        SalesCommission: $('#salesCommission').val() / 100.0,
-        CapitalGainsTax: $('#capitalGainsTax').val() / 100.0,
-        IncomeTaxRate: $('#incomeTaxRate').val() / 100.0,
-        DiscountRate: $('#discountRate').val(),
+        AnnualAppreciationRate: parseInt($('#annualAppreciationRate').val()) / 100.0,
+        SalesCommission: parseInt($('#salesCommission').val()) / 100.0,
+        CapitalGainsTax: parseInt($('#capitalGainsTax').val()) / 100.0,
+        IncomeTaxRate: parseInt($('#incomeTaxRate').val()) / 100.0,
+        DiscountRate: parseInt($('#discountRate').val()) / 100.0,
 
         CostItems: costItems,
         DebtPartners: debtPartners,
