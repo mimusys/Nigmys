@@ -9,7 +9,7 @@ namespace Homer_MVC.Models {
         public string EquityPartnerName { get; set; }
         public double CashFlowPercent { get; set; }
         public double AppreciationPercent { get; set; }
-        public double PrinciplePaydownPercent { get; set; }
+        public double PrincipalPaydownPercent { get; set; }
         public double TaxDeductionPercent { get; set; }
         public double EquityInvestment { get; set; }
     }
