@@ -5,6 +5,11 @@ using System.Web;
 
 namespace Homer_MVC.Models {
     public class InvestmentInformation {
+        public CostItem[] CostItems { get; set; }
+        public DebtPartner[] DebtPartners { get; set; }
+        public EquityPartner[] EquityPartners { get; set; }
+        public DepreciationItem[] DepreciationItems { get; set; }
+
         public int InvestmentInformationID { get; set; }
 
         // Potential Return Info
@@ -17,7 +22,7 @@ namespace Homer_MVC.Models {
 
         // Purchase Info
         public int PurchaseInformationID { get; set; }
-        public double PurcahsePrice { get; set; }
+        public double PurchasePrice { get; set; }
         public DateTime PurchaseDate { get; set; }
         public double MarketPrice { get; set; }
         public double DownPayment { get; set; }
@@ -34,9 +39,6 @@ namespace Homer_MVC.Models {
         public int SquareFootage { get; set; }
         public double PricePerSqFoot { get; set; }
 
-        public CostItem[] CostItems { get; set; }
-        public DebtPartner[] DebtPartners { get; set; }
-        public EquityPartner[] EquityPartners { get; set; }
-        public DepreciationItem[] DepreciationItems { get; set; }
+
     }
 }
