@@ -211,6 +211,14 @@ namespace Homer_MVC
             //Add New Investment Script
             bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
                 "~/Scripts/addInvestment.js"));
+
+            //InvestmentList Custom Style
+            bundles.Add(new StyleBundle("~/bundles/investment-list/css").Include(
+                "~/Content/investmentListCustom.css", new CssRewriteUrlTransform()));
+
+            //InvestmentList Custom Script
+            bundles.Add(new ScriptBundle("~/bundles/investment-list/js").Include(
+                "~/Scripts/investmentList.js"));
         }
 
     }
