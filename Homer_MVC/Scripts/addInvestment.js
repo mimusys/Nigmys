@@ -125,97 +125,37 @@
     $('a#addExpenseItemLink').click(function (e) {
         e.preventDefault();
         $('#addExpenseItemLinkRow').before('\
-<div class="row">\
-    <div class="row nested-row">\
+<div class="col-lg-12">\
+    <div class="row">\
         <div class="form-group col-lg-4">\
             <label for ="expenseName">Name<\label>\
             <input type="text" value="" id="expenseName" class="form-control" name="expenseName">\
         </div>\
-        <div class = "form-group col-lg-4">\
+        <div class="form-group col-lg-4">\
             <label for="expenseRecurrence">Recurring<\label><input\
-            <input type = "checkbox" value="" id="recurringCheckbox" name = "recurringCheckbox">\
+            <input type="checkbox" class="recurringCheckbox">\
         </div>\
         <div class="form-group col-lg-1">\
             <span style = "min-height:42px; display:inline-block;"></span>\
             <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
          </div>\
-         <div class = "form-group col-lg-2">\
-            <label for="expenseValue" id = "expenseValueText">Value</label>\
-            <input type="text" value="" id="expenseValue1" class = "form-control" name="expenseValue" placeholder = "$0.00">\
+        <div class="row">\
+            <div class="col-lg-4" style="padding-left:4em;">\
+                <a href="#" class="addExpenseItemRow">Add Expense Date Row</a>\
+            </div>\
         </div>\
-        <div class="form-group col-lg-2">\
-            <label for="expenseDate" id = "expenseDateText" >Date</label>\
-            <input type="text" value="" id="expenseDate" class="form-control" name="expenseDate" placeholder="mm/dd/yyyy">\
+        <div class="col-lg-12 expenseItemValueRows">\
+            <div class="form-group col-lg-2">\
+                <label for="expenseDate" id = "expenseDateText" >Date</label>\
+                <input type="text" value="" id="expenseDate" class="form-control" name="expenseDate" placeholder="mm/dd/yyyy">\
+            </div>\
+             <div class="form-group col-lg-2">\
+                <label for="expenseValue" id="expenseValueText">Value</label>\
+                <input type="text" value="" id="expenseValue1" class = "form-control" name="expenseValue" placeholder = "$0.00">\
+            </div>\
         </div>\
     <\div>\
-    ');
-        $("input[id='recurringCheckbox']").change(function () {
-            if ($(this).is(':checked')) {
-                var wrapper = $('a#addExpenseItemLink');
-                $(wrapper).prepend('<div class="row">\
-        <div class="form-group col-lg-2">\
-            <label for="expenseValue">Value</label>\
-            <input type="text" value="" id="expenseValue" class="form-control" name="expenseValue" placeholder="$0.00">\
-        </div>\
-        <div class="form-group col-lg-2">\
-            <label for="purchaseDate">To</label>\
-            <input type="text" value="" id="expensePurchaseTODate" class="form-control" name="expensePurchaseToDate" placeholder="mm/dd/yyyy">\
-        </div>\
-        <div class="form-group col-lg-2">\
-            <label for="purchaseDate">From</label>\
-            <input type="text" value="" id="expensePurchaseFromDate" class="form-control" name="expensePurchaseFromDate" placeholder="mm/dd/yyyy">\
-        </div>\
-        <div class = "form-group col-lg-4">\
-            <label for="expenseProrate">Prorated<\label><input\
-            <input type = "checkbox" value="" id="Prorated" name = "Prorated">\
-        </div>\
-        <div class="form-group col-lg-1">\
-            <span style = "min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" id = "plusButton" class="btn pull-down btn-default btn-circle addButton" type="button"><i class="fa fa-plus"></i></button>\
-         </div>\
-        <div class="form-group col-lg-1">\
-            <span style = "min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-         </div>\
-    </div>\\');
-
-            }
-            $("#expenseValue1").remove();
-            $("#expenseValueText").remove();
-            $("#expenseDate").remove();
-            $("#expenseDateText").remove();
-        });
-
-        $("plusButton").click(function () {
-            var previous = $("input[id='recurringCheckbox']");
-            $(previous).append('<div class="row">\
-        <div class="form-group col-lg-2">\
-            <label for="expenseValue">Value</label>\
-            <input type="text" value="" id="expenseValue" class="form-control" name="expenseValue" placeholder="$0.00">\
-        </div>\
-        <div class="form-group col-lg-2">\
-            <label for="purchaseDate">To</label>\
-            <input type="text" value="" id="expensePurchaseTODate" class="form-control" name="expensePurchaseToDate" placeholder="mm/dd/yyyy">\
-        </div>\
-        <div class="form-group col-lg-2">\
-            <label for="purchaseDate">From</label>\
-            <input type="text" value="" id="expensePurchaseFromDate" class="form-control" name="expensePurchaseFromDate" placeholder="mm/dd/yyyy">\
-        </div>\
-        <div class = "form-group col-lg-4">\
-            <label for="expenseProrate">Prorated<\label><input\
-            <input type = "checkbox" value="" id="Prorated" name = "Prorated">\
-        </div>\
-        <div class="form-group col-lg-1">\
-            <span style = "min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" id = "plusButton" class="btn pull-down btn-default btn-circle addButton" type="button"><i class="fa fa-plus"></i></button>\
-         </div>\
-        <div class="form-group col-lg-1">\
-            <span style = "min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-         </div>\
-    </div>\\');
-        });
-        
+</div>');
         return false;
 
     });
@@ -248,3 +188,86 @@ $(document).on("click", ".addButton", function () {
     $(this).parent().append();
 });
 
+$(document).on("click", ".expenseItemRowRemove", function () {
+    $(this).parent().parent().remove();
+});
+
+//$("#plusButton").click(function () {
+$(document).on("click", ".addExpenseItemRow", function () {
+    //alert('add expense recurring item row');
+    if ($('.addExpenseItemRow').parent().parent().parent().find('.recurringCheckbox').is(':checked')) {
+        $(this).parent().parent().parent().find('.expenseItemValueRows').append('\
+<div class="row expenseRecurringRow">\
+    <div class="form-group col-lg-2">\
+        <label for="purchaseDate">To</label>\
+        <input type="text" value="" id="expensePurchaseTODate" class="form-control" name="expensePurchaseToDate" placeholder="mm/dd/yyyy">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="purchaseDate">From</label>\
+        <input type="text" value="" id="expensePurchaseFromDate" class="form-control" name="expensePurchaseFromDate" placeholder="mm/dd/yyyy">\
+    </div>\
+    <div class="form-group col-lg-2">\
+        <label for="expenseValue">Value</label>\
+        <input type="text" value="" id="expenseValue" class="form-control" name="expenseValue" placeholder="$0.00">\
+    </div>\
+    <div class = "form-group col-lg-4">\
+        <label for="expenseProrate">Prorated<\label><input\
+        <input type = "checkbox" value="" id="Prorated" name = "Prorated">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <span style = "min-height:42px; display:inline-block;"></span>\
+        <a href="#" class="btn pull-down btn-default btn-circle expenseItemRowRemove"><i class="fa fa-times"></i></a>\
+    </div>\
+</div>');
+    } else {
+        alert('Not implemented');
+    }
+});
+
+$(document).on("change", ".recurringCheckbox", function () {
+    var parentDiv = $(this).parent().parent().parent().parent();
+    parentDiv.children('.expenseItemValueRows')[0].remove();
+    if ($(this).is(':checked')) {
+        parentDiv.append('\
+<div class="col-lg-12 expenseItemValueRows">\
+    <div class="row expenseRecurringRow">\
+        <div class="form-group col-lg-2">\
+            <label for="purchaseDate">To</label>\
+            <input type="text" value="" id="expensePurchaseTODate" class="form-control" name="expensePurchaseToDate" placeholder="mm/dd/yyyy">\
+        </div>\
+        <div class="form-group col-lg-2">\
+            <label for="purchaseDate">From</label>\
+            <input type="text" value="" id="expensePurchaseFromDate" class="form-control" name="expensePurchaseFromDate" placeholder="mm/dd/yyyy">\
+        </div>\
+        <div class="form-group col-lg-2">\
+            <label for="expenseValue">Value</label>\
+            <input type="text" value="" id="expenseValue" class="form-control" name="expenseValue" placeholder="$0.00">\
+        </div>\
+        <div class = "form-group col-lg-4">\
+            <label for="expenseProrate">Prorated<\label><input\
+            <input type = "checkbox" value="" id="Prorated" name = "Prorated">\
+        </div>\
+        <div class="form-group col-lg-1">\
+            <span style = "min-height:42px; display:inline-block;"></span>\
+            <a href="#" class="btn pull-down btn-default btn-circle expenseItemRowRemove"><i class="fa fa-times"></i></a>\
+        </div>\
+    </div>\
+</div>');
+
+    } else {
+
+        parentDiv.append('\
+<div class="col-lg-12 expenseItemValueRows">\
+    <div class="form-group col-lg-2">\
+        <label for="expenseDate" id = "expenseDateText" >Date</label>\
+        <input type="text" value="" id="expenseDate" class="form-control" name="expenseDate" placeholder="mm/dd/yyyy">\
+    </div>\
+    <div class = "form-group col-lg-2">\
+        <label for="expenseValue" id = "expenseValueText">Value</label>\
+        <input type="text" value="" id="expenseValue1" class = "form-control" name="expenseValue" placeholder = "$0.00">\
+    </div>\
+</div>');
+
+    }
+
+});
