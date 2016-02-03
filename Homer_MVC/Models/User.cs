@@ -17,5 +17,6 @@ namespace Homer_MVC.Models {
         public DateTime Birthday { get; set; }
         public string CompanyName { get; set; }
         public string PictureURL { get; set; }
+        public int PortfolioID { get; set; }
     }
 }
