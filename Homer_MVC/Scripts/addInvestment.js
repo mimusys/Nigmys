@@ -1,18 +1,298 @@
-﻿function ammortizeLoan(loanAmount, years, annualPercent) {
+﻿$.validator.addMethod('regex', function (value, element, param) {
+    return this.optional(element) || value.match(typeof param == 'string' ? new RegExp(param) : param);
+}, "Input is invalid");
+
+$.validator.addMethod('otherCostNameRequired', $.validator.methods.required, "A name is required");
+
+$.validator.addMethod('costItemAmountRequired', $.validator.methods.required, "A valid amount is required");
+
+$.validator.addClassRules({
+    otherCostName: {
+        otherCostNameRequired: true,
+    },
+    costItemAmount: {
+        costItemAmountRequired: true,
+        regex: /^[0-9]+\.*[0-9]*$/,
+    },
+    lenderName: {
+        required: true,
+    },
+    loanAmount: {
+        required: true,
+        regex: /^[0-9]+\.*[0-9]*$/,
+    },
+    annualPercentageRate: {
+        required: true,
+        regex: /^[0-9]+\.[0-9]+$/
+    },
+    loanStartDate: {
+        required: true,
+        date: true,
+    },
+    termLength: {
+        required: true,
+        regex: /^[0-9]+$/
+    },
+    partnerName: {
+        required: true,
+    },
+    cashFlowPercent: {
+        required: true,
+        regex: /^[0-9]+\.[0-9]+$/
+    },
+    appreciationPercent: {
+        required: true,
+        regex: /^[0-9]+\.[0-9]+$/
+    },
+    principalPaydownPercent: {
+        required: true,
+        regex: /^[0-9]+\.[0-9]+$/
+    },
+    taxDeductionPercent: {
+        required: true,
+        regex: /^[0-9]+\.[0-9]+$/
+    },
+    equityInvestment: {
+        required: true,
+        regex: /^[0-9]+\.*[0-9]*$/,
+    },
+    depreciationName: {
+        required: true,
+    },
+    depreciationValue: {
+        required: true,
+        regex: /^[0-9]+\.*[0-9]*$/,
+    },
+    timeDuration: {
+        required: true,
+        regex: /^[0-9]+$/
+    }
+});
+
+var otherCostItemIndex = 0;
+var debtPartnerIndex = 0;
+var equityPartnerIndex = 0;
+var depreciationItemIndex = 0;
+
+var debtPartnerValidator = $('#debtPartnersForm').validate({
+    onkeyup: true,
+    ignore: ".ignore"
+})
+
+var purchaseInformationValidator = $("#purchaseInformationForm").validate({
+    onkeyup: true,
+    ignore: ".ignore",
+    rules: {
+        purchasePrice: {
+            required: true,
+            regex: /^[0-9]+\.*[0-9]*$/
+        },
+        marketPrice: {
+            required: true,
+            regex: /^[0-9]+\.*[0-9]*$/
+        },
+        landValue: {
+            required: true,
+            regex: /^[0-9]+\.*[0-9]*$/
+        },
+        purchaseDate: {
+            required: true,
+            date: true,
+        },
+
+    },
+    messages: {
+        purchasePrice: {
+            required: "A purchase price is required for creating a new investment",
+            regex: "Field can only contain numbers"
+        },
+        marketPrice: {
+            required: "A market price is required for creating a new investment",
+            regex: "Field can only contain numbers"
+        },
+        landValue: {
+            required: "A land value is required for creating a new investment",
+            regex: "Field can only contain numbers"
+        },
+        purchaseDate: {
+            required: "A purchase date is required",
+            date: "Input date is invalid"
+        },
+
+    }
+});
+
+var propertyInformationValidator = $('#propertyInformationForm').validate({
+    onkeyup: true,
+    ignore: ".ignore",
+    rules: {
+        address: {
+            required: true,
+        },
+        city: {
+            required: true,
+        },
+        state: {
+            required: true,
+        },
+        bedrooms: {
+            required: true,
+        },
+        baths: {
+            required: true,
+        },
+        squareFootage: {
+            required: true,
+        },
+    },
+    messages: {
+        address: {
+            required: "An address is required"
+        },
+        city: {
+            required: "A city is required",
+        },
+        state: {
+            required: "A state is required",
+        },
+        bedrooms: {
+            required: "Enter the number of bedrooms in property"
+        },
+        baths: {
+            required: "Enter the number of baths in property"
+        },
+        squareFootage: {
+            required: "Enter approximate square footage of the property",
+        },
+    }
+});
+
+var potentialReturnValidator = $("#potentialReturnForm").validate({
+    onkeyup: true,
+    ignore: ".ignore",
+    rules: {
+        annualAppreciationRate: {
+            required: true,
+            regex: /^[0-9]+\.[0-9]+$/
+        },
+        capitalGainsTax: {
+            required: true,
+            regex: /^[0-9]+\.[0-9]+$/
+        },
+        incomeTaxRate: {
+            required: true,
+            regex: /^[0-9]+\.[0-9]+$/
+        },
+        discountRate: {
+            required: true,
+            regex: /^[0-9]+\.[0-9]+$/
+        },
+        salesCommission: {
+            required: true,
+            regex: /^[0-9]+\.[0-9]+$/
+        },
+    },
+    messages: {
+        annualAppreciationRate: {
+            required: "An annual appreciation rate is required",
+            regex: "A valid percentage is required"
+        },
+        capitalGainsTax: {
+            required: "A capital gains tax rate is required",
+            regex: "A valid percentage is required"
+        },
+        incomeTaxRate: {
+            required: "An income tax rate is required",
+            regex: "A valid percentage is required"
+        },
+        discountRate: {
+            required: "A discount rate is required",
+            regex: "A valid percentage is required"
+        },
+        salesCommission: {
+            required: "A sales commission rate is required",
+            regex: "A valid percentage is required"
+        }
+    }
+});
+
+function showTabIfNotShown(tab) {
+    if (!$(tab).hasClass('in')) {
+        $('[href="' + tab + '"]').click();
+    }
+}
+
+function doPurchaseInformationValidation() {
+    purchaseInformationValidator.form();
+    propertyInformationValidator.form();
+    if (purchaseInformationValidator.valid()) {
+        $('#debtPartnersForm').validate();
+        var isDebtPartnerValid = $('#debtPartnersForm').valid();
+        if (isDebtPartnerValid) {
+            $('#equityPartnerForm').validate();
+            if ($('#equityPartnerForm').valid()) {
+                $('#depreciationItemForm').validate();
+                if ($('#depreciationItemForm').valid()) {
+                    if (propertyInformationValidator.valid()) {
+                        return true;
+                    } else {
+                        showTabIfNotShown('#collapseFive');
+                    }
+                } else {
+                    showTabIfNotShown('#collapseFour');
+                }
+            } else {
+                showTabIfNotShown('#collapseThree');
+            }
+        } else {
+            showTabIfNotShown('#collapseTwo');
+        }
+    } else {
+        showTabIfNotShown('#collapseOne');
+    }
+    return false;
+}
+
+function purchaseInformationTabNext() {
+    if (doPurchaseInformationValidation()) {
+        $('[href="#step2"]').tab('show');
+    }
+}
+
+function doPotentialReturnValidation() {
+    potentialReturnValidator.form();
+    if (potentialReturnValidator.valid()) {
+        return true;
+    }
+    return false;
+}
+
+function potentialReturnTabNext() {
+    if (doPotentialReturnValidation()) {
+        $('[href="#step4"]').tab('show');
+    }
+}
+
+function doAllValidation() {
+    if (doPurchaseInformationValidation()) {
+        if (doPotentialReturnValidation()) {
+            return true;
+        } else {
+            $('[href="#step3"]').tab('show');
+        }
+    } else {
+        $('[href="#step1"]').tab('show');
+    }
+    return false;
+}
+
+function ammortizeLoan(loanAmount, years, annualPercent) {
     var monthlyPercent = annualPercent / 12.0;
     var numPayments = years * 12;
     return (monthlyPercent * loanAmount * Math.pow((1 + monthlyPercent), numPayments)) / (Math.pow(1 + monthlyPercent, numPayments) - 1);
 }
 
-function testDebtPartnerClass() {
-    $('.debt-partner-row').each(function (i, obj) {
-        alert($(this).find('.lenderName').val());
-    });
-}
-
 function addNewInvestment() {
-    // todo: add input validation
-
     // assemble debt partner class array
     var debtPartners = [];
     $('.debt-partner-row').each(function (i, obj) {
@@ -173,33 +453,33 @@ $(document).ready(function () {
 <div class="row debt-partner-row">\
     <hr />\
     <div class="row nested-row">\
-        <div class="form-group col-lg-4">\
+        <div class="form-group col-xs-6 text-left">\
             <label for="lenderName">Lender Name</label>\
-            <input type="text" value="" class="form-control lenderName">\
+            <input type="text" name="debtPartnerName' + debtPartnerIndex + '" value="" class="form-control lenderName">\
         </div>\
-        <div class="form-group col-lg-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
+        <div class="form-group col-xs-1 text-right">\
+            <button type="button" style="float: right;" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
         </div>\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="loanAmount">Loan Amount</label>\
-        <input type="text" value="" class="form-control loanAmount" placeholder="$0.00" />\
+        <input type="text" name="loanAmount' + debtPartnerIndex + '" value="" class="form-control loanAmount" placeholder="$0.00" />\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="annualPercentageRate">Annual Percent</label>\
-        <input type="text" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
+        <input type="text" name="annualPercentageRate' + debtPartnerIndex + '" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="loanStartDate">Loan Start Date</label>\
-        <input type="date" value="" class="form-control loanStartDate" />\
+        <input type="date" name="loanStartDate' + debtPartnerIndex + '" value="" class="form-control loanStartDate" />\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="termLength">Term Length</label>\
-        <input type="text" valud="" class="form-control termLength" placeholder="Years" />\
+        <input type="text" name="termLength' + debtPartnerIndex + '" valud="" class="form-control termLength" placeholder="Years" />\
     </div>\
 </div>\
 ');
+        debtPartnerIndex++;
         return false;
     });
 
@@ -211,7 +491,7 @@ $(document).ready(function () {
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
             <label for="partnerName">Partner Name</label>\
-            <input type="text" value="" class="form-control partnerName">\
+            <input type="text" name="partnerName' + equityPartnerIndex + '" value="" class="form-control partnerName">\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -220,26 +500,27 @@ $(document).ready(function () {
     </div>\
     <div class="form-group col-lg-2">\
         <label for="cashFlowPercent">Cash Flow</label>\
-        <input type="text" value="" class="form-control cashFlowPercent" placeholder="%0.00">\
+        <input type="text" value="" name="cashFlowPercent' + equityPartnerIndex + '" class="form-control cashFlowPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="appreciationPercent">Appreciation</label>\
-        <input type="text" value="" class="form-control appreciationPercent" placeholder="%0.00">\
+        <input type="text" value="" name="appreciationPercent' + equityPartnerIndex + '" class="form-control appreciationPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="principlePaydownPercent">Principle Paydown</label>\
-        <input type="text" value="" class="form-control principalPaydownPercent" placeholder="%0.00">\
+        <input type="text" value="" name="principalPaydownPercent' + equityPartnerIndex + '" class="form-control principalPaydownPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="taxDeductionPercent">Tax Deduction</label>\
-        <input type="text" value="" class="form-control taxDeductionPercent" placeholder="%0.00">\
+        <input type="text" value="" name="taxDeductionPercent' + equityPartnerIndex + '" class="form-control taxDeductionPercent" placeholder="%0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="equityInvestment">Equity Investment</label>\
-        <input type="text" value="" class="form-control equityInvestment" placeholder="$0.00">\
+        <input type="text" value="" name="equityInvestment' + equityPartnerIndex + '" class="form-control equityInvestment" placeholder="$0.00">\
     </div>\
 </div>\
 ');
+        equityPartnerIndex++;
         return false;
     });
 
@@ -251,7 +532,7 @@ $(document).ready(function () {
     <div class="row nested-row">\
         <div class="form-group col-lg-4">\
             <label for="depreciationName">Name</label>\
-            <input type="text" value="" class="form-control depreciationName">\
+            <input type="text" name="depreciationName' + depreciationItemIndex + '" value="" class="form-control depreciationName">\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -260,11 +541,11 @@ $(document).ready(function () {
     </div>\
     <div class="form-group col-lg-2">\
         <label for="depreciationValue">Value</label>\
-        <input type="text" value="" class="form-control depreciationValue" placeholder="$0.00">\
+        <input type="text" value="" name="depreciationValue' + depreciationItemIndex + '" class="form-control depreciationValue" placeholder="$0.00">\
     </div>\
     <div class="form-group col-lg-2">\
         <label for="timeDuration">Duration</label>\
-        <input type="text" value="" class="form-control timeDuration" placeholder="">\
+        <input type="text" value="" name="timeDuration' + depreciationItemIndex +'" class="form-control timeDuration" placeholder="">\
     </div>\
 </div>\
 ');
@@ -279,11 +560,11 @@ $(document).ready(function () {
     <div>\
         <div class="form-group col-lg-6">\
             <label for="otherCostName">Name</label>\
-            <input type="text" value="" class="form-control otherCostName"></input>\
+            <input type="text" name="otherCostItemName' + otherCostItemIndex + '" value="" class="form-control otherCostName"></input>\
         </div>\
         <div class="form-group col-lg-4">\
             <label for="otherCostValue">Amount</label>\
-            <input type="text" value="" class="form-control costItemAmount" placeholder="$0.00"></input>\
+            <input type="text" name="otherCostItemAmount' + otherCostItemIndex + '" value="" class="form-control costItemAmount otherCostItemAmount" placeholder="$0.00"></input>\
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
@@ -291,6 +572,7 @@ $(document).ready(function () {
         </div>\
     </div>\
 </div>');
+        otherCostItemIndex++;
         return false;
     });
 
@@ -314,11 +596,14 @@ $(document).ready(function () {
 
     $('.submit').click(function (e) {
         e.preventDefault();
-        addNewInvestment();
+        if (doAllValidation()) {
+            addNewInvestment();
+        }
         return false;
     });
 
-    
+    $('#purchaseInformationNext').click(purchaseInformationTabNext);
+    $('#potentialReturnNext').click(potentialReturnTabNext);
 });
 
 // remove an added list item field
