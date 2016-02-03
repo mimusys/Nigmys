@@ -220,7 +220,21 @@ $(document).on("click", ".addExpenseItemRow", function () {
     </div>\
 </div>');
     } else {
-        alert('Not implemented');
+        $(this).parent().parent().parent().find('.expenseItemValueRows').append('\
+ <div class="row col-lg-12 expenseItemValueRow">\
+    <div class="form-group col-lg-2">\
+        <label for="expenseDate" id = "expenseDateText" >Date</label>\
+        <input type="text" value="" id="expenseDate" class="form-control" name="expenseDate" placeholder="mm/dd/yyyy">\
+    </div>\
+    <div class = "form-group col-lg-2">\
+        <label for="expenseValue" id = "expenseValueText">Value</label>\
+        <input type="text" value="" id="expenseValue1" class = "form-control" name="expenseValue" placeholder = "$0.00">\
+    </div>\
+    <div class="form-group col-lg-1">\
+        <span style = "min-height:42px; display:inline-block;"></span>\
+        <a href="#" class="btn pull-down btn-default btn-circle expenseItemRowRemove"><i class="fa fa-times"></i></a>\
+    </div>\
+</div>');
     }
 });
 
