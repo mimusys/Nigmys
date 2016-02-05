@@ -167,6 +167,7 @@
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\GridSystemController.cs" />
     <Compile Include="Controllers\InterfaceController.cs" />
+    <Compile Include="Controllers\InvestmentListController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\img\green%402x.png" />
     <Content Include="Content\img\green.png" />
+    <Content Include="Content\investmentListCustom.css" />
     <Content Include="Content\landingStyle.css" />
     <Content Include="Content\loginCustom.css" />
     <Content Include="Content\style.css" />
@@ -250,6 +252,7 @@
     <Content Include="Scripts\addInvestment.js" />
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\homer.js" />
+    <Content Include="Scripts\investmentList.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
@@ -2079,6 +2082,7 @@
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\wysihtml5.js" />
     <Content Include="Views\Investments\AddInvestment.cshtml" />
+    <Content Include="Views\InvestmentList\Index.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

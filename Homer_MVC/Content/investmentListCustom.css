@@ -1,0 +1,20 @@
+﻿.table-hover tbody tr:hover td, .table-hover tbody tr:hover th
+{
+    background-color: #455463;
+    cursor:pointer;
+    color:white;
+}
+
+.table td.quickClick:hover {
+    background-color:chartreuse;
+}
+
+div h2, p 
+{
+    text-align:center;
+}
+
+.investment-search
+{
+    margin-bottom:10px;
+}
