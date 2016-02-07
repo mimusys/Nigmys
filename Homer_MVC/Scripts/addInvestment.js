@@ -453,12 +453,13 @@ $(document).ready(function () {
 <div class="row debt-partner-row">\
     <hr />\
     <div class="row nested-row">\
-        <div class="form-group col-xs-6 text-left">\
+        <div class="form-group col-xs-6">\
             <label for="lenderName">Lender Name</label>\
             <input type="text" name="debtPartnerName' + debtPartnerIndex + '" value="" class="form-control lenderName">\
         </div>\
-        <div class="form-group col-xs-1 text-right">\
-            <button type="button" style="float: right;" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+        <div class="form-group col-xs-1">\
+            <span style="min-height:42px; display:inline-block;"></span>\
+            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
         </div>\
     </div>\
     <div class="form-group col-lg-2">\
@@ -495,7 +496,7 @@ $(document).ready(function () {
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
         </div>\
     </div>\
     <div class="form-group col-lg-2">\
@@ -536,7 +537,7 @@ $(document).ready(function () {
         </div>\
         <div class="form-group col-lg-1">\
             <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
         </div>\
     </div>\
     <div class="form-group col-lg-2">\
