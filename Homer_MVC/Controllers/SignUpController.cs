@@ -12,10 +12,12 @@ namespace Homer_MVC.Controllers
 {
     public class SignUpController : Controller {
         private ISqlUserDatabase userSql;
+        private ISqlPortfolioDatabase portfolioSql;
 
         [InjectionConstructor]
-        public SignUpController(ISqlUserDatabase userSql) {
+        public SignUpController(ISqlUserDatabase userSql, ISqlPortfolioDatabase portfolioSql) {
             this.userSql = userSql;
+            this.portfolioSql = portfolioSql;
         }
 
         public ActionResult Index() {
@@ -34,11 +36,14 @@ namespace Homer_MVC.Controllers
 
         [HttpPost]
         public JsonResult NewUser(User user) {
+            user.PortfolioID = portfolioSql.createNewPortfolioID();
             int userId = userSql.addNewUser(user);
             if (userId != -1) {
                 user.UserID = userId.ToString();
                 Session["user"] = user;
                 return Json(true);
+            } else {
+                portfolioSql.deletePortfolioID(user.PortfolioID);
             }
             return Json(false);
         }

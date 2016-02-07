@@ -62,15 +62,16 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `birthDate` date NOT NULL,
   `companyName` varchar(50) NOT NULL,
-  `pictureURL` text NOT NULL
+  `pictureURL` text NOT NULL,
+  `portfolioID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`customerID`, `username`, `firstName`, `lastName`, `passwordID`, `address`, `zip`, `email`, `birthDate`, `companyName`, `pictureURL`) VALUES
-(1, 'username1', 'fakeFirst', 'fakeLast', 1, '123 fake st.', '11111', 'fake@fake.com', '2015-11-18', 'fake LTD', 'www.google.com');
+INSERT INTO `users` (`customerID`, `username`, `firstName`, `lastName`, `passwordID`, `address`, `zip`, `email`, `birthDate`, `companyName`, `pictureURL`, `portfolioID`) VALUES
+(1, 'username1', 'fakeFirst', 'fakeLast', 1, '123 fake st.', '11111', 'fake@fake.com', '2015-11-18', 'fake LTD', 'www.google.com', 1);
 
 --
 -- Indexes for dumped tables
@@ -89,7 +90,8 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`customerID`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `passwordID` (`passwordID`);
+  ADD KEY `passwordID` (`passwordID`),
+  ADD KEY `portfolioID` (`portfolioID`);
 
 --
 -- AUTO_INCREMENT for dumped tables

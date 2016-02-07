@@ -65,6 +65,7 @@ namespace Homer_MVC.Services {
                     user.CompanyName = reader["companyName"] + "";
                     user.PictureURL = reader["pictureURL"] + "";
                     user.Birthday = DateTime.Parse(reader["birthDate"] + "");
+                    user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
                 }
                 reader.Close();
 
@@ -121,8 +122,8 @@ namespace Homer_MVC.Services {
 
                     int passwordID = Convert.ToInt32(passwordIdRet);
                     // construct our insert statement
-                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName) VALUES ";
-                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName); select LAST_INSERT_ID();";
+                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID) VALUES ";
+                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID); select LAST_INSERT_ID();";
                     cmd.CommandText = query;
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@username", user.Username);
@@ -134,6 +135,7 @@ namespace Homer_MVC.Services {
                     cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@birthday", user.Birthday);
                     cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
+                    cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
                     //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
                     // ExecuteScalar should return the id of the user added, null otherwise

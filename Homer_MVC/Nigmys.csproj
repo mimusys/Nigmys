@@ -155,6 +155,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\LoggedInFilter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Configurations\SQLConfig.cs" />
@@ -178,11 +179,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
+    <Compile Include="Models\CostItem.cs" />
+    <Compile Include="Models\DebtPartner.cs" />
+    <Compile Include="Models\DepreciationItem.cs" />
+    <Compile Include="Models\EquityPartner.cs" />
+    <Compile Include="Models\InvestmentInformation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\ISqlDatasbase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ISqlInvestmentInformationDatabase.cs" />
+    <Compile Include="Services\ISqlPortfolioDatabase.cs" />
     <Compile Include="Services\ISqlUserDatabase.cs" />
     <Compile Include="Services\SqlDatabase.cs" />
+    <Compile Include="Services\SqlInvestmentInformationDatabase.cs" />
+    <Compile Include="Services\SqlPortfolioDatabase.cs" />
     <Compile Include="Services\SqlUserDatabase.cs" />
     <Compile Include="Support\NigmysDependencyResolver.cs" />
   </ItemGroup>
