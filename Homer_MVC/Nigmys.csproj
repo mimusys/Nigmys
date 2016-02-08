@@ -2055,6 +2055,22 @@
     <Content Include="Vendor\summernote\src\js\Renderer.js" />
     <Content Include="Vendor\summernote\src\js\settings.js" />
     <Content Include="Vendor\summernote\src\js\summernote.js" />
+    <Content Include="Vendor\sweetalert\.gitignore" />
+    <Content Include="Vendor\sweetalert\dev\gulpfile-wrap-template.js" />
+    <Content Include="Vendor\sweetalert\dev\ie9.css" />
+    <Content Include="Vendor\sweetalert\dev\loader-animation.css" />
+    <Content Include="Vendor\sweetalert\dev\modules\default-params.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\handle-click.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\handle-dom.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\handle-key.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\handle-swal-dom.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\injected-html.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\set-params.js" />
+    <Content Include="Vendor\sweetalert\dev\modules\utils.js" />
+    <Content Include="Vendor\sweetalert\dev\sweetalert.es6.js" />
+    <Content Include="Vendor\sweetalert\dist\sweetalert-dev.js" />
+    <Content Include="Vendor\sweetalert\dist\sweetalert.css" />
+    <Content Include="Vendor\sweetalert\dist\sweetalert.min.js" />
     <Content Include="Vendor\sweetalert\example\example.css" />
     <Content Include="Vendor\sweetalert\example\images\logo_big%402x.png" />
     <Content Include="Vendor\sweetalert\example\images\logo_big.png" />
@@ -2064,12 +2080,23 @@
     <Content Include="Vendor\sweetalert\example\images\thumbs-up.jpg" />
     <Content Include="Vendor\sweetalert\example\images\vs_icon%402x.png" />
     <Content Include="Vendor\sweetalert\example\images\vs_icon.png" />
-    <Content Include="Vendor\sweetalert\example\index.html" />
-    <Content Include="Vendor\sweetalert\lib\sweet-alert.css" />
-    <Content Include="Vendor\sweetalert\lib\sweet-alert.html" />
-    <Content Include="Vendor\sweetalert\lib\sweet-alert.js" />
-    <Content Include="Vendor\sweetalert\lib\sweet-alert.min.js" />
+    <Content Include="Vendor\sweetalert\gulpfile.js" />
+    <Content Include="Vendor\sweetalert\index.html" />
+    <Content Include="Vendor\sweetalert\lib\modules\default-params.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\handle-click.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\handle-dom.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\handle-key.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\handle-swal-dom.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\injected-html.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\set-params.js" />
+    <Content Include="Vendor\sweetalert\lib\modules\utils.js" />
+    <Content Include="Vendor\sweetalert\lib\sweetalert.js" />
     <Content Include="Vendor\sweetalert\sweetalert.gif" />
+    <Content Include="Vendor\sweetalert\test\index.html" />
+    <Content Include="Vendor\sweetalert\test\tests.js" />
+    <Content Include="Vendor\sweetalert\themes\facebook\facebook.css" />
+    <Content Include="Vendor\sweetalert\themes\google\google.css" />
+    <Content Include="Vendor\sweetalert\themes\twitter\twitter.css" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\css\bootstrap-editable.css" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\img\clear.png" />
     <Content Include="Vendor\xeditable\bootstrap3-editable\img\loading.gif" />
@@ -2089,6 +2116,18 @@
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
     <Content Include="Vendor\xeditable\inputs-ext\wysihtml5\wysihtml5.js" />
     <Content Include="Views\Investments\AddInvestment.cshtml" />
+    <Content Include="Vendor\sweetalert\.editorconfig" />
+    <Content Include="Vendor\sweetalert\.jshintrc" />
+    <Content Include="Vendor\sweetalert\.travis.yml" />
+    <Content Include="Vendor\sweetalert\bower.json" />
+    <Content Include="Vendor\sweetalert\dev\sweetalert.scss" />
+    <Content Include="Vendor\sweetalert\example\example.scss" />
+    <Content Include="Vendor\sweetalert\LICENSE" />
+    <Content Include="Vendor\sweetalert\package.json" />
+    <Content Include="Vendor\sweetalert\README.md" />
+    <Content Include="Vendor\sweetalert\themes\facebook\facebook.scss" />
+    <Content Include="Vendor\sweetalert\themes\google\google.scss" />
+    <Content Include="Vendor\sweetalert\themes\twitter\twitter.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -2107,7 +2146,6 @@
     <Folder Include="Vendor\peity\bin\" />
     <Folder Include="Vendor\peity\test\bin\" />
     <Folder Include="Vendor\summernote\build\" />
-    <Folder Include="Vendor\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\" />
     <Folder Include="Vendor\toastr\build\" />
   </ItemGroup>
   <ItemGroup>
@@ -2510,13 +2548,6 @@
     <Content Include="Vendor\summernote\README.md" />
     <Content Include="Vendor\summernote\src\less\elements.less" />
     <Content Include="Vendor\summernote\src\less\summernote.less" />
-    <Content Include="Vendor\sweetalert\.bower.json" />
-    <Content Include="Vendor\sweetalert\.editorconfig" />
-    <Content Include="Vendor\sweetalert\bower.json" />
-    <Content Include="Vendor\sweetalert\example\example.scss" />
-    <Content Include="Vendor\sweetalert\lib\sweet-alert.scss" />
-    <Content Include="Vendor\sweetalert\LICENSE" />
-    <Content Include="Vendor\sweetalert\README.md" />
     <Content Include="Vendor\xeditable\LICENSE-MIT" />
     <Content Include="Vendor\xeditable\README.md" />
   </ItemGroup>
