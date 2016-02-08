@@ -68,11 +68,11 @@ namespace Homer_MVC
 
             // Sweetalert
             bundles.Add(new ScriptBundle("~/bundles/sweetAlert/js").Include(
-                      "~/Vendor/sweetalert/lib/sweet-alert.min.js"));
+                      "~/Vendor/sweetalert/dist/sweetalert.min.js"));
 
             // Sweetalert style
             bundles.Add(new StyleBundle("~/bundles/sweetAlert/css").Include(
-                      "~/Vendor/sweetalert/lib/sweet-alert.css"));
+                      "~/Vendor/sweetalert/dist/sweetalert.css"));
 
             // Toastr
             bundles.Add(new ScriptBundle("~/bundles/toastr/js").Include(
