@@ -448,38 +448,44 @@ function updateTotalInvestment(e) {
 $(document).ready(function () {
     // add new debt partner list item
     $('a#addDebtPartnerLink').click(function (e) {
-        e.preventDefault();
-        $('#addDebtPartnerLinkRow').before('\
-<div class="row debt-partner-row">\
-    <hr />\
-    <div class="row nested-row">\
-        <div class="form-group col-xs-6">\
-            <label for="lenderName">Lender Name</label>\
-            <input type="text" name="debtPartnerName' + debtPartnerIndex + '" value="" class="form-control lenderName">\
-        </div>\
-        <div class="form-group col-xs-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-        </div>\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="loanAmount">Loan Amount</label>\
-        <input type="text" name="loanAmount' + debtPartnerIndex + '" value="" class="form-control loanAmount" placeholder="$0.00" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="annualPercentageRate">Annual Percent</label>\
-        <input type="text" name="annualPercentageRate' + debtPartnerIndex + '" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="loanStartDate">Loan Start Date</label>\
-        <input type="date" name="loanStartDate' + debtPartnerIndex + '" value="" class="form-control loanStartDate" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="termLength">Term Length</label>\
-        <input type="text" name="termLength' + debtPartnerIndex + '" valud="" class="form-control termLength" placeholder="Years" />\
-    </div>\
-</div>\
-');
+        //e.preventDefault();
+        swal({
+            title: "Welcome in Alerts",
+            text: "Holder Text"
+        });
+//        $('#addDebtPartnerLinkRow').before(
+//            '\
+//<div class="row debt-partner-row">\
+//    <hr />\
+//    <div class="row nested-row">\
+//        <div class="form-group col-xs-6">\
+//            <label for="lenderName">Lender Name</label>\
+//            <input type="text" name="debtPartnerName' + debtPartnerIndex + '" value="" class="form-control lenderName">\
+//        </div>\
+//        <div class="form-group col-xs-1">\
+//            <span style="min-height:42px; display:inline-block;"></span>\
+//            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
+//        </div>\
+//    </div>\
+//    <div class="form-group col-lg-2">\
+//        <label for="loanAmount">Loan Amount</label>\
+//        <input type="text" name="loanAmount' + debtPartnerIndex + '" value="" class="form-control loanAmount" placeholder="$0.00" />\
+//    </div>\
+//    <div class="form-group col-lg-2">\
+//        <label for="annualPercentageRate">Annual Percent</label>\
+//        <input type="text" name="annualPercentageRate' + debtPartnerIndex + '" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
+//    </div>\
+//    <div class="form-group col-lg-2">\
+//        <label for="loanStartDate">Loan Start Date</label>\
+//        <input type="date" name="loanStartDate' + debtPartnerIndex + '" value="" class="form-control loanStartDate" />\
+//    </div>\
+//    <div class="form-group col-lg-2">\
+//        <label for="termLength">Term Length</label>\
+//        <input type="text" name="termLength' + debtPartnerIndex + '" valud="" class="form-control termLength" placeholder="Years" />\
+//    </div>\
+//</div>\
+//'
+//);
         debtPartnerIndex++;
         return false;
     });

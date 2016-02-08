@@ -20,7 +20,9 @@
     {@RenderSection("Styles", required: false)}
                                               
     <!-- Primary HOMER style -->
+    @Styles.Render("~/bundles/sweetAlert/css")
     @Styles.Render("~/bundles/homer/css")
+   
 </head>
 <body class="@Html.PageClass()">
 
@@ -54,6 +56,7 @@
     @Scripts.Render("~/bundles/jquery/js")
     @Scripts.Render("~/bundles/bootstrap/js")
     @Scripts.Render("~/bundles/homer/js")
+    @Scripts.Render("~/bundles/sweetAlert/js")
 
     <!-- Handler for local scripts -->
     @RenderSection("scripts", required: false)
