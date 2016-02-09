@@ -72,7 +72,8 @@ namespace Homer_MVC
 
             // Sweetalert style
             bundles.Add(new StyleBundle("~/bundles/sweetAlert/css").Include(
-                      "~/Vendor/sweetalert/dist/sweetalert.css"));
+                      "~/Vendor/sweetalert/dist/sweetalert.css",
+                      "~/Content/alertForm.css"));
 
             // Toastr
             bundles.Add(new ScriptBundle("~/bundles/toastr/js").Include(
@@ -211,6 +212,10 @@ namespace Homer_MVC
             //Add New Investment Script
             bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
                 "~/Scripts/addInvestment.js"));
+
+            //Numeral JS Script
+            bundles.Add(new ScriptBundle("~/bundles/numeral-js/js").Include(
+                "~/Vendor/numeral-js/min/numeral.min.js"));
         }
 
     }

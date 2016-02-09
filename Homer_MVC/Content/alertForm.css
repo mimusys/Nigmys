@@ -1,0 +1,16 @@
+﻿.sweet-alert .small-element {
+    width:33.3333333%;
+    max-width: 125px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.sweet-alert .inline-label {
+    margin-left: 3px;
+}
+
+.btn.btn-circle.small-circle {
+    width: 25px;
+    height: 25px;
+    padding: 3px 0;
+}
