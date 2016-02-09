@@ -216,6 +216,13 @@ namespace Homer_MVC
             //Numeral JS Script
             bundles.Add(new ScriptBundle("~/bundles/numeral-js/js").Include(
                 "~/Vendor/numeral-js/min/numeral.min.js"));
+
+            //Investment List
+            bundles.Add(new StyleBundle("~/bundles/investment-list/css").Include(
+                "~/Content/investmentListCustom.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/investment-list/js").Include(
+                "~/Scripts/investmentList.js"));
         }
 
     }
