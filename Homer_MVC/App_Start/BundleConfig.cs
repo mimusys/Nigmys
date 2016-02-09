@@ -188,10 +188,37 @@ namespace Homer_MVC
             bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
                       "~/Vendor/jquery-validation/jquery.validate.min.js"));
 
-
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
+
+            //Login Custom Script
+            bundles.Add(new ScriptBundle("~/bundles/login-page/js").Include(
+                "~/Scripts/login.js"));
+
+            //SHA256 Hash Script
+            bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(
+                "~/Scripts/sha256.js"));
+
+            //Login Custom Style
+            bundles.Add(new StyleBundle("~/bundles/login-page/css").Include(
+                "~/Content/loginCustom.css", new CssRewriteUrlTransform()));
+
+            //Sign Up Script
+            bundles.Add(new ScriptBundle("~/bundles/sign-up/js").Include(
+                "~/Scripts/signup.js"));
+
+            //Add New Investment Script
+            bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
+                "~/Scripts/addInvestment.js"));
+
+            //InvestmentList Custom Style
+            bundles.Add(new StyleBundle("~/bundles/investment-list/css").Include(
+                "~/Content/investmentListCustom.css", new CssRewriteUrlTransform()));
+
+            //InvestmentList Custom Script
+            bundles.Add(new ScriptBundle("~/bundles/investment-list/js").Include(
+                "~/Scripts/investmentList.js"));
         }
 
     }

@@ -3685,6 +3685,10 @@ ul.h-list li:hover a {
     border-bottom: 2px solid #e4e5e7;
 }
 
+.nested-row {
+    margin-left: 2px;
+}
+
 #nestable-menu {
     padding: 0;
     margin: 10px 0 20px 0;
