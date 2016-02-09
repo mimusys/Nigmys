@@ -68,11 +68,12 @@ namespace Homer_MVC
 
             // Sweetalert
             bundles.Add(new ScriptBundle("~/bundles/sweetAlert/js").Include(
-                      "~/Vendor/sweetalert/lib/sweet-alert.min.js"));
+                      "~/Vendor/sweetalert/dist/sweetalert.min.js"));
 
             // Sweetalert style
             bundles.Add(new StyleBundle("~/bundles/sweetAlert/css").Include(
-                      "~/Vendor/sweetalert/lib/sweet-alert.css"));
+                      "~/Vendor/sweetalert/dist/sweetalert.css",
+                      "~/Content/alertForm.css"));
 
             // Toastr
             bundles.Add(new ScriptBundle("~/bundles/toastr/js").Include(
@@ -212,13 +213,9 @@ namespace Homer_MVC
             bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
                 "~/Scripts/addInvestment.js"));
 
-            //InvestmentList Custom Style
-            bundles.Add(new StyleBundle("~/bundles/investment-list/css").Include(
-                "~/Content/investmentListCustom.css", new CssRewriteUrlTransform()));
-
-            //InvestmentList Custom Script
-            bundles.Add(new ScriptBundle("~/bundles/investment-list/js").Include(
-                "~/Scripts/investmentList.js"));
+            //Numeral JS Script
+            bundles.Add(new ScriptBundle("~/bundles/numeral-js/js").Include(
+                "~/Vendor/numeral-js/min/numeral.min.js"));
         }
 
     }
