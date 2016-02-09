@@ -1,0 +1,242 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Landing.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="~/Images/logo/Nigmys-Logo.png" class="navbar-logo"/>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
+                <li><a class="page-scroll" href="#components">Application</a></li>
+                <li><a class="page-scroll" href="#tutorial">Tutorial</a></li>
+                <li><a class="page-scroll" href='#pricing'>Pricing</a></li>
+                <li><a class="page-scroll" href="#">Blog</a></li>
+                <li><a class="page-scroll" href="#support">Support </a></li>
+                <li><a href='@Html.Action("GetLoginURL", "LandingPage")'>@Html.Action("GetUsername", "LandingPage")</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header id="page-top">
+    <div class="container">
+        <div class="heading">
+            <h1>
+                Welcome to Nigmys
+            </h1>
+            <span>Manage your real estate investments as a professional.</span>
+            <p class="small">
+                <span>Nigmys is a software dedicated to assist in managing your real estate investment financials and giving professional insight to reaching the next level as an investor.</span>
+            </p>
+            <a href="#" class="btn btn-success btn-sm">Learn more</a>
+        </div>
+        <div class="heading-image animate-panel" data-child="img-animate" data-effect="fadeInRight">
+            <p class="small">We provide industry standard tools to help you manage your investment financials.</p>
+            <img class="img-animate" src="~/Images/landing/c1.jpg">
+            <img class="img-animate" src="~/Images/landing/c2.jpg">
+            <img class="img-animate" src="~/Images/landing/c3.jpg">
+            <img class="img-animate" src="~/Images/landing/c4.jpg">
+            <br /> 
+            <img class="img-animate" src="~/Images/landing/c5.jpg">
+            <img class="img-animate" src="~/Images/landing/c6.jpg">
+            <img class="img-animate" src="~/Images/landing/c7.jpg">
+            <img class="img-animate" src="~/Images/landing/c8.jpg">
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Professional Financial Management</h4>
+                <p>Conveniently keep your financial statements and records organized, professional, and current by utilizing our automated system.</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>Real-time Analytics and Dashboards</h4>
+                <p>Analyze your portfolio by observing trends in cash flow, appreciation, returns, and much more with our dashboard and analytics system.</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>Polished Report Generation</h4>
+                <p>Generate polished and professional reports for your current investments, prospective investments, or your entire portfolio.</p>
+                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="components" class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="center-title">
+                    <h2><span class="text-success">Press the button below to start Nigmys</span></h2>
+                    <p>You must have a registered account to access Nigmys. </p>
+                    <a href='@Url.Action("Index", "Dashboard")' class="btn nigmys-play-button btn-success">
+                        <span class="glyphicon glyphicon-stats"></span> Nigmys
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tutorial">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <h2><span class="text-success"> Tutorial </span></h2>
+                <p>Become an expert on Nigmys through our tutorials</p>
+                <a href='@Url.Action("Index", "Tutorial")' class="btn nigmys-play-button btn-success">
+                    <span class="glyphicon glyphicon-blackboard"></span> Tutorials
+                </a>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-md-4 col-md-offset-2">
+                <strong>Quick Start</strong>
+                <p>Our quick start tutorial provides an overview of what Nygmis is and how to quickly get started. It is highly recommended first time users view the quick start tutorial.</p>
+                <a class="btn btn-success btn-sm">Tutorial</a>
+            </div>
+            <div class="col-md-4">
+                <strong>Add Investments</strong>
+                <p> Nigmys is designed to used with a variety of investment strategies.  This tutorial gives a full explanation of how to properly add an investment to your portfolio.</p>
+                <a class="btn btn-success btn-sm">Tutorial</a>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-md-4 col-md-offset-2">
+                <strong>Removing vs. Selling</strong>
+                <p> There are two different ways of removing an investment from your active portfolio.  This tutorial shows how to remove an investment, how to sell an investment, and the difference between these two actions.  </p>
+                <a class="btn btn-success btn-sm">Tutorial</a>
+            </div>
+            <div class="col-md-4">
+                <strong>Projections</strong>
+                <p>One of the most essential tools of Nigmys are projections.  In this tutorial, you will learn how to use projections for both quick analysis as well as saving projections to analyze their effects on your portfolio.</p>
+                <a class="btn btn-success btn-sm">Tutorial</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="pricing">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <h2><span class="text-success">Pricing</span></h2>
+            </div>
+        </div>
+        <div class="row m-t-md">
+            <div class="col-lg-4 col-centered">
+                <ul class="pricing-plan list-unstyled selected">
+                    <li class="pricing-title">Monthly</li>
+                    <li class="pricing-desc">The following will be billed from your account the first of every month</li>
+                    <li class="pricing-price"><span>$25</span></li>
+                    <li>Unlimited Investments</li>
+                    <li>Unlimited PDF Reports</li>
+                    <li>Investment Management</li>
+                    <li>Dashboard</li>
+                    <li>Analytics</li>
+                    <li><a href='@Url.Action("Index", "SignUp")' class="btn btn-primary btn-sm">Signup Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="support" class="bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <h2><span class="text-success">Contact with us</span> anytime</h2>
+                <p>
+                    Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes.
+                </p>
+            </div>
+        </div>
+
+        <div class="row text-center m-t-lg">
+            <div class="col-md-4 col-md-offset-3">
+
+                <form class="form-horizontal" role="form" method="post" action="#">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="user@example.com" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="col-sm-2 control-label">Message</label>
+
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" name="message" placeholder="Your message here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input id="submit" name="submit" type="submit" value="Send us a message" class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-md-3 text-left">
+                <address>
+                    <strong><span class="navy">Company name, Inc.</span></strong><br />
+                    601 Street name, 123<br />
+                    New York, De 34101<br />
+                    <abbr title="Phone">P:</abbr> (123) 678-8674
+                </address>
+                <p class="text-color">
+                    Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click', function (event) {
+                var link = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $(link.attr('href')).offset().top - 50
+                }, 500);
+                event.preventDefault();
+            });
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+
+        });
+    </script>
+}
