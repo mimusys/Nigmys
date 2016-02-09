@@ -2227,6 +2227,7 @@
     <Content Include="Vendor\numeral-js\LICENSE" />
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
+    <Content Include="Views\InvestmentList\Index.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
