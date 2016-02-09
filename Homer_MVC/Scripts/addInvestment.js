@@ -448,39 +448,68 @@ function updateTotalInvestment(e) {
 $(document).ready(function () {
     // add new debt partner list item
     $('a#addDebtPartnerLink').click(function (e) {
-        e.preventDefault();
-        $('#addDebtPartnerLinkRow').before('\
-<div class="row debt-partner-row">\
-    <hr />\
-    <div class="row nested-row">\
-        <div class="form-group col-xs-6">\
-            <label for="lenderName">Lender Name</label>\
-            <input type="text" name="debtPartnerName' + debtPartnerIndex + '" value="" class="form-control lenderName">\
-        </div>\
-        <div class="form-group col-xs-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-        </div>\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="loanAmount">Loan Amount</label>\
-        <input type="text" name="loanAmount' + debtPartnerIndex + '" value="" class="form-control loanAmount" placeholder="$0.00" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="annualPercentageRate">Annual Percent</label>\
-        <input type="text" name="annualPercentageRate' + debtPartnerIndex + '" value="" class="form-control annualPercentageRate" placeholder="%0.00" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="loanStartDate">Loan Start Date</label>\
-        <input type="date" name="loanStartDate' + debtPartnerIndex + '" value="" class="form-control loanStartDate" />\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="termLength">Term Length</label>\
-        <input type="text" name="termLength' + debtPartnerIndex + '" valud="" class="form-control termLength" placeholder="Years" />\
-    </div>\
-</div>\
-');
-        debtPartnerIndex++;
+        //e.preventDefault();
+        swal({
+            title: "Add Debt Partner",
+            text: '<div class="form-group text-left">\
+                     <label class="inline-label" for="lenderName">Lender Name </label>\
+                     <input type="text" name="debtPartnerNameInput" class="form-control" placeholder="Name">\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                       <label class="inline-label" for="loanAmount">Loan Amount</label>\
+                       <input type="text" name="loanAmountInput" class="form-control loanAmount" placeholder="$0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                       <label class="inline-label" for="annualPercentage">Annual Interest</label>\
+                       <input type="text" name="annualInterestInput" class="form-control annualPercentageRate" placeholder="%0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                       <label class="inline-label" for="termLength">Term Length</label>\
+                       <input type="text" name="termLengthInput" class="form-control termLength" placeholder="Years"/>\
+                   </div>\
+                   <div class="form-group text-left">\
+                       <label class="inline-label" for="loanStartDate"> Loan Start Date </label>\
+                       <input type="date" name="loanStartDateInput" class="form-control loanStartDate">\
+                   </div>\
+                   <hr/>',
+            html: true,
+            type: "input",
+            showCancelButton: true
+        }, function() {
+            var tablePresent = debtPartnerIndex > 0;
+            var lenderName = $('input[name=debtPartnerNameInput]').val();
+            var loanAmount = numeral($('input[name=loanAmountInput]').val()).format('$0,0.00');
+            var annualInterest = $('input[name=annualInterestInput]').val();
+            var termLength = $('input[name=termLengthInput]').val();
+            var loanStartDate = $('input[name=loanStartDateInput]').val();
+
+            if (tablePresent) {
+                
+            } else {
+                $('#addDebtPartnerLinkRow').before(
+                    '\
+                    <table class=\"table table-hover\">\
+                        <thead>\
+                            <th>Lender Name</th>\
+                            <th>Loan Amount</th>\
+                            <th>Annual Interest</th>\
+                            <th>Term Length</th>\
+                            <th>Loan Start Date</th>\
+                        </thead>\
+                        <tbody>\
+                            <td name="debtPartnerName' + debtPartnerIndex + '">' + lenderName + '</td>\
+                            <td name="loanAmount' + debtPartnerIndex + '">' + loanAmount + '</td>\
+                            <td name="annualPercentageRate' + debtPartnerIndex + '">' + annualInterest + '</td>\
+                            <td name="termLength' + debtPartnerIndex + '">' + termLength + '</td>\
+                            <td name="loanStartDate' + debtPartnerIndex + '">' + loanStartDate + '</td>\
+                            <td><button type="button" href="#" class="btn btn-danger btn-circle small-circle removeDebtElement"><i class="fa fa-times"></i></button></td>\
+                        </tbody>\
+                    </table>'
+                    );
+            }
+            debtPartnerIndex++;
+        });
+        
         return false;
     });
 
@@ -613,6 +642,16 @@ $(document).on("click", ".removeButton", function () {
     updateDownPayment();
     updateTotalInvestment();
 });
+
+$(document).on("click", ".removeDebtElement", function () {
+    if (debtPartnerIndex == 1) {
+        $(this).parent().parent().parent().parent().remove();
+    }
+    else {
+        $(this).parent().parent().parent().remove();
+    }
+    debtPartnerIndex--;
+})
 
 $(document).on("change keyup paste", ".loanAmount", updateDownPayment);
 $(document).on("change keyup paste", ".equityInvestment", updateDownPayment);
