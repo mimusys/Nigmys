@@ -411,6 +411,7 @@ function addNewInvestment() {
     });
 }
 
+
 function updateDownPayment(e) {
     var totalLender = 0;
     $('.loanAmount').each(function (i, obj) {
@@ -431,6 +432,7 @@ function updateDownPayment(e) {
     });
 }
 
+
 function updateTotalInvestment(e) {
     var total = parseInt($("#purchasePrice").val());
     if (!isNaN(total)) {
@@ -444,6 +446,7 @@ function updateTotalInvestment(e) {
         $('#totalInvestmentCost').text("$" + total);
     }
 }
+
 
 $(document).ready(function () {
     // add new debt partner list item
@@ -482,7 +485,7 @@ $(document).ready(function () {
             var annualInterest = $('input[name=annualInterestInput]').val();
             var termLength = $('input[name=termLengthInput]').val();
             var loanStartDate = $('input[name=loanStartDateInput]').val();
-
+            
             if (tablePresent) {
                 
             } else {
@@ -508,6 +511,12 @@ $(document).ready(function () {
                     );
             }
             debtPartnerIndex++;
+            $(document).on("change keyup paste", ".loanAmount", updateDownPayment);
+            $(document).on("change keyup paste", ".equityInvestment", updateDownPayment);
+            $(document).on("change", "#purchasePrice", function () {
+                updateDownPayment();
+                updateTotalInvestment();
+            });
         });
         
         return false;
@@ -774,12 +783,8 @@ $(document).on("click", ".removeDebtElement", function () {
     debtPartnerIndex--;
 })
 
-$(document).on("change keyup paste", ".loanAmount", updateDownPayment);
-$(document).on("change keyup paste", ".equityInvestment", updateDownPayment);
-$(document).on("change", "#purchasePrice", function () {
-    updateDownPayment();
-    updateTotalInvestment();
-});
+
+
 
 
 $(document).on("click", ".addButton", function () {
