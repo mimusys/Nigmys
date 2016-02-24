@@ -525,94 +525,175 @@ $(document).ready(function () {
 
     // add new equity partner list item
     $('a#addEquityPartnerLink').click(function (e) {
-        e.preventDefault();
-        $('#addEquityPartnerLinkRow').before('\
-<div class="row equity-partner-row">\
-    <div class="row nested-row">\
-        <div class="form-group col-lg-4">\
-            <label for="partnerName">Partner Name</label>\
-            <input type="text" name="partnerName' + equityPartnerIndex + '" value="" class="form-control partnerName">\
-        </div>\
-        <div class="form-group col-lg-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-        </div>\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="cashFlowPercent">Cash Flow</label>\
-        <input type="text" value="" name="cashFlowPercent' + equityPartnerIndex + '" class="form-control cashFlowPercent" placeholder="%0.00">\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="appreciationPercent">Appreciation</label>\
-        <input type="text" value="" name="appreciationPercent' + equityPartnerIndex + '" class="form-control appreciationPercent" placeholder="%0.00">\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="principlePaydownPercent">Principle Paydown</label>\
-        <input type="text" value="" name="principalPaydownPercent' + equityPartnerIndex + '" class="form-control principalPaydownPercent" placeholder="%0.00">\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="taxDeductionPercent">Tax Deduction</label>\
-        <input type="text" value="" name="taxDeductionPercent' + equityPartnerIndex + '" class="form-control taxDeductionPercent" placeholder="%0.00">\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="equityInvestment">Equity Investment</label>\
-        <input type="text" value="" name="equityInvestment' + equityPartnerIndex + '" class="form-control equityInvestment" placeholder="$0.00">\
-    </div>\
-</div>\
-');
-        equityPartnerIndex++;
+        //e.preventDefault();
+        swal({
+            title: "Add Equity Partner",
+            text: '<div class="form-group text-left">\
+                     <label class="inline-label" for="partnerName">Partner Name</label>\
+                     <input type="text" name="partnerNameInput" class="form-control" placeholder="Name">\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="cashFlowPercent">Cash Flow</label>\
+                     <input type="text" name="cashFlowPercentInput" class="form-control cashFlowPercent" placeholder="%0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="appreciationPercent">Appreciation</label>\
+                     <input type="text" name="appreciationPercentInput" class="form-control appreciationPercent" placeholder="%0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="principalPaydownPercent">Principle Paydown</label>\
+                     <input type="text" name="principalPaydownPercentInput" class="form-control principalPaydownPercent" placeholder="%0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="taxDeductionPercent">Tax Deduction</label>\
+                     <input type="text" name="taxDeductionPercentInput" class="form-control taxDeductionPercent" placeholder="%0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="equityInvestment">Equity Investment</label>\
+                     <input type="text" name="equityInvestmentInput" class="form-control equityInvestment" placeholder="$0.00"/>\
+                   </div>\
+                   <hr/>',
+            html: true,
+            type: "input",
+            showCancelButton: true
+        }, function () {
+            var tablePresent = equityPartnerIndex > 0;
+            var partnerName = $('input[name=partnerNameInput]').val();
+            var cashFlowPercent = $('input[name=cashFlowPercentInput]').val();
+            var appreciationPercent = $('input[name=appreciationPercentInput]').val();
+            var principalPaydownPercent = $('input[name=principalPaydownPercentInput]').val();
+            var taxDeductionPercent = $('input[name=taxDeductionPercentInput').val();
+            var equityInvestment = $('input[name=equityInvestmentInput]').val().format('$0,0.00');
+
+            if (tablePresent) {
+
+            }
+            else {
+                $('#addEquityPartnerLinkRow').before(
+                    '\
+                    <table class=\"table table-hover\">\
+                        <thread>\
+                            <th>Partner Name</th>\
+                            <th>Cash Flow Percent</th>\
+                            <th>Appreciation Percent</th>\
+                            <th>Pricipal Paydown Percent</th>\
+                            <th>Tax Deduction Percent</th>\
+                            <th>Equity Investment</th>\
+                        </thread>\
+                        <tbody>\
+                            <td name="partnerName' + equityPartnerIndex + '">' + partnerName + '</td>\
+                            <td name="cashFlowPercent' + equityPartnerIndex + '">' + cashFlowPercent + '</td>\
+                            <td name="appreciationPercent' + equityPartnerIndex + '">' + appreciationPercent + '</td>\
+                            <td name="principalPaydownPercent' + equityPartnerIndex + '">' + principalPaydownPercent + '</td>\
+                            <td name="taxDeductionPercent' + equityPartnerIndex + '">' + taxDeductionPercent + '</td>\
+                            <td name="equityInvestment' + equityPartnerIndex + '">' + equityInvestment + '</td>\
+                        </tbody>\
+                    </table>\
+                    '
+                    );
+            }
+            equityPartnerIndex++;
+        });
+
         return false;
     });
 
     // add depreciation list item
     $('a#addDepreciationLink').click(function (e) {
-        e.preventDefault();
-        $('#addDepreciationLinkRow').before('\
-<div class="row depreciation-item-row">\
-    <div class="row nested-row">\
-        <div class="form-group col-lg-4">\
-            <label for="depreciationName">Name</label>\
-            <input type="text" name="depreciationName' + depreciationItemIndex + '" value="" class="form-control depreciationName">\
-        </div>\
-        <div class="form-group col-lg-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <button type="button" href="#" class="btn pull-down btn-danger btn-circle removeButton" type="button"><i class="fa fa-times"></i></button>\
-        </div>\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="depreciationValue">Value</label>\
-        <input type="text" value="" name="depreciationValue' + depreciationItemIndex + '" class="form-control depreciationValue" placeholder="$0.00">\
-    </div>\
-    <div class="form-group col-lg-2">\
-        <label for="timeDuration">Duration</label>\
-        <input type="text" value="" name="timeDuration' + depreciationItemIndex +'" class="form-control timeDuration" placeholder="">\
-    </div>\
-</div>\
-');
+        //e.preventDefault();
+        swal({
+            title: "Add Depreciation Item",
+            text: '<div class="form-group text-left">\
+                     <label class="inline-label" for="depreciationName">Name</label>\
+                     <input type="text" name="depreciationNameInput" class="form-control" placeholder="Name">\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="depreciationValue">Value</label>\
+                     <input type="text" name="depreciationValueInput" class="form-control depreciationValue" placeholder="$0.00"/>\
+                   </div>\
+                   <div class="form-group small-element text-left">\
+                     <label class="inline-label" for="timeDuration">Duration</label>\
+                     <input type="text" name="timeDurationInput" class="form-control timeDuration" placeholder=""/>\
+                   </div>\
+                   <hr/>',
+            html: true,
+            type: "input",
+            showCancelButton: true
+        }, function () {
+            var tablePresent = depreciationItemIndex > 0;
+            var depreciationName = $('input[name=depreciationNameInput]').val();
+            var depreciationValue = $('input[name=depreciationValueInput]').val().format('$0,0.00');
+            var timeDuration = $('input[timeDurationInput]').val();
+
+            if (tablePresent) {
+
+            }
+            else {
+                $('#addDepreciationLinkRow').before(
+                    '\
+                    <table class=\"table table-hover\">\
+                        <thread>\
+                            <th>Depreciation Name</th>\
+                            <th>Depreciation Value</th>\
+                            <th>Time Duration</th>\
+                        </thread>\
+                        <tbody>\
+                            <td name="depreciationName' + depreciationItemIndex + '">' + depreciationName + '</td>\
+                            <td name="depreciationValue' + depreciationItemIndex + '">' + depreciationValue + '</td>\
+                            <td name="timeDuration' + depreciationItemIndex + '">' + timeDuration + '</td>\
+                        </tbody>\
+                    </table>\
+                    '
+                );
+            }
+            depreciationItemIndex++;
+        });
         return false;
     });
 
     // add custom cost item
     $('a#addOtherCostLink').click(function (e) {
-        e.preventDefault();
-        $('#addOtherCostLinkRow').before('\
-<div class="row other-cost-row">\
-    <div>\
-        <div class="form-group col-lg-6">\
-            <label for="otherCostName">Name</label>\
-            <input type="text" name="otherCostItemName' + otherCostItemIndex + '" value="" class="form-control otherCostName"></input>\
-        </div>\
-        <div class="form-group col-lg-4">\
-            <label for="otherCostValue">Amount</label>\
-            <input type="text" name="otherCostItemAmount' + otherCostItemIndex + '" value="" class="form-control costItemAmount otherCostItemAmount" placeholder="$0.00"></input>\
-        </div>\
-        <div class="form-group col-lg-1">\
-            <span style="min-height:42px; display:inline-block;"></span>\
-            <a href="#" class="btn pull-down btn-default btn-circle removeButton" type="button"><i class="fa fa-times"></i></a>\
-        </div>\
-    </div>\
-</div>');
-        otherCostItemIndex++;
+        //e.preventDefault();
+        swal({
+            title: "Add Other Cost",
+            text: '<div class="form-group text-left">\
+                     <label class="inline-label" for="otherCostItemName">Name</label>\
+                     <input type="text" name="otherCostItemNameInput" class="form-control" placeholder="Name"/>\
+                   </div>\
+                   <div class="form-group text-left">\
+                     <label class="inline-label" for="otherCostItemAmount">Amount</label>\
+                     <input type="text" name="otherCostItemAmountInput" class="form-control" placeholder="$0.00"/>\
+                   </div>\
+                   <hr/>',
+            html: true,
+            type: "input",
+            showCancelButton: true
+        }, function () {
+            var tablePresent = otherCostItemIndex > 0;
+            var otherCostItemName = $('input[name=otherCostItemNameInput]').val();
+            var otherCostItemAmount = $('input[name=otherCostItemAmountInput]').val().format('$0,0.00');
+
+            if (tablePresent) {
+
+            }
+            else {
+                $('#addOtherCostLinkRow').before(
+                    '\
+                    <table class=\"table table-hover\">\
+                        <thread>\
+                            <th>Other Cost Item Name</th>\
+                            <th>Other Cost Item Amount</th>\
+                        </thread>\
+                        <tbody>\
+                            <td name="otherCostItemName' + otherCostItemIndex + '">' + otherCostItemName + '</td>\
+                            <td name="otherCostItemAmount' + otherCostItemIndex + '">' + otherCostItemAmount + '</td>\
+                        </tbody>\
+                    </table>\
+                    '
+                );
+            }
+            otherCostItemIndex++;
+        });
         return false;
     });
 
