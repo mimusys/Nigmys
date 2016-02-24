@@ -512,9 +512,9 @@ $(document).ready(function () {
             }
             debtPartnerIndex++;
             //Pasted this here to get rid of NaN, now need to post in other areas
-            $(document).on("change keyup paste", ".loanAmount", updateDownPayment);
-            $(document).on("change keyup paste", ".equityInvestment", updateDownPayment);
-            $(document).on("change", "#purchasePrice", function () {
+            $(document).on(".loanAmount", updateDownPayment);
+            $(document).on(".equityInvestment", updateDownPayment);
+            $(document).on("#purchasePrice", function () {
                 updateDownPayment();
                 updateTotalInvestment();
             });
@@ -593,6 +593,7 @@ $(document).ready(function () {
                     );
             }
             equityPartnerIndex++;
+           
         });
 
         return false;
