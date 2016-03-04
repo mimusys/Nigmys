@@ -1,0 +1,516 @@
+﻿@{
+    ViewBag.Title = "Investment View";
+}
+@Styles.Render("~/bundles/investment-list/css")
+
+@section Scripts{
+    @Scripts.Render("~/bundles/investment-list/js")
+}
+<style type="text/css">
+    .property {
+        width: 350px;
+    }
+
+    caption {
+        display: table-caption;
+        text-align: center;
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .property-purchase {
+        width: 350px;
+    }
+
+    .depreciation-information {
+        width: 350px;
+    }
+
+    table {
+        float: left;
+    }
+
+    .lease-information {
+        width: 350px;
+    }
+
+    .loan-information {
+        width: 350px;
+    }
+
+    .property-information {
+        width: 350px;
+    }
+
+    .equity-information {
+        width: 350px;
+    }
+    .hpanel 
+    {
+        width: 350px;
+        float:left;
+    }
+    .panel-body 
+    {
+        height: 460px;
+        width: 350px;
+        float: left;
+    }
+
+    .nav-pills
+     {
+        position: fixed;
+    }
+
+    #thisMenu > li {
+    float:left;
+    display:inline-block!important;
+    background-color: lightgrey;
+    
+
+}
+
+
+#thisMenu {
+    clear:both;
+    position:fixed;
+    bottom:5px;
+    text-align:center!important;
+    width: 100%;
+}
+
+</style>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <div class="container center-block">
+        
+            
+        
+        <div class="tab-content">
+
+            <div id="propertyinformation" class="tab-pane fade in active">
+
+                <h2>Property Information</h2>
+                <p>Here, you may view the property information of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Property Information</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <table class="table property-purchase">
+                            <caption>Property Purchase Information</caption>
+                            <tr>
+                                <th>Purchase Price:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Purchase Date:</th>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <th>Market Price:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Closing Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Down Payment:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Down Payment (%):</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Rehab Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Holdover Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Limited Liability Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Total Investment Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                        </div>
+                        </div>
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <table class="table depreciation-information">
+                                    <caption>Depreciation Information</caption>
+                                    <tr>
+                                        <th>Land Value Estimate:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Improvement Estimate:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Depreciation Years:</th>
+                                        <td>0.0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Depreciation Value:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                <!---
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <table class="table lease-information">
+                                    <caption>Lease Information</caption>
+                                    <tr>
+                                        <th>Lease Start Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lease Duration:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lease End Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    -->
+                        <div class="hpanel">
+                            <div class="panel-body">
+
+                                <table class="table loan-information">
+                                    <caption>Loan Information</caption>
+                                    <tr>
+                                        <th>Loan Amount:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Term (years):</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Annual Percentage Rate:</th>
+                                        <td>0.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lender Name:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loan Start Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <table class="table property-information">
+                                    <caption>Property Information</caption>
+                                    <tr>
+                                        <th>Address:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>State:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bedroom:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bath:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Square Footage:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Price Per Square Foot:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <table class="table equity-information">
+                                    <caption>Equity Information</caption>
+                                    <tr>
+                                        <th>Cash Flow:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Appreciation:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Principle Paydown:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tax Deduction:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Equity Investment:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+            <div id="incomestatement" class="tab-pane fade">
+                <h2>Income Statement</h2>
+                <p>Here, you may view the income statement of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Income Statement</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="cashflowstatement" class="tab-pane fade">
+                <h2>Cash Flow Statement</h2>
+                <p>Here, you may view the cash flow statement of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Income Statement</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="balancesheet" class="tab-pane fade">
+                <h2>Balance Sheet</h2>
+                <p>Here, you may view the Balance Sheet of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Income Statement</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="capitalbudgetandreturn" class="tab-pane fade">
+                <h2>Capital Budget and Return</h2>
+                <p>Here, you may view the Capital Budget and Return of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Income Statement</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+<ul id="thisMenu" class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#propertyinformation" style="background-color: gray;">Property Information</a></li>
+    <li><a data-toggle="pill" href="#incomestatement">Income Statement</a></li>
+    <li><a data-toggle="pill" href="#cashflowstatement">Cash Flow Statement</a></li>
+    <li><a data-toggle="pill" href="#balancesheet">Balance Sheet</a></li>
+    <li><a data-toggle="pill" href="#capitalbudgetandreturn">Capital Budget and Return</a></li>
+
+
+</ul>

@@ -170,6 +170,7 @@
     <Compile Include="Controllers\InterfaceController.cs" />
     <Compile Include="Controllers\InvestmentListController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
+    <Compile Include="Controllers\InvestmentViewController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OptionsController.cs" />
@@ -2231,6 +2232,7 @@
     <Content Include="Vendor\numeral-js\LICENSE" />
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
+    <Content Include="Views\InvestmentView\Index.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
