@@ -46,7 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
     <IncludeIisSettings>true</IncludeIisSettings>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
@@ -267,6 +267,9 @@
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
+    <Content Include="SQL_Files\investmentinformation.sql" />
+    <Content Include="SQL_Files\portfolio.sql" />
+    <Content Include="SQL_Files\Statements_DB.sql" />
     <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
     <Content Include="Vendor\animate.css\animate.min.css" />
@@ -2231,6 +2234,7 @@
     <Content Include="Vendor\numeral-js\LICENSE" />
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
+    <None Include="Properties\PublishProfiles\Nigmys Dev Deploy.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
