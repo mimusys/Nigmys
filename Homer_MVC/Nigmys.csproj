@@ -46,7 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
     <IncludeIisSettings>true</IncludeIisSettings>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
@@ -74,7 +74,7 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MySql.Data.dll</HintPath>
+      <HintPath>bin\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -267,9 +267,6 @@
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
-    <Content Include="SQL_Files\investmentinformation.sql" />
-    <Content Include="SQL_Files\portfolio.sql" />
-    <Content Include="SQL_Files\Statements_DB.sql" />
     <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
     <Content Include="Vendor\animate.css\animate.min.css" />
@@ -2234,7 +2231,6 @@
     <Content Include="Vendor\numeral-js\LICENSE" />
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
-    <None Include="Properties\PublishProfiles\Nigmys Dev Deploy.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
