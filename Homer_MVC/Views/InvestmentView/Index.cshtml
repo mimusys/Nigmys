@@ -2,84 +2,12 @@
     ViewBag.Title = "Investment View";
 }
 @Styles.Render("~/bundles/investment-list/css")
+@Styles.Render("~/bundles/investment-view/css")
 
 @section Scripts{
     @Scripts.Render("~/bundles/investment-list/js")
 }
-<style type="text/css">
-    .property {
-        width: 350px;
-    }
 
-    caption {
-        display: table-caption;
-        text-align: center;
-        font-size: larger;
-        font-weight: bold;
-    }
-
-    .property-purchase {
-        width: 350px;
-    }
-
-    .depreciation-information {
-        width: 350px;
-    }
-
-    table {
-        float: left;
-    }
-
-    .lease-information {
-        width: 350px;
-    }
-
-    .loan-information {
-        width: 350px;
-    }
-
-    .property-information {
-        width: 350px;
-    }
-
-    .equity-information {
-        width: 350px;
-    }
-    .hpanel 
-    {
-        width: 350px;
-        float:left;
-    }
-    .panel-body 
-    {
-        height: 460px;
-        width: 350px;
-        float: left;
-    }
-
-    .nav-pills
-     {
-        position: fixed;
-    }
-
-    #thisMenu > li {
-    float:left;
-    display:inline-block!important;
-    background-color: lightgrey;
-    
-
-}
-
-
-#thisMenu {
-    clear:both;
-    position:fixed;
-    bottom:5px;
-    text-align:center!important;
-    width: 100%;
-}
-
-</style>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -335,42 +263,38 @@
 
 
                 <div class="hpanel">
-                    <div class="panel-body">
+                    <div class="panel-body" style="width: 300px;">
 
                         <table class="table property">
-                            <caption>Income Statement</caption>
+                            <caption>Revenue</caption>
                             <tr>
-                                <th>Annual Appreciation Rate:</th>
-                                <td>0.00%</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
                             </tr>
                             <tr>
-                                <th>Sales Commission:</th>
+                                <td>Sales Commission:</td>
                                 <td>0.00%</td>
                             </tr>
-                            <tr>
-                                <th>Capital Gains Tax:</th>
-                                <td>0.00%</td>
-                            </tr>
-                            <tr>
-                                <th>Vacancy:</th>
-                                <td>0.00%</td>
-                            </tr>
-                            <tr>
-                                <th>Property Management:</th>
-                                <td>0.00%</td>
-                            </tr>
-                            <tr>
-                                <th>Income Tax Rate:</th>
-                                <td>0.00%</td>
-                            </tr>
-                            <tr>
-                                <th>Discount Rate:</th>
-                                <td>0.00%</td>
-                            </tr>
+                          
 
                         </table>
                     </div>
                 </div>
+
+
             </div>
             <div id="cashflowstatement" class="tab-pane fade">
                 <h2>Cash Flow Statement</h2>

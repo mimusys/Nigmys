@@ -223,6 +223,11 @@ namespace Homer_MVC
 
             bundles.Add(new ScriptBundle("~/bundles/investment-list/js").Include(
                 "~/Scripts/investmentList.js"));
+
+            //Investment View
+            bundles.Add(new StyleBundle("~/bundles/investment-view/css").Include(
+               "~/Content/investmentview.css"));
+
         }
 
     }

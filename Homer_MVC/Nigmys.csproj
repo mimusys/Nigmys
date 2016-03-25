@@ -206,6 +206,7 @@
     <Content Include="Content\img\green%402x.png" />
     <Content Include="Content\img\green.png" />
     <Content Include="Content\investmentListCustom.css" />
+    <Content Include="Content\investmentview.css" />
     <Content Include="Content\landingStyle.css" />
     <Content Include="Content\loginCustom.css" />
     <Content Include="Content\style.css" />
