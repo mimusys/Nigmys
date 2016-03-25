@@ -36,14 +36,14 @@
     .equity-information {
         width: 350px;
     }
-    .hpanel 
+    .propertyInformationTable .hpanel 
     {
         width: 350px;
         float:left;
     }
 
 
-    .panel-body 
+    .propertyInformationTable .panel-body 
     {
         height: 460px;
         width: 350px;
@@ -71,4 +71,5 @@
     bottom:5px;
     text-align:center!important;
     width: 100%;
+
 }
