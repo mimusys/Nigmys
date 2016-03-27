@@ -2,6 +2,10 @@
         width: 350px;
     }
 
+    .table_heading {
+        font: bold;
+    }
+
     caption {
         display: table-caption;
         text-align: center;
