@@ -3,10 +3,13 @@
     ViewBag.Title = "Login";
 }
 
+@Styles.Render("~/Content/wizardStyle.css")
+
 @section Scripts {
 @Scripts.Render("~/bundles/validation/js")
 @Scripts.Render("~/bundles/sign-up/js")
 @Scripts.Render("~/bundles/sha256/js")
+@Scripts.Render("~/bundles/wizard/js")
 }
 
 <div class="content">
@@ -19,16 +22,27 @@
                 </div>
                 <div class="panel-body">
                     <div class="text-center m-b-md" id="wizardControl">
-
-                        <a class="btn btn-primary" href="#step1" data-toggle="tab">Step 1 - User Info</a>
-                        <a class="btn btn-default" href="#step2" data-toggle="tab">Step 2 - Personal Info</a>
-                        <a class="btn btn-default" href="#step3" data-toggle="tab">Step 3 - Payment Info</a>
-                        <a class="btn btn-default" href="#step4" data-toggle="tab">Step 4 - Approval</a>
-
+                        <ul class="wizardLine desktop-wizard">
+                            <li class="wizard-section activeSection"><a class ="inactive-link" href="#step1" data-toggle="tab"><i class="fa fa-user"></i></a></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step2" data-toggle="tab"><i class="fa fa-folder"></i></a></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step3" data-toggle="tab"><i class="fa fa-dollar"></i></a></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step4" data-toggle="tab"><i class="fa fa-check"></i></a></li>
+                        </ul>
+                        <ul class="list-inline subtitleList desktop-wizard">
+                            <li class="subtitle">User <br /> Information</li>
+                            <li class="subtitle">Personal <br/> Information</li>
+                            <li class="subtitle">Payment <br /> Information</li>
+                            <li class="subtitle">Summary <br /> Form</li>
+                        </ul>
                     </div>
-
                     <div class="tab-content">
                         <div id="step1" class="p-m tab-pane active">
+                            <div class="text-center m-b-md mobile-wizard">
+                                <div class="wizard-section">
+                                    <i class="fa fa-user"></i>
+                                </div><br />
+                                User Information
+                            </div>
                             <form name="userInfoForm" id="userInfoForm">
                                 <div class="row">
                                     <div class="col-lg-3 text-center">
@@ -75,6 +89,12 @@
                         </div>
 
                         <div id="step2" class="p-m tab-pane">
+                            <div class="text-center m-b-md mobile-wizard">
+                                <div class="wizard-section">
+                                    <i class="fa fa-folder"></i>
+                                </div><br />
+                                Personal Information
+                            </div>
                             <form name="personalInfoForm" id="personalInfoForm">
                                 <div class="row">
                                     <div class="col-lg-3 text-center">
@@ -127,11 +147,16 @@
                         </div>
 
                         <div id="step3" class="p-m tab-pane">
-
+                            <div class="text-center m-b-md mobile-wizard">
+                                <div class="wizard-section">
+                                    <i class="fa fa-dollar"></i>
+                                </div><br />
+                                Payment Information
+                            </div>
                             <div class="row">
                                 <div class="col-lg-3 text-center">
                                     <i class="pe-7s-credit fa-5x text-muted"></i>
-                                    <p class="small m-t-md">
+                                    <p class="small m-t-md desktop-wizard">
                                         <strong>It is a long</strong> established fact that a reader will be distracted by the readable
                                         <br /><br />Many desktop publishing packages and web page editors now use
                                     </p>
@@ -176,6 +201,12 @@
 
                         </div>
                         <div id="step4" class="tab-pane">
+                            <div class="text-center m-b-md mobile-wizard">
+                                <div class="wizard-section">
+                                    <i class="fa fa-check"></i>
+                                </div><br />
+                                Summary Form
+                            </div>
                             <div class="row text-center m-t-lg m-b-lg">
                                 <div class="col-lg-12">
                                     <i class="pe-7s-check fa-5x text-muted"></i>
