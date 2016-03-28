@@ -1,0 +1,110 @@
+﻿.inactive-link {
+    pointer-events: none;
+    cursor: default;
+}
+
+.wizard-section, .wizard-section:before {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+div ul.wizardLine {
+    list-style-type: none;
+}
+
+li a.wizardMargin {
+    margin-bottom:4px;
+}
+li.wizard-section {
+    border-style: solid;
+    display:inline-block;
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+    border-radius: 20px;
+    border-color: #34495e;
+    border-width:2px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.428571429;
+    background-color: #34495e;
+    text-align: center;
+    margin-right: 60px;
+    position: relative;
+}
+li.wizard-section a {
+    color:white;
+}
+li.wizard-section::before{
+  content: '';
+  position: absolute;
+  top: 1.0em;
+  left: -67px;
+  width: 66px;
+  height: .2em;
+  background: #34495e;
+  z-index: 1;
+}
+
+li.wizard-section:first-child::before{
+    display:none;
+}
+
+li.wizard-section.activeSection {
+    background-color: #34495e;
+    border-color: #34495e;
+}
+
+li.wizard-section.activeSection ~ li {
+    background-color: white;
+    border-color: lightgray;
+    border-width: 2px;
+}
+
+li.wizard-section.activeSection ~ li a {
+    color:lightgray;
+}
+
+li.wizard-section.activeSection ~ li:before {
+    width: 0px;
+}
+
+li.subtitle {
+    margin-right: 18px;
+}
+
+ul.subtitleList {
+    padding-right: 7px;
+}
+
+@media(min-width: 515px) {
+    .mobile-wizard {
+        display: none;
+    }
+}
+@media(max-width: 514px) {
+    .desktop-wizard {
+        display:none;
+    }
+
+    div.wizard-section {
+        border-style: solid;
+        display:inline-block;
+        width: 75px;
+        height: 75px;
+        padding: 10px;
+        margin-bottom:10px;
+        border-radius: 38px;
+        border-color: #34495e;
+        border-width:2px;
+        text-align: center;
+        font-size: xx-large;
+        line-height: 1.428571429;
+        background-color: #34495e;
+        text-align: center;
+        position: relative;
+        color: white;
+    }
+}
