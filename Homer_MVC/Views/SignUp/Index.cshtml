@@ -3,13 +3,13 @@
     ViewBag.Title = "Login";
 }
 
-@Styles.Render("~/bundles/nigmysStyles/css")
+@Styles.Render("~/bundles/nigmyscomponents/css")
 
 @section Scripts {
 @Scripts.Render("~/bundles/validation/js")
 @Scripts.Render("~/bundles/sign-up/js")
 @Scripts.Render("~/bundles/sha256/js")
-@Scripts.Render("~/bundles/wizard/js")
+@Scripts.Render("~/bundles/nigmyscomponents/js")
 }
 
 <div class="content">
@@ -77,8 +77,9 @@
                                                 <label for="profilePicture">Profile Picture</label><br />
                                                 <div id="fileUpload" class="fileUpload btn btn-success">
                                                     <span>Upload<i class="fa fa-upload uploadIcon"></i></span>
-                                                    <input type="file" class="upload" accept="image/*" />
+                                                    <input id ="uploadBtn" type="file" class="upload" accept="image/*" />
                                                 </div>
+                                                <input id="uploadFile" placeholder="Choose Picture" disabled="disabled" />
                                             </div>
                                         </div>
                                     </div>

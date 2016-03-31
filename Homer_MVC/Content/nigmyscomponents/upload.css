@@ -18,3 +18,9 @@
 .uploadIcon {
     margin-left: 7px;
 }
+
+#uploadFile {
+    background-color:white;
+    border:none;
+    margin-left: 7px;
+}
