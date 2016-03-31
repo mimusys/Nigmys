@@ -189,6 +189,18 @@ namespace Homer_MVC
             bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
                       "~/Vendor/jquery-validation/jquery.validate.min.js"));
 
+            #region Nigmys Components
+            //Nigmys Styles
+            bundles.Add(new StyleBundle("~/bundles/nigmyscomponents/css").Include(
+                "~/Content/nigmyscomponents/wizard.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/nigmyscomponents/upload.css"));
+
+            //Nigmys Scripts
+            bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
+                "~/Scripts/nigmyscomponents/wizard.js").Include(
+                "~/Scripts/nigmyscomponents/upload.js"));
+            #endregion
+
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
@@ -208,14 +220,6 @@ namespace Homer_MVC
             //Sign Up Script
             bundles.Add(new ScriptBundle("~/bundles/sign-up/js").Include(
                 "~/Scripts/signup.js"));
-
-            //Wizard Style
-            bundles.Add(new StyleBundle("~/bundles/wizard/css").Include(
-                "~/Content/wizardStyle.css", new CssRewriteUrlTransform()));
-
-            //Wizard Script
-            bundles.Add(new ScriptBundle("~/bundles/wizard/js").Include(
-                "~/Scripts/wizard.js"));
 
             //Add New Investment Script
             bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
