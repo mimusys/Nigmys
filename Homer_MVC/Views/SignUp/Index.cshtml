@@ -4,6 +4,7 @@
 }
 
 @Styles.Render("~/bundles/nigmyscomponents/css")
+@Styles.Render("~/bundles/signupcomponents/css")
 
 @section Scripts {
 @Scripts.Render("~/bundles/validation/js")
@@ -23,16 +24,10 @@
                 <div class="panel-body">
                     <div class="text-center m-b-md" id="wizardControl">
                         <ul class="wizardLine desktop-wizard">
-                            <li class="wizard-section activeSection"><a class ="inactive-link" href="#step1" data-toggle="tab"><i class="fa fa-user"></i></a></li>
-                            <li class="wizard-section"><a class="inactive-link" href="#step2" data-toggle="tab"><i class="fa fa-folder"></i></a></li>
-                            <li class="wizard-section"><a class="inactive-link" href="#step3" data-toggle="tab"><i class="fa fa-dollar"></i></a></li>
-                            <li class="wizard-section"><a class="inactive-link" href="#step4" data-toggle="tab"><i class="fa fa-check"></i></a></li>
-                        </ul>
-                        <ul class="list-inline subtitleList desktop-wizard">
-                            <li class="subtitle">User <br /> Information</li>
-                            <li class="subtitle">Personal <br/> Information</li>
-                            <li class="subtitle">Payment <br /> Information</li>
-                            <li class="subtitle">Summary <br /> Form</li>
+                            <li class="wizard-section activeSection"><a class ="inactive-link" href="#step1" data-toggle="tab"><i class="fa fa-user"></i></a><div class="wizardSubtitle">User Information</div></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step2" data-toggle="tab"><i class="fa fa-folder"></i></a><div class="wizardSubtitle">Personal Information</div></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step3" data-toggle="tab"><i class="fa fa-dollar"></i></a><div class="wizardSubtitle">Payment Information</div></li>
+                            <li class="wizard-section"><a class="inactive-link" href="#step4" data-toggle="tab"><i class="fa fa-check"></i></a><div class="wizardSubtitle">Summary</div></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -44,9 +39,8 @@
                                 User Information
                             </div>
                             <form name="userInfoForm" id="userInfoForm">
-                                <div class="row">
+                                <div class="row form-adjust">
                                     <div class="col-lg-3 text-center">
-                                        <i class="pe-7s-user fa-5x text-muted"></i>
                                         <p class="small m-t-md">
 
                                         </p>
@@ -100,7 +94,7 @@
                                 Personal Information
                             </div>
                             <form name="personalInfoForm" id="personalInfoForm">
-                                <div class="row">
+                                <div class="row form-adjust">
                                     <div class="col-lg-3 text-center">
                                         <i class="pe-7s-user fa-5x text-muted"></i>
                                         <p class="small m-t-md">
@@ -157,7 +151,7 @@
                                 </div><br />
                                 Payment Information
                             </div>
-                            <div class="row">
+                            <div class="row form-adjust">
                                 <div class="col-lg-3 text-center">
                                     <i class="pe-7s-credit fa-5x text-muted"></i>
                                     <p class="small m-t-md desktop-wizard">
@@ -204,16 +198,16 @@
                             </div>
 
                         </div>
-                        <div id="step4" class="tab-pane">
+                        <div id="step4" class="p-m tab-pane">
                             <div class="text-center m-b-md mobile-wizard">
                                 <div class="wizard-section">
                                     <i class="fa fa-check"></i>
                                 </div><br />
                                 Summary Form
                             </div>
-                            <div class="row text-center m-t-lg m-b-lg">
+                            <div class="row text-center m-t-lg m-b-lg form-adjust">
                                 <div class="col-lg-12">
-                                    <i class="pe-7s-check fa-5x text-muted"></i>
+                                    <i class="pe-7s-check fa-5x text-muted desktop-wizard"></i>
                                     <p class="small m-t-md">
                                         <strong>There are many</strong> variations of passages of Lorem Ipsum available, but the majority have suffered
                                     </p>

@@ -73,12 +73,11 @@ li.wizard-section.activeSection ~ li:before {
     width: 0px;
 }
 
-li.subtitle {
-    margin-right: 18px;
-}
-
-ul.subtitleList {
-    padding-right: 7px;
+ul li div.wizardSubtitle {
+    position: absolute;
+    font-size: 13px;
+    top: 43px;
+    right: -19px;
 }
 
 @media(min-width: 515px) {
