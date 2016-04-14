@@ -192,8 +192,8 @@ namespace Homer_MVC
             #region Nigmys Components
             //Nigmys Styles
             bundles.Add(new StyleBundle("~/bundles/nigmyscomponents/css").Include(
-                "~/Content/nigmyscomponents/wizard.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/nigmyscomponents/upload.css"));
+                "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()));
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
@@ -201,6 +201,11 @@ namespace Homer_MVC
                 "~/Scripts/nigmyscomponents/upload.js"));
             #endregion
 
+            #region Signup Components
+            //Sign up
+            bundles.Add(new StyleBundle("~/bundles/signupcomponents/css").Include(
+                "~/Content/SignupComponents/signup.css", new CssRewriteUrlTransform()));
+            #endregion
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
