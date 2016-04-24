@@ -1,0 +1,82 @@
+﻿    .property {
+        width: 350px;
+    }
+
+    .table_heading {
+        font-weight: bold;
+    }
+
+    caption {
+        display: table-caption;
+        text-align: center;
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .property-purchase {
+        width: 350px;
+    }
+
+    .depreciation-information {
+        width: 350px;
+    }
+
+
+    /* Is this suppose to apply to all the tables? */
+    table {
+        float: left;
+        white-space: nowrap;    
+    }
+
+    .lease-information {
+        width: 350px;
+    }
+
+    .loan-information {
+        width: 350px;
+    }
+
+    .property-information {
+        width: 350px;
+    }
+
+    .equity-information {
+        width: 350px;
+    }
+    .propertyInformationTable .hpanel 
+    {
+        width: 350px;
+        float:left;
+    }
+
+
+    .propertyInformationTable .panel-body 
+    {
+        height: 460px;
+        width: 350px;
+        float: left;
+    }
+
+    .nav-pills
+     {
+        position: fixed;
+        z-index: 3000;
+    }
+
+    #thisMenu > li {
+    float:left;
+    display:inline-block!important;
+    background-color: lightgrey;
+    
+
+}
+
+
+#thisMenu {
+    clear:both;
+    position:fixed;
+    bottom:5px;
+    text-align:center!important;
+    width: 100%;
+
+}
