@@ -2,250 +2,2021 @@
     ViewBag.Title = "Investment View";
 }
 @Styles.Render("~/bundles/investment-list/css")
-
-@section Scripts{
-    @Scripts.Render("~/bundles/investment-list/js")
-}
-<style type="text/css">
-
-    .property {
-        width:350px;
-    }
-    
-    caption {
-        display: table-caption;
-        text-align: center;
-        font-size: larger;
-        font-weight: bold;
-    }
-    .property-purchase {
-        width: 350px;
-    }
-    .depreciation-information {
-        width: 350px;
-    }
-    table {
-        float: left;
-    }
-    .lease-information {
-        width:350px;
-    }
-    .loan-information {
-        width: 350px;
-    }
-    .property-information {
-        width:350px;
-    }
-    .equity-information {
-        width: 350px;
-    }
-</style>
-
-<div class="container center-block">
-    <h2>Investment View</h2>
-    <p>Here, you may view the property information of your investments.</p>
+@Styles.Render("~/bundles/investment-view/css")
 
 
-    <div class="hpanel">
-        <div class="panel-body">
-            
-                <table class="table property">
-                    <caption>Property Information</caption>
-                    <tr>
-                        <th>Annual Appreciation Rate:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Sales Commission:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Capital Gains Tax:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Vacancy:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Property Management:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Income Tax Rate:</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Discount Rate:</th>
-                        <td>0.00%</td>
-                    </tr>
 
-                </table>
-                <table class="table property-purchase">
-                    <caption>Property Purchase Information</caption>
-                    <tr>
-                        <th>Purchase Price:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Purchase Date:</th>
-                        <td>N/A</td>
-                    </tr>
-                    <tr>
-                        <th>Market Price:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Closing Cost:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Down Payment:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Down Payment (%):</th>
-                        <td>0.00%</td>
-                    </tr>
-                    <tr>
-                        <th>Rehab Cost:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Holdover Cost:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Limited Liability Cost:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Total Investment Cost:</th>
-                        <td>$0.00</td>
-                    </tr>
-                </table>
-                <table class="table depreciation-information">
-                    <caption>Depreciation Information</caption>
-                    <tr>
-                        <th>Land Value Estimate:</th>
-                        <td>$0.00</td>
-                    </tr>
-                    <tr>
-                        <th>Improvement Estimate:</th>
-                        <td>N/A</td>
-                    </tr>
-                    <tr>
-                        <th>Depreciation Years:</th>
-                        <td>0.0</td>
-                    </tr>
-                    <tr>
-                        <th>Depreciation Value:</th>
-                        <td>$0.00</td>
-                    </tr>
-                </table>
-            
 
-            
-</div>
-        <div class="panel-body">
-            <table class="table lease-information">
-                <caption>Lease Information</caption>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <div class="container center-block">
+        
+            <table class ="table table-hover" style="background-color: white;">
                 <tr>
-                    <th>Lease Start Date:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Lease Duration:</th>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>Lease End Date:</th>
-                    <td>N/A</td>
+                    <td id="appreciation" class="quickClick" align="center"><span class="glyphicon glyphicon-dashboard" /></td>
+                    <td id="projection" class="quickClick" align="center"><span class="glyphicon glyphicon-signal" /></td>
+                    <td id="sale" class="quickClick" align="center"><span class="glyphicon glyphicon-usd" /></td>
+                    <td id="archive" class="quickClick" align="center"><span class="glyphicon glyphicon-remove" /></td>
                 </tr>
             </table>
-            <table class="table loan-information">
-                <caption>Loan Information</caption>
-                <tr>
-                    <th>Loan Amount:</th>
-                    <td>$0.00</td>
-                </tr>
-                <tr>
-                    <th>Term (years):</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Annual Percentage Rate:</th>
-                    <td>0.00%</td>
-                </tr>
-                <tr>
-                    <th>Lender Name:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Loan Start Date:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Payment:</th>
-                    <td>$0.00</td>
-                </tr>
-                
-            </table>
-            <table class="table property-information">
-                <caption>Property Information</caption>
-                <tr>
-                    <th>Address:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>City:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>State:</th>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <th>Bedroom:</th>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>Bath:</th>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>Square Footage:</th>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th>Price Per Square Foot:</th>
-                    <td>$0.00</td>
-                </tr>
-            </table>
+        
+        <div class="tab-content">
+
+            <div id="propertyinformation" class="tab-pane fade in active">
+
+                <h2>Property Information</h2>
+                <p>Here, you may view the property information of your investments.</p>
+
+
+                <div class="propertyInformationTable hpanel">
+                    <div class="propertyInformationTable panel-body">
+
+                        <table class="table property">
+                            <caption>Property Information</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="propertyInformationTable hpanel">
+                    <div class="propertyInformationTable panel-body">
+                        <table class="table property-purchase">
+                            <caption>Property Purchase Information</caption>
+                            <tr>
+                                <th>Purchase Price:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Purchase Date:</th>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <th>Market Price:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Closing Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Down Payment:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Down Payment (%):</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Rehab Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Holdover Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Limited Liability Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Total Investment Cost:</th>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                        </div>
+                        </div>
+                        <div class="propertyInformationTable hpanel">
+                            <div class="propertyInformationTable panel-body">
+                                <table class="table depreciation-information">
+                                    <caption>Depreciation Information</caption>
+                                    <tr>
+                                        <th>Land Value Estimate:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Improvement Estimate:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Depreciation Years:</th>
+                                        <td>0.0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Depreciation Value:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                <!---
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <table class="table lease-information">
+                                    <caption>Lease Information</caption>
+                                    <tr>
+                                        <th>Lease Start Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lease Duration:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lease End Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    -->
+                        <div class="propertyInformationTable hpanel">
+                            <div class="propertyInformationTable panel-body">
+
+                                <table class="table loan-information">
+                                    <caption>Loan Information</caption>
+                                    <tr>
+                                        <th>Loan Amount:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Term (years):</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Annual Percentage Rate:</th>
+                                        <td>0.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Lender Name:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loan Start Date:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="propertyInformationTable hpanel">
+                            <div class="propertyInformationTable panel-body">
+                                <table class="table property-information">
+                                    <caption>Property Information</caption>
+                                    <tr>
+                                        <th>Address:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>State:</th>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bedroom:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bath:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Square Footage:</th>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Price Per Square Foot:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="propertyInformationTable hpanel">
+                            <div class="panel-body propertyInformationTable">
+                                <table class="table equity-information">
+                                    <caption>Equity Information</caption>
+                                    <tr>
+                                        <th>Cash Flow:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Appreciation:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Principle Paydown:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tax Deduction:</th>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Equity Investment:</th>
+                                        <td>$0.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+            <!------------------------------------------- INCOME STATEMENT --------------------------------------------------->
+
+            <div id="incomestatement" class="tab-pane fade">
+                <h2>Income Statement</h2>
+                <p>Here, you may view the income statement of your investments.</p>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 1                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Revenue</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Rent Income:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Late Fees:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Cam Charges:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Other Revenue:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Pet Charges:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Gross Scheduled Income:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>(Vacancy):</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Gross Operating Income:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 2                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Operating Expenses</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Accounting Expenses:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Advertising:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Attorney Fees:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Insurance:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Janitorial Service:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Lawn Care:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Leasing Commissions:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>License Fees:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Office Expenses:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Pest Control:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Property Management:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Property Taxes:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Repair Costs:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Resident Manager:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Salary/Wages:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Snow Removal:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Supplies:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Telephone:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Trash Removal:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Travel Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Vehicle Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Utilies:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>HOA:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>PMI:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Other Expenses:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Value Adding Repairs:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Capital Reserves:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Operating Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Net Operating Income</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Interest Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Deprecation Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Tax Give Away:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Income Before Taxes:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Income Tax Expense:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Net Income:</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            
+            
+            <!------------------------------------------- Cash Flow Statement --------------------------------------------------->
+            <div id="cashflowstatement" class="tab-pane fade">
+                <h2>Cash Flow Statement</h2>
+                <p>Here, you may view the cash flow statement of your investments.</p>
+
+                <style>
+                    #cash-flow-table-1 > thead > tr > th {
+                        border-bottom: 2px solid #397D02;
+                    }
+
+                    #cash-flow-table-2 > thead > tr > th {
+                        border-bottom: 2px solid #0000FF;
+                    }
+
+                    #cash-flow-table-3 > thead > tr > th {
+                        border-bottom: 2px solid #FF0000;
+                    }
+                </style>
+
+                <div class="hpanel">
+                    <div class="panel-body table-responsive" style="padding-bottom: 0">
+                        <table id="cash-flow-table-1" class="table">
+                            <thead>
+                                <tr class="table_heading">
+                                    <th sstyle="width: 240px;">Cash in</th>
+                                    <th style="padding-left: 30px; padding-right: 50px">Year 1</th>
+                                    <th style="padding-right: 50px">Year 2</th>
+                                    <th style="padding-right: 50px">Year 3</th>
+                                    <th style="padding-right: 50px">Year 4</th>
+                                    <th style="padding-right: 50px">Year 5</th>
+                                    <th style="padding-right: 50px">Year 6</th>
+                                    <th style="padding-right: 50px">Year 7</th>
+                                    <th style="padding-right: 50px">Year 8</th>
+                                    <th style="padding-right: 50px">Year 9</th>
+                                    <th style="padding-right: 50px">Year 10</th>
+                                    <th style="padding-right: 50px">Year 11</th>
+                                    <th style="padding-right: 50px">Year 12</th>
+                                    <th style="padding-right: 50px">Year 13</th>
+                                    <th style="padding-right: 50px">Year 14</th>
+                                    <th style="padding-right: 50px">Year 15</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>Cash at Beginning of Year</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Net Income</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                                <tr style="font-weight: bold; background: #00ff90">
+                                    <td>Increase/Decrease From Income</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="hpanel">
+                    <div class="panel-body table-responsive" style="padding-bottom: 0">
+                        <table id="cash-flow-table-2" class="table">                           
+                            <thead>
+                                <tr class="table_heading">
+                                    <th class="width: 240px;">Additions</th>
+                                    <th style="padding-left: 30px; padding-right: 50px">Year 1</th>
+                                    <th style="padding-right: 50px">Year 2</th>
+                                    <th style="padding-right: 50px">Year 3</th>
+                                    <th style="padding-right: 50px">Year 4</th>
+                                    <th style="padding-right: 50px">Year 5</th>
+                                    <th style="padding-right: 50px">Year 6</th>
+                                    <th style="padding-right: 50px">Year 7</th>
+                                    <th style="padding-right: 50px">Year 8</th>
+                                    <th style="padding-right: 50px">Year 9</th>
+                                    <th style="padding-right: 50px">Year 10</th>
+                                    <th style="padding-right: 50px">Year 11</th>
+                                    <th style="padding-right: 50px">Year 12</th>
+                                    <th style="padding-right: 50px">Year 13</th>
+                                    <th style="padding-right: 50px">Year 14</th>
+                                    <th style="padding-right: 50px">Year 15</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deprecitation Expense</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="hpanel">
+                    <div class="panel-body table-responsive" style="padding-bottom: 0">
+                        <table id="cash-flow-table-3" class="table">
+                            <thead>
+                                <tr class="table_heading">
+                                    <th class="width: 240px;">Decrease</th>
+                                    <th style="padding-left: 30px; padding-right: 50px">Year 1</th>
+                                    <th style="padding-right: 50px">Year 2</th>
+                                    <th style="padding-right: 50px">Year 3</th>
+                                    <th style="padding-right: 50px">Year 4</th>
+                                    <th style="padding-right: 50px">Year 5</th>
+                                    <th style="padding-right: 50px">Year 6</th>
+                                    <th style="padding-right: 50px">Year 7</th>
+                                    <th style="padding-right: 50px">Year 8</th>
+                                    <th style="padding-right: 50px">Year 9</th>
+                                    <th style="padding-right: 50px">Year 10</th>
+                                    <th style="padding-right: 50px">Year 11</th>
+                                    <th style="padding-right: 50px">Year 12</th>
+                                    <th style="padding-right: 50px">Year 13</th>
+                                    <th style="padding-right: 50px">Year 14</th>
+                                    <th style="padding-right: 50px">Year 15</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principal Paid</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Withdraw</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unrecorded Expenses</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Investor Expense</td>
+                                    <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                    <td style="padding-right: 50px">$0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="margin-bottom: 25px">
+                    <table class="table" style="margin-bottom: 5px">
+                        <tbody>
+                            <tr style="background: #63D1F4; font-weight: bold">
+                                <td>Cash Increase/Decrease</td>
+                                <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive" style="margin-bottom: 100px">
+                    <table class="table" style="margin-bottom: 5px">
+                        <tbody>
+                            <tr style="background: #EEA9B8; font-weight: bold">
+                                <td>Cash at End of Year</td>
+                                <td style="padding-left: 30px; padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                                <td style="padding-right: 50px">$0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <!--
+        <table class="table property">
+            <caption>Income Statement</caption>
+            <tr>
+                <th>Annual Appreciation Rate:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Sales Commission:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Capital Gains Tax:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Vacancy:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Property Management:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Income Tax Rate:</th>
+                <td>0.00%</td>
+            </tr>
+            <tr>
+                <th>Discount Rate:</th>
+                <td>0.00%</td>
+            </tr>
+
+        </table>
+
+            -->
+
+
+
+                </div>
+            
+            
+            <div id="balancesheet" class="tab-pane fade">
+                <h2>Balance Sheet</h2>
+                <p>Here, you may view the Balance Sheet of your investments.</p>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 1                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Current Assets</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Cash</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Current Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 2                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Fixed Assets</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Property</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Land</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Accumulated Depreciation</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Fixed Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 3                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Total Assets</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 4                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Long-term Liabilities</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage(s) Payable</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Long-Term Liabilities</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 2                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Fixed Assets</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Property</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Land</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Accumulated Depreciation</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Fixed Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!------------------------------------------------------------->
+                <!--                        TABLE 2                          -->
+                <!------------------------------------------------------------->
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <tr class="table_heading">
+                                <td>Fixed Assets</td>
+                                <td>Year 1</td>
+                                <td>Year 2</td>
+                                <td>Year 3</td>
+                                <td>Year 4</td>
+                                <td>Year 5</td>
+                                <td>Year 6</td>
+                                <td>Year 7</td>
+                                <td>Year 8</td>
+                                <td>Year 9</td>
+                                <td>Year 10</td>
+                                <td>Year 11</td>
+                                <td>Year 12</td>
+                                <td>Year 13</td>
+                                <td>Year 14</td>
+                                <td>Year 15</td>
+                            </tr>
+                            <tr>
+                                <td>Property</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Land</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Accumulated Depreciation</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Fixed Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Total Assets</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                                <td>$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="capitalbudgetandreturn" class="tab-pane fade">
+                <h2>Capital Budget and Return</h2>
+                <p>Here, you may view the Capital Budget and Return of your investments.</p>
+
+
+                <div class="hpanel">
+                    <div class="panel-body">
+
+                        <table class="table property">
+                            <caption>Income Statement</caption>
+                            <tr>
+                                <th>Annual Appreciation Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Sales Commission:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Capital Gains Tax:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Vacancy:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Property Management:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Income Tax Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+                            <tr>
+                                <th>Discount Rate:</th>
+                                <td>0.00%</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="panel-body">
-            <table class="table equity-information">
-                <caption>Equity Information</caption>
-                <tr>
-                    <th>Cash Flow:</th>
-                    <td>100.00%</td>
-                </tr>
-                <tr>
-                    <th>Appreciation:</th>
-                    <td>100.00%</td>
-                </tr>
-                <tr>
-                    <th>Principle Paydown:</th>
-                    <td>100.00%</td>
-                </tr>
-                <tr>
-                    <th>Tax Deduction:</th>
-                    <td>100.00%</td>
-                </tr>
-                <tr>
-                    <th>Equity Investment:</th>
-                    <td>$0.00</td>
-                </tr>
-            </table>
-        </div>
-</div>
+
+
+<ul id="thisMenu" class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#propertyinformation" style="background-color: gray;">Property Information</a></li>
+    <li><a data-toggle="pill" href="#incomestatement">Income Statement</a></li>
+    <li><a data-toggle="pill" href="#cashflowstatement">Cash Flow Statement</a></li>
+    <li><a data-toggle="pill" href="#balancesheet">Balance Sheet</a></li>
+    <li><a data-toggle="pill" href="#capitalbudgetandreturn">Capital Budget and Return</a></li>
+
+
+</ul>
