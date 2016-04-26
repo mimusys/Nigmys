@@ -189,6 +189,23 @@ namespace Homer_MVC
             bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
                       "~/Vendor/jquery-validation/jquery.validate.min.js"));
 
+            #region Nigmys Components
+            //Nigmys Styles
+            bundles.Add(new StyleBundle("~/bundles/nigmyscomponents/css").Include(
+                "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()));
+
+            //Nigmys Scripts
+            bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
+                "~/Scripts/nigmyscomponents/wizard.js").Include(
+                "~/Scripts/nigmyscomponents/upload.js"));
+            #endregion
+
+            #region Signup Components
+            //Sign up
+            bundles.Add(new StyleBundle("~/bundles/signupcomponents/css").Include(
+                "~/Content/SignupComponents/signup.css", new CssRewriteUrlTransform()));
+            #endregion
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));

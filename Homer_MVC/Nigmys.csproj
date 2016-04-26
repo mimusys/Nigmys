@@ -209,7 +209,10 @@
     <Content Include="Content\investmentview.css" />
     <Content Include="Content\landingStyle.css" />
     <Content Include="Content\loginCustom.css" />
+    <Content Include="Content\NigmysComponents\upload.css" />
+    <Content Include="Content\SignupComponents\signup.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\NigmysComponents\wizard.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\helper.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\pe-icon-7-stroke.css" />
     <Content Include="Icons\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.svg" />
@@ -267,8 +270,10 @@
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
     <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\nigmyscomponents\upload.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
+    <Content Include="Scripts\nigmyscomponents\wizard.js" />
     <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
     <Content Include="Vendor\animate.css\animate.min.css" />
