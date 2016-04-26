@@ -1,9 +1,13 @@
-﻿    .property {
+﻿th {
+    border-top: none;
+}    
+
+.property {
         width: 350px;
     }
 
     .table_heading {
-        font-weight: bold;
+        font: bold;
     }
 
     caption {
@@ -21,11 +25,8 @@
         width: 350px;
     }
 
-
-    /* Is this suppose to apply to all the tables? */
     table {
         float: left;
-        white-space: nowrap;    
     }
 
     .lease-information {
