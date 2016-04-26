@@ -1,4 +1,8 @@
-﻿    .property {
+﻿th {
+    border-top: none;
+}    
+
+.property {
         width: 350px;
     }
 
