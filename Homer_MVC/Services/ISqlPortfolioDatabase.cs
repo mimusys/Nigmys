@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Homer_MVC {
+namespace Nigmys {
     public interface ISqlPortfolioDatabase : ISqlDatabase {
 
         int createNewPortfolioID();

@@ -1,11 +1,11 @@
-﻿using Homer_MVC.Models;
+﻿using Nigmys.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Homer_MVC.Controllers
+namespace Nigmys.Controllers
 {
     public class LandingPageController : Controller
     {

@@ -1,4 +1,4 @@
-﻿using Homer_MVC.ActionFilters;
+﻿using Nigmys.ActionFilters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Homer_MVC.Controllers
+namespace Nigmys.Controllers
 {
     [LoggedInFilter]
     public class DashboardController : Controller

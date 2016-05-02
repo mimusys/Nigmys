@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Homer_MVC.Services {
+namespace Nigmys.Services {
     public class SqlDatabase : ISqlDatabase {
         protected MySqlConnection conn;
 
