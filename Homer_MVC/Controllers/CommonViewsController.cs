@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Homer_MVC.Controllers
+namespace Nigmys.Controllers
 {
     public class CommonViewsController : Controller
     {

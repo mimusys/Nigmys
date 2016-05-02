@@ -8,7 +8,7 @@ using System.Web.Mvc.Html;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Homer_MVC.Controllers
+namespace Nigmys.Controllers
 {
     public class LoginController : Controller
     {

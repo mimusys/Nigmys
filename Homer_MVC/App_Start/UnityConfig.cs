@@ -7,10 +7,10 @@ using MySql.Data.MySqlClient;
 using System.Collections.Specialized;
 using System.Web.Mvc;
 using Nigmys.Support;
-using Homer_MVC.Controllers;
-using Homer_MVC.Services;
+using Nigmys.Controllers;
+using Nigmys.Services;
 
-namespace Homer_MVC.App_Start
+namespace Nigmys.App_Start
 {
     public class UnityConfig
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace Homer_MVC.Services {
+namespace Nigmys.Services {
     public class SqlPortfolioDatabase : SqlDatabase, ISqlPortfolioDatabase {
 
         public SqlPortfolioDatabase(MySqlConnection conn) : base(conn) {

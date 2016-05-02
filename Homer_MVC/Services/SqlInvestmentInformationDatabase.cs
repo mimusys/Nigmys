@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Homer_MVC.Models;
+using Nigmys.Models;
 
-namespace Homer_MVC.Services {
+namespace Nigmys.Services {
     public class SqlInvestmentInformationDatabase : SqlDatabase, ISqlInvestmentInformationDatabase {
         public SqlInvestmentInformationDatabase(MySqlConnection conn) : base(conn) {
 

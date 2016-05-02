@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using Homer_MVC.Models;
+using Nigmys.Models;
 
-namespace Homer_MVC.Services {
+namespace Nigmys.Services {
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
         

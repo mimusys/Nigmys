@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Homer_MVC.Models;
+using Nigmys.Models;
 
-namespace Homer_MVC {
+namespace Nigmys {
     public interface ISqlInvestmentInformationDatabase : ISqlDatabase {
         int addNewInvestment(InvestmentInformation investment);
     }

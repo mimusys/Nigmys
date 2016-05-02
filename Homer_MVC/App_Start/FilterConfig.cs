@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Homer_MVC
+namespace Nigmys
 {
     public class FilterConfig
     {

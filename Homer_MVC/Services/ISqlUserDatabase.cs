@@ -1,10 +1,10 @@
-﻿using Homer_MVC.Models;
+﻿using Nigmys.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Homer_MVC {
+namespace Nigmys {
     public interface ISqlUserDatabase : ISqlDatabase {
 
         String[] getPasswordInfo(String usernameOrEmail);

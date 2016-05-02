@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Homer_MVC.ActionFilters {
+namespace Nigmys.ActionFilters {
     public class LoggedInFilter : ActionFilterAttribute {
 
         public override void OnActionExecuting(ActionExecutingContext filterContext) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Homer_MVC.Models {
+namespace Nigmys.Models {
     public class DepreciationItem {
         public int DepreciationItemID { get; set; }
         public string DepreciationItemName { get; set; }

@@ -1,12 +1,12 @@
-﻿using Homer_MVC.ActionFilters;
-using Homer_MVC.Models;
+﻿using Nigmys.ActionFilters;
+using Nigmys.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Homer_MVC.Controllers {
+namespace Nigmys.Controllers {
     [LoggedInFilter]
     public class InvestmentsController : Controller {
         ISqlInvestmentInformationDatabase investmentDb;

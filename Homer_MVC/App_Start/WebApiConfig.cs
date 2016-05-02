@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace Homer_MVC
+namespace Nigmys
 {
     public static class WebApiConfig
     {

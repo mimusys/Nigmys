@@ -1,4 +1,4 @@
-﻿using Homer_MVC.Models;
+﻿using Nigmys.Models;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Homer_MVC.Controllers
+namespace Nigmys.Controllers
 {
     public class SignUpController : Controller {
         private ISqlUserDatabase userSql;
