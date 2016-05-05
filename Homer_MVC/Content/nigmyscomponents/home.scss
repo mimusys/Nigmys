@@ -1,9 +1,59 @@
-﻿$green-theme: #99FF00;
+﻿/*Variables*/
+
+/*Home Theme*/
+$green-theme: #39AD1C;
+
+/*Informal Logo Dimensions and Position*/
+$logo-informal-width: 75px;
+$logo-informal-height: 70px;
+$logo-informal-position-x: -203px;
+$logo-informal-position-y: -55px;
+$logo-informal-size-x: 500px;
+$logo-informal-margin-left: 10px;
+
+/*Formal Logo Dimensions and Position*/
+$logo-formal-width: 320px;
+$logo-formal-position-x: 0;
+$logo-formal-position-y: -85px;
+$logo-formal-size-x: 780px;
+
+/*URLS*/
+$sprite-url: url('../img/Sprites/Sprite-Sheet.png');
+
 
 body.home {
         background-color: $green-theme;
 }
 
-@media screen and (min-width: 320px) { 
-    
+ a div.logo {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
 }
+
+header.header-navigation {
+    padding-top: 12px;
+}
+
+@media screen and (min-width: 320px) {
+    // Informal Logo
+    a div.logo {
+        background: $sprite-url no-repeat;
+        background-size: $logo-informal-size-x auto;
+        background-position: $logo-informal-position-x $logo-informal-position-y;
+        width: $logo-informal-width;
+        height: $logo-informal-height;
+        margin-left: $logo-informal-margin-left;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    a div.logo {
+        background: $sprite-url no-repeat;
+        background-position: $logo-formal-position-x $logo-formal-position-y;
+        background-size: $logo-formal-size-x auto;
+        width: $logo-formal-width;
+    }
+}
+
+
