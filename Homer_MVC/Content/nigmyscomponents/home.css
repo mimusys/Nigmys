@@ -1,3 +1,32 @@
-﻿body.home {
-  background-color: #99FF00; }
+﻿/*Variables*/
+/*Home Theme*/
+/*Informal Logo Dimensions and Position*/
+/*Formal Logo Dimensions and Position*/
+/*URLS*/
+body.home {
+  background-color: #39AD1C; }
+
+a div.logo {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+header.header-navigation {
+  padding-top: 12px; }
+
+@media screen and (min-width: 320px) {
+  a div.logo {
+    background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
+    background-size: 500px auto;
+    background-position: -203px -55px;
+    width: 75px;
+    height: 70px;
+    margin-left: 10px; } }
+
+@media screen and (min-width: 768px) {
+  a div.logo {
+    background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
+    background-position: 0 -85px;
+    background-size: 780px auto;
+    width: 320px; } }
 
