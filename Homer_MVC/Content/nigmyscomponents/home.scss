@@ -1,7 +1,7 @@
 ﻿/*Variables*/
 
 /*Home Theme*/
-$green-theme: #39AD1C;
+$green-theme: #5BC740;
 
 /*Informal Logo Dimensions and Position*/
 $logo-informal-width: 75px;
@@ -12,13 +12,42 @@ $logo-informal-size-x: 500px;
 $logo-informal-margin-left: 10px;
 
 /*Formal Logo Dimensions and Position*/
-$logo-formal-width: 320px;
+$logo-formal-width: 270px;
 $logo-formal-position-x: 0;
-$logo-formal-position-y: -85px;
-$logo-formal-size-x: 780px;
+$logo-formal-position-y: -75px;
+$logo-formal-size-x: 650px;
 
 /*URLS*/
 $sprite-url: url('../img/Sprites/Sprite-Sheet.png');
+
+/*Header Variables*/
+$header-padding: 12px;
+
+/*Navigation Variables*/
+$navigation-padding-left: 0;
+$list-item-padding: 5px;
+$list-item-margin: 10px;
+
+/*Icon Variables*/
+$icon-width: 18px;
+$icon-height: 13px;
+$icon-size-x: 700px;
+$background-position-x: -376px;
+$background-position-y: 2px;
+$icon-hover-shadow-dim: 1px;
+$icon-shadow-spread: 4px;
+
+/*Menu Item Variables*/
+$menu-item-font-size: 15px;
+$menu-item-font-weight: 600;
+$menu-item-shadow-pos: 0;
+$menu-item-shadow-size: 3px;
+
+/*Transition Variables*/
+$transition-time: 0.5s;
+
+/*Hover Variables*/
+$hover-color: #D8F5C6;
 
 
 body.home {
@@ -32,7 +61,68 @@ body.home {
 }
 
 header.header-navigation {
-    padding-top: 12px;
+    padding-top: $header-padding;
+}
+
+a div.i-menu-icon {
+    display: block;
+    width: $icon-width;
+    height: $icon-height;
+    background: $sprite-url no-repeat;
+    background-size: $icon-size-x auto;
+    background-position: $background-position-x $background-position-y;
+    
+}
+
+a div.i-menu-icon:hover {
+    -webkit-filter: drop-shadow($icon-hover-shadow-dim $icon-hover-shadow-dim $icon-shadow-spread $hover-color);
+    filter:         drop-shadow($icon-hover-shadow-dim $icon-hover-shadow-dim $icon-shadow-spread $hover-color); 
+    -webkit-transition: -webkit-filter $transition-time;
+    transition: -webkit-filter $transition-time;
+}
+
+ ul.home-navigation > li > a.menuItem {
+    font-size: $menu-item-font-size;
+    font-weight: $menu-item-font-weight;
+    color: white;
+    text-transform: uppercase;
+}
+
+ #navbar > ul.home-navigation>li {
+    display:inline-block;
+    padding-left: $list-item-padding;
+    padding-right: $list-item-padding;
+    margin-right: $list-item-margin;
+}
+
+#navbar > ul.home-navigation {
+    display: inherit;
+    padding-left: $navigation-padding-left;
+    list-style: none;
+}
+   
+    
+ul.home-navigation > li > a.menuItem:hover {
+    text-shadow: $menu-item-shadow-pos $menu-item-shadow-pos $menu-item-shadow-size $hover-color;
+    -webkit-transition: text-shadow $transition-time;
+    transition: text-shadow $transition-time;
+}
+
+div.home-items {
+    margin-top: 8px;
+}
+
+.navigation {
+    display: inline-block;
+    float: right;
+}
+
+ul.home-navigation > li > a.menuItem {
+    display: none;
+}
+
+.navbar-header {
+    float: left;
 }
 
 @media screen and (min-width: 320px) {
@@ -53,6 +143,14 @@ header.header-navigation {
         background-position: $logo-formal-position-x $logo-formal-position-y;
         background-size: $logo-formal-size-x auto;
         width: $logo-formal-width;
+    }
+
+    ul.home-navigation > li > a.menuItem {
+        display: inline-block;
+    }
+
+    div.home-items {
+    margin-top: 10px;
     }
 }
 
