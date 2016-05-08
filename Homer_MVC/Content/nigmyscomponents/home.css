@@ -1,91 +1,34 @@
-﻿/*Variables*/
-/*Home Theme*/
-/*Informal Logo Dimensions and Position*/
-/*Formal Logo Dimensions and Position*/
-/*URLS*/
-/*Header Variables*/
-/*Navigation Variables*/
-/*Icon Variables*/
-/*Menu Item Variables*/
-/*Transition Variables*/
-/*Hover Variables*/
+﻿/*Home Theme*/
 body.home {
   background-color: #5BC740; }
 
-a div.logo {
-  display: block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+section.content {
+  text-align: center; }
 
-header.header-navigation {
-  padding-top: 12px; }
-
-a div.i-menu-icon {
-  display: block;
-  width: 18px;
-  height: 13px;
-  background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
-  background-size: 700px auto;
-  background-position: -376px 2px; }
-
-a div.i-menu-icon:hover {
-  -webkit-filter: drop-shadow(1px 1px 4px #D8F5C6);
-  filter: drop-shadow(1px 1px 4px #D8F5C6);
-  -webkit-transition: -webkit-filter 0.5s;
-  transition: -webkit-filter 0.5s; }
-
-ul.home-navigation > li > a.menuItem {
-  font-size: 15px;
-  font-weight: 600;
+h1.homeMainHeader, h2.homeSubHeader {
   color: white;
-  text-transform: uppercase; }
+  font-weight: 600;
+  margin-bottom: 1px;
+  margin-top: 1px; }
 
-#navbar > ul.home-navigation > li {
-  display: inline-block;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 10px; }
+.homeMainHeader {
+  font-size: 26px; }
 
-#navbar > ul.home-navigation {
-  display: inherit;
-  padding-left: 0;
-  list-style: none; }
+.homeSubHeader {
+  font-size: 16px; }
 
-ul.home-navigation > li > a.menuItem:hover {
-  text-shadow: 0 0 3px #D8F5C6;
-  -webkit-transition: text-shadow 0.5s;
-  transition: text-shadow 0.5s; }
+.btn.freeTrialButton {
+  background-color: #212121;
+  border-radius: 0px;
+  border: 0px;
+  color: white; }
 
-div.home-items {
-  margin-top: 8px; }
-
-.navigation {
-  display: inline-block;
-  float: right; }
-
-ul.home-navigation > li > a.menuItem {
-  display: none; }
-
-.navbar-header {
-  float: left; }
-
-@media screen and (min-width: 320px) {
-  a div.logo {
-    background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
-    background-size: 500px auto;
-    background-position: -203px -55px;
-    width: 75px;
-    height: 70px;
-    margin-left: 10px; } }
+.btn.homeTrialButton {
+  margin-top: 15px; }
 
 @media screen and (min-width: 768px) {
-  a div.logo {
-    background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
-    background-position: 0 -75px;
-    background-size: 650px auto;
-    width: 270px; }
-  ul.home-navigation > li > a.menuItem {
-    display: inline-block; }
-  div.home-items {
-    margin-top: 10px; } }
+  .homeMainHeader {
+    font-size: 37px; }
+  .homeSubHeader {
+    font-size: 22px; } }
 
