@@ -209,6 +209,12 @@
     <Content Include="Content\NigmysComponents\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\navigation.css">
+      <DependentUpon>navigation.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\navigation.min.css">
+      <DependentUpon>navigation.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
     <Content Include="Content\SignupComponents\signup.css" />
     <Content Include="Content\style.css" />
@@ -2210,7 +2216,7 @@
     <Content Include="Views\InvestmentView\Index.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Content\NigmysComponents\home.scss" />
+    <Content Include="Content\NigmysComponents\navigation.scss" />
     <None Include=".bin\git.cmd" />
     <None Include=".bin\node.cmd" />
     <None Include=".bin\npm.cmd" />
@@ -2218,6 +2224,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\NigmysComponents\home.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -2744,13 +2751,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.10.306\build\BuildWebCompiler.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
