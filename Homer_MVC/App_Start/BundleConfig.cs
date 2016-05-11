@@ -200,7 +200,8 @@ namespace Nigmys
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
                 "~/Scripts/nigmyscomponents/wizard.js").Include(
-                "~/Scripts/nigmyscomponents/upload.js"));
+                "~/Scripts/nigmyscomponents/upload.js").Include(
+                "~/Scripts/nigmyscomponents/navigation.js"));
             #endregion
 
             #region Signup Components

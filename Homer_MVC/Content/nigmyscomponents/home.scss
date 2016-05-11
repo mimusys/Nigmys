@@ -2,6 +2,8 @@
 /*Home Theme*/
 $green-theme: #5BC740;
 
+/*Hover Variables*/
+$hover-color: #D8F5C6;
 
 body.home {
     background-color: $green-theme;
@@ -19,22 +21,31 @@ h1.homeMainHeader, h2.homeSubHeader {
 }
 
 .homeMainHeader {
-    font-size:26px;
+    font-size: 22px;
 }
 
 .homeSubHeader {
-    font-size: 16px;
+    font-size: 14px;
 }
 
-.btn.freeTrialButton {
+.btn.homeButton {
     background-color:#212121;
     border-radius: 0px;
     border: 0px;
     color:white;
-}
-
-.btn.homeTrialButton {
+    width: 150px;
     margin-top: 15px;
+    margin-left: 7px;
+    margin-right: 7px;
+
+     @media screen and (max-width: 768px) {
+        width: 125px;
+        font-size: 12px;
+    }
+
+    &:hover {
+        text-shadow: 0 0 10px $hover-color;
+    }
 }
 
 @media screen and (min-width: 768px) {

@@ -245,6 +245,7 @@
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
     <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\nigmyscomponents\navigation.js" />
     <Content Include="Scripts\nigmyscomponents\upload.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
