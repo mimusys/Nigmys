@@ -28,6 +28,8 @@
     <OldToolsVersion>12.0</OldToolsVersion>
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -161,6 +163,7 @@
     <Compile Include="Configurations\SQLConfig.cs" />
     <Compile Include="Controllers\CommonViewsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestmentListController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\InvestmentViewController.cs" />
@@ -195,10 +198,23 @@
     <Content Include="Content\alertForm.css" />
     <Content Include="Content\img\green%402x.png" />
     <Content Include="Content\img\green.png" />
+    <Content Include="Content\img\Sprites\Sprite-Sheet.png" />
     <Content Include="Content\investmentListCustom.css" />
     <Content Include="Content\investmentview.css" />
     <Content Include="Content\landingStyle.css" />
     <Content Include="Content\loginCustom.css" />
+    <Content Include="Content\NigmysComponents\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\navigation.css">
+      <DependentUpon>navigation.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\navigation.min.css">
+      <DependentUpon>navigation.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
     <Content Include="Content\SignupComponents\signup.css" />
     <Content Include="Content\style.css" />
@@ -229,6 +245,7 @@
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
     <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\nigmyscomponents\navigation.js" />
     <Content Include="Scripts\nigmyscomponents\upload.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
@@ -2198,6 +2215,17 @@
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
     <Content Include="Views\InvestmentView\Index.cshtml" />
+    <Content Include="Views\Shared\_Home.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\NigmysComponents\navigation.scss" />
+    <None Include=".bin\git.cmd" />
+    <None Include=".bin\node.cmd" />
+    <None Include=".bin\npm.cmd" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\NigmysComponents\home.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

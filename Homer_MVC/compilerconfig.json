@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/NigmysComponents/home.css",
+    "inputFile": "Content/NigmysComponents/home.scss"
+  },
+  {
+    "outputFile": "Content/NigmysComponents/navigation.css",
+    "inputFile": "Content/NigmysComponents/navigation.scss"
+  }
+]

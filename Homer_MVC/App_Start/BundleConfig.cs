@@ -193,12 +193,15 @@ namespace Nigmys
             //Nigmys Styles
             bundles.Add(new StyleBundle("~/bundles/nigmyscomponents/css").Include(
                 "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()));
+                "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/NigmysComponents/navigation.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/NigmysComponents/home.css"));
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
                 "~/Scripts/nigmyscomponents/wizard.js").Include(
-                "~/Scripts/nigmyscomponents/upload.js"));
+                "~/Scripts/nigmyscomponents/upload.js").Include(
+                "~/Scripts/nigmyscomponents/navigation.js"));
             #endregion
 
             #region Signup Components

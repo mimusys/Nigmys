@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Title-->
+    <title>Titan | @ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    <!-- Primary Styles -->
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/animate/css")
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/peicon7stroke/css")
+    @Styles.Render("~/bundles/homer/css")
+
+    <!-- Nigmys Styles -->
+    @Styles.Render("~/bundles/nigmyscomponents/css")
+
+</head>
+<body class="home">
+    <header class="header-navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a href=#>
+                    <div class="logo">
+                    </div>
+                </a>
+            </div>
+            <div id="navbar" class="navbar navbar-collapse navigation home-items">
+                <ul class="home-navigation">
+                    <li><a href="#" class="menuItem">About Us</a></li>
+                    <li><a href="#" class="menuItem">Pricing</a></li>
+                    <li><a href="#" class="menuItem">Tutorial</a></li>
+                    <li><a href="#" class="menuItem">Sign In</a></li>
+                    <li>
+                        <a href="#" id="menu-bar">
+                            <div class="i-menu-icon">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--Main Body-->
+    @RenderBody()
+    
+    <div id="side-bar" class="animated fadeInRight side-bar-content">
+        <a href="#" class="side-menu-button">30-DAY <strong>FREE</strong> TRIAL</a>
+        <a href="#" class="side-menu-button"><strong>BUY</strong> NOW</a>
+
+        <ul class="side-list">
+            <li class="side-list-item" data-page="Home"><a href="#">Home</a></li>
+            <li class="side-list-item" data-page="Pricing"><a href="#"> Pricing</a></li>
+            <li class="side-list-item" data-page="Tutorial"><a href="#" >Tutorial</a></li>
+            <li class="side-list-item" data-page="Blog"><a href="#" >Blog</a></li>
+            <li class="side-list-item" data-page="Support"><a href="#" >Support</a></li>
+            <li class="side-list-item"><a href="#" >Sign In</a></li>
+        </ul>
+    </div>
+
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/bootstrap/js")
+    @Scripts.Render("~/bundles/homer/js")
+    @Scripts.Render("~/bundles/nigmyscomponents/js")
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>
