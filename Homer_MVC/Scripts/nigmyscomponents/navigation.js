@@ -4,11 +4,13 @@ $(function () {
     $("#menu-bar").click(function (event) {
         $('#side-bar').removeClass('fadeOutRight');
         $("#side-bar").addClass("open-bar");
+        $('body').addClass('active-side-bar');
         event.stopPropagation();
     });
 
     $('html').click(function () {
         $('#side-bar').addClass('fadeOutRight');
+        $('body').removeClass('active-side-bar');
     });
 
     $('#side-bar').click(function (event) {

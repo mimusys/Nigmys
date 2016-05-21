@@ -1,4 +1,4 @@
-﻿/*Variables*/
+﻿ /*Variables*/
 
 /*Informal Logo Dimensions and Position*/
 $logo-informal-width: 75px;
@@ -204,6 +204,10 @@ ul.side-list {
       -webkit-transform: scaleX(1);
       transform: scaleX(1);
     }
+}
+
+.active-side-bar {
+    overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
