@@ -33,12 +33,12 @@
     <![endif]-->
     <!-- Header -->
     <div id="header">
-        @Html.Partial("_Header")
+        @Html.Partial("ApplicationLayouts/PartialLayouts/_Header")
     </div>
 
     <!-- Navigation -->
     <aside id="menu">
-        @Html.Partial("_Navigation")
+        @Html.Partial("ApplicationLayouts/PartialLayouts/_Navigation")
     </aside>
 
     <!-- Main view  -->
@@ -46,10 +46,10 @@
         @RenderBody()
 
         <!-- Right Sidebar -->
-        @Html.Partial("_Right_Sidebar")
+        @Html.Partial("ApplicationLayouts/PartialLayouts/_Right_Sidebar")
 
         <!-- Footer-->
-        @Html.Partial("_Footer")
+        @Html.Partial("ApplicationLayouts/PartialLayouts/_Footer")
     </div>
 
     <!-- Section for main scripts render -->
