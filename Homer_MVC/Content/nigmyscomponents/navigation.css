@@ -136,6 +136,9 @@ ul.side-list {
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
 
+.active-side-bar {
+  overflow: hidden; }
+
 @media screen and (min-width: 768px) {
   a div.logo {
     background: url("../img/Sprites/Sprite-Sheet.png") no-repeat;
