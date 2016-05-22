@@ -16,6 +16,7 @@ $logo-formal-size-x: 650px;
 
 /*URLS*/
 $sprite-url: url('../img/Sprites/Sprite-Sheet.png');
+$header-url: url('../../Images/landing/header.jpg');
 
 /*Header Variables*/
 $header-padding: 12px;
@@ -69,41 +70,61 @@ body * {
 
 header.header-navigation {
     padding-top: $header-padding;
-    height: 75px;
-    margin-bottom: 50px;
+    height: 90px;
+    @media screen and (min-width: 768px) {
+        height: 110px;
+    }
+    @media screen and (min-width: 979px) {
+        height: 130px;
+    }
+    &.main {
+        background: $header-url no-repeat;
+        background-position: 0px 77%;
+        background-size: cover;
+        
+    }
 }
 
 a div.i-menu-icon {
-    display: block;
+    display: inline-block;
     width: $icon-width;
     height: $icon-height;
     background: $sprite-url no-repeat;
     background-size: $icon-size-x auto;
     background-position: $background-position-x $background-position-y;
+}
 
-    &:hover {
+ ul.home-navigation > li > a {
+     vertical-align: middle;
+     &.menuItem {
+        font-size: $menu-item-font-size;
+        font-weight: $menu-item-font-weight;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    &:hover, &#menuBar {
         -webkit-filter: drop-shadow($icon-hover-shadow-dim $icon-hover-shadow-dim $icon-shadow-spread $hover-color);
         filter: drop-shadow($icon-hover-shadow-dim $icon-hover-shadow-dim $icon-shadow-spread $hover-color);
     }
-    
 }
 
- ul.home-navigation > li > a.menuItem {
-    font-size: $menu-item-font-size;
-    font-weight: $menu-item-font-weight;
-    color: white;
-    text-transform: uppercase;
-
-    &:hover {
-        text-shadow: $menu-item-shadow-pos $menu-item-shadow-pos $menu-item-shadow-size $hover-color;
-    }
-}
+ span.menu-label {
+     font-weight:600;
+     font-size: 15px;
+     text-transform: uppercase;
+     color: white;
+ }
 
  #navbar > ul.home-navigation>li {
     display:inline-block;
     padding-left: $list-item-padding;
     padding-right: $list-item-padding;
     margin-right: $list-item-margin;
+
+    @media screen and (max-width: 376px) {
+        margin-right: 0px;
+    }
 }
 
 #navbar > ul.home-navigation {
@@ -164,6 +185,7 @@ div#side-bar > a.side-menu-button {
 .side-bar-content {
     padding: 30px 30px 0px 30px;
 }
+
 ul.side-list {
     list-style: none;
     padding-left: 15px;
@@ -208,6 +230,46 @@ ul.side-list {
 
 .active-side-bar {
     overflow: hidden;
+}
+
+p.page-title {
+    text-transform: uppercase;
+    position: absolute;
+    line-height: 100%;
+    font-weight: 600;
+    font-size: 2.0em;
+    color: white;
+    top: 1.45em;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+    -webkit-filter: drop-shadow(1px 1px 9px #000);
+
+    @media screen and (min-width: 979px) {
+        font-size: 2.4em;
+    }
+
+    @media screen and (min-width: 767px) and (max-width: 979px){
+        left: 30%;
+    }
+}
+
+.btn.actionButton {
+    background-color:#fff;
+    border-radius: 0px;
+    border: 0px;
+    color: #000;
+    width: 150px;
+    margin-left: 7px;
+    margin-right: 7px;
+
+     @media screen and (max-width: 992px) {
+        display: none;
+    }
+
+    &:hover {
+        text-shadow: 0 0 10px $hover-color;
+    }
 }
 
 @media screen and (min-width: 768px) {
