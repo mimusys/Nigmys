@@ -32,5 +32,13 @@
 
     <!--Main Body-->
     @RenderBody()
+
+    @Html.Partial("WebLayouts/PartialLayouts/_Web_Sidebar")
+
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/bootstrap/js")
+    @Scripts.Render("~/bundles/homer/js")
+    @Scripts.Render("~/bundles/nigmyscomponents/js")
 </body>
 </html>
