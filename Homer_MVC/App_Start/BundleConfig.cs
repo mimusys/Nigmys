@@ -195,7 +195,8 @@ namespace Nigmys
                 "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/navigation.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/NigmysComponents/home.css"));
+                "~/Content/NigmysComponents/home.css").Include(
+                "~/Content/NigmysComponents/main.css"));
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
