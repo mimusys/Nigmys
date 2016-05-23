@@ -210,6 +210,12 @@
     <Content Include="Content\NigmysComponents\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\navigation.css">
       <DependentUpon>navigation.scss</DependentUpon>
     </Content>
@@ -240,6 +246,8 @@
     <Content Include="Images\loading-bars.svg" />
     <Content Include="Images\logo\Nigmys-Logo.png" />
     <Content Include="Images\logo\Nigmys_Logo_Small.png" />
+    <Content Include="Images\main\house.jpg" />
+    <Content Include="Images\main\skyline.jpg" />
     <Content Include="Images\profile.jpg" />
     <Content Include="Scripts\addInvestment.js" />
     <Content Include="Scripts\charts.js" />
@@ -2232,6 +2240,7 @@
     <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
+    <Content Include="Content\NigmysComponents\main.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

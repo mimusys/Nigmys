@@ -1,0 +1,24 @@
+﻿$backgroun-url: url(../../Images/main/skyline.jpg);
+
+article {
+    width: 100%;
+    height: 100%;
+}
+.main-background {
+    position: relative;
+    background-color: white;
+    opacity: 0.3;
+    overflow: hidden;
+    &::before {
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background:  $backgroun-url no-repeat;
+        display: block;
+        position: absolute;
+        content: ' ';
+        background-size: cover;
+        -webkit-filter: blur(5px);
+    }
+}
