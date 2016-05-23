@@ -2241,6 +2241,8 @@
     <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
     <Content Include="Content\NigmysComponents\main.scss" />
+    <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

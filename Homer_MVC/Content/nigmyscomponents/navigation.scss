@@ -244,6 +244,7 @@ p.page-title {
     width: 50%;
     text-align: center;
     -webkit-filter: drop-shadow(1px 1px 9px #000);
+    filter: drop-shadow(1px 1px 9px #000);
 
     @media screen and (min-width: 979px) {
         font-size: 2.4em;
@@ -270,6 +271,13 @@ p.page-title {
     &:hover {
         text-shadow: 0 0 10px $hover-color;
     }
+}
+
+.home-icon {
+    font-size: 2em;
+    color: white;
+    -webkit-filter: drop-shadow(1px 1px 9px #000);
+    filter: drop-shadow(1px 1px 9px #000);
 }
 
 @media screen and (min-width: 768px) {
