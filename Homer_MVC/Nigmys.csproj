@@ -222,6 +222,12 @@
     <Content Include="Content\NigmysComponents\navigation.min.css">
       <DependentUpon>navigation.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\signIn.css">
+      <DependentUpon>signIn.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\signIn.min.css">
+      <DependentUpon>signIn.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
     <Content Include="Content\SignupComponents\signup.css" />
     <Content Include="Content\style.css" />
@@ -2243,6 +2249,7 @@
     <Content Include="Content\NigmysComponents\main.scss" />
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
+    <Content Include="Content\NigmysComponents\signIn.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
