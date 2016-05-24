@@ -10,5 +10,9 @@
   {
     "outputFile": "Content/NigmysComponents/main.css",
     "inputFile": "Content/NigmysComponents/main.scss"
+  },
+  {
+    "outputFile": "Content/NigmysComponents/signIn.css",
+    "inputFile": "Content/NigmysComponents/signIn.scss"
   }
 ]
