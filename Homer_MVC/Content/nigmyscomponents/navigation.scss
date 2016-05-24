@@ -58,14 +58,13 @@ body * {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
 
-        @media screen and (min-width: 320px) {
-            background: $sprite-url no-repeat;
-            background-size: $logo-informal-size-x auto;
-            background-position: $logo-informal-position-x $logo-informal-position-y;
-            width: $logo-informal-width;
-            height: $logo-informal-height;
-            margin-left: $logo-informal-margin-left;
-        }
+        background: $sprite-url no-repeat;
+        background-size: $logo-informal-size-x auto;
+        background-position: $logo-informal-position-x $logo-informal-position-y;
+        width: $logo-informal-width;
+        height: $logo-informal-height;
+        margin-left: $logo-informal-margin-left;
+       
 }
 
 header.header-navigation {

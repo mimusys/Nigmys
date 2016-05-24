@@ -1,6 +1,6 @@
 ﻿.center-container {
     margin: 20px auto 0px auto;
-    width: 350px;
+    max-width: 400px;
     padding: 10px;
 }
 
@@ -12,6 +12,10 @@ h2.pre-header, h1.title-header {
 
 h2.pre-header {
     color: black;
+    
+    @media screen and (max-width: 375px) {
+        font-size: 24px;
+    }
 }
 
 h1.title-header {
@@ -19,15 +23,45 @@ h1.title-header {
     color: #62cb31;
     -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
     filter: drop-shadow(1px 1px 17px #62cb31);
+
+    @media screen and (max-width: 375px) {
+        font-size:30px;
+    }
 }
 
 h5.subline {
-    margin-left: 20px;
     position: relative;
     color: black;
+    font-weight: 600;
+    text-align:center;
 }
 
-.sign-up-link {
+
+.sign-up-link, .sign-up-link:hover, .sign-up-link:focus {
     color: #62cb31;
     text-decoration: underline;
+}
+
+.sign-in-form {
+    position: relative;
+}
+
+.sign-in-text {
+    height: 36px;
+    width: 100%;
+    padding-left: 15px;
+    border: none;
+    margin-top: 30px;
+    background-color:#fff;
+    -webkit-filter: drop-shadow(1px 15px 35px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(1px 15px 35px rgba(0, 0, 0, 0.5));
+
+    &:focus {
+        outline-color: #62cb31;
+    }
+}
+
+a.btn-success.sign-up-button {
+    margin-top: 30px;
+    border-radius: 0px;
 }
