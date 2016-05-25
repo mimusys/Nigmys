@@ -26,15 +26,16 @@ li.wizard-section {
     height: 38px;
     padding: 6px;
     border-radius: 20px;
-    border-color: #34495e;
+    border-color: #62cb31;
     border-width:2px;
     text-align: center;
     font-size: 16px;
     line-height: 1.428571429;
-    background-color: #34495e;
+    background-color: #62cb31;
     text-align: center;
     margin-right: 60px;
     position: relative;
+    
 }
 li.wizard-section a {
     color:white;
@@ -46,7 +47,7 @@ li.wizard-section::before{
   left: -67px;
   width: 66px;
   height: .2em;
-  background: #34495e;
+  background: #62cb31;
   z-index: 1;
 }
 
@@ -55,8 +56,10 @@ li.wizard-section:first-child::before{
 }
 
 li.wizard-section.activeSection {
-    background-color: #34495e;
-    border-color: #34495e;
+    background-color: #62cb31;
+    border-color: #62cb31;
+    -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+    filter: drop-shadow(1px 1px 17px #62cb31);
 }
 
 li.wizard-section.activeSection ~ li {
@@ -98,12 +101,12 @@ ul li div.wizardSubtitle {
         padding: 10px;
         margin-bottom:10px;
         border-radius: 38px;
-        border-color: #34495e;
+        border-color: #62cb31;
         border-width:2px;
         text-align: center;
         font-size: xx-large;
         line-height: 1.428571429;
-        background-color: #34495e;
+        background-color: #62cb31;
         text-align: center;
         position: relative;
         color: white;

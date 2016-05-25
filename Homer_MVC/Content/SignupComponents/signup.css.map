@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "file": "signup.css",
+  "sources": ["signup.scss"],
+  "names": [],
+  "mappings": "AACA,aACI,WAAY,MAGhB,mBACI,OAAQ,mBACR,UAAW,MACX,QAAS,MAGb,GACI,QAAS,MACT,UAAW,MACX,SAAU,SACV,aAAc,QACd,MAAO,KACP,IAAK,KACL,QAAS"
+}
