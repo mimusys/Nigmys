@@ -1,5 +1,9 @@
-﻿ $.validator.addMethod('regex', function (value, element, param) {
+﻿$.validator.addMethod('regex', function (value, element, param) {
     return this.optional(element) || value.match(typeof param == 'string' ? new RegExp(param) : param);
+});
+
+$.validator.addMethod('similarFields', function (value, element, param) {
+    return this.optional(element) || (param[0] != value && param[1] != value && param[2] != value);
 });
 
 var userInfoValidator = $("#userInfoForm").validate({
@@ -36,7 +40,13 @@ var userInfoValidator = $("#userInfoForm").validate({
             email: true,
             equalTo: "#email"
         },
-        password: "required",
+        password: {
+            required: true,
+            regex: '^[a-zA-Z]\\w{3,14}$',
+            similarFields: function () {
+                return [$('#username').val(), $('#firstname').val(), $('#lastname').val()];
+            }
+        },
         repeatPassword: {
             required: true,
             equalTo: "#password"
@@ -57,7 +67,11 @@ var userInfoValidator = $("#userInfoForm").validate({
             email: "A valid email is required",
             equalTo: "Emails do not match"
         },
-        password: "A password is requried",
+        password: {
+            required: "A password is required",
+            regex: "Password must start with a letter, be 4-15 characters, and only contain numbers, letters and underscore",
+            similarFields: "password cannot equal first name, last name, or username"
+        },
         repeatPassword: {
             required: "Repeat the password entered",
             equalTo: "Passwords do not match"
