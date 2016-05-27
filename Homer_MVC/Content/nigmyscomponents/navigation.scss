@@ -270,6 +270,21 @@ p.page-title {
     &:hover {
         text-shadow: 0 0 10px $hover-color;
     }
+
+    &.inverse {
+        background-color:#000;
+        color: #fff;
+    }
+
+    &.sign-up {
+        position: relative;
+        display:inline-block;
+
+        @media screen and (max-width: 382px) {
+            width: 110px;
+        }
+    }
+
 }
 
 .home-icon {

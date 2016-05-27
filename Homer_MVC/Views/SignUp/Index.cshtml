@@ -5,17 +5,139 @@
 
 @Styles.Render("~/bundles/signupcomponents/css")
 
+@section Scripts {
+    @Scripts.Render("~/bundles/validation/js")
+    @Scripts.Render("~/bundles/sign-up/js")
+    @Scripts.Render("~/bundles/sha256/js")
+    @Scripts.Render("~/bundles/nigmyscomponents/js")
+}
+
 <div class="container render-body">
-    <div class="text-center m-b-md form-adjust" id="wizardControl">
-        <ul class="wizardLine desktop-wizard">
-            <li class="wizard-section activeSection"><a class="inactive-link" href="#step1" data-toggle="tab"><i class="fa fa-user"></i></a><div class="wizardSubtitle">User Information</div></li>
-            <li class="wizard-section"><a class="inactive-link" href="#step2" data-toggle="tab"><i class="fa fa-folder"></i></a><div class="wizardSubtitle">Personal Information</div></li>
-            <li class="wizard-section"><a class="inactive-link" href="#step3" data-toggle="tab"><i class="fa fa-check"></i></a><div class="wizardSubtitle">Summary Information</div></li>
-        </ul> 
-    </div>
+    <div class="sign-up-container">
+        <div class="text-center form-adjust" id="wizardControl">
+            <ul class="wizardLine desktop-wizard">
+                <li class="wizard-section activeSection"><a class="inactive-link" href="#step1" data-toggle="tab"><i class="fa fa-user"></i></a><div class="wizardSubtitle">User Information</div></li>
+                <li class="wizard-section"><a class="inactive-link" href="#step2" data-toggle="tab"><i class="fa fa-folder"></i></a><div class="wizardSubtitle">Personal Information</div></li>
+                <li class="wizard-section"><a class="inactive-link" href="#step3" data-toggle="tab"><i class="fa fa-check"></i></a><div class="wizardSubtitle">Summary Information</div></li>
+            </ul>
+        </div>
+        <hr />
+        <h2 class="pre-header sign-up-header">Create your</h2>
+        <h1 class="title-header sign-up-header">Titan account</h1>
+        <div class="tab-content">
+            <div id="step1" class="active tab-pane">
+                <div class="text-center m-b-md mobile-wizard">
+                    <div class="wizard-section">
+                        <i class="fa fa-user"></i>
+                    </div><br />
+                    <h4 class="mobile-wizard-text">User Information</h4>
+                </div>
+                <form class="sign-up-form" name="userInfoForm" id="userInfoForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" value="" id="username" class="form-control sign-up-text" name="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" value="" id="password" class="form-control sign-up-text" name="password" placeholder="******">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeatPassword">Repeat Password</label>
+                        <input type="password" value="" id="repeatPassword" class="form-control sign-up-text" name="repeatPassword" placeholder="******">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" value="" id="email" class="form-control sign-up-text" name="email" placeholder="email@example.com" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeatEmail">Repeat Email Address</label>
+                        <input type="email" value="" id="repeatEmail" class="form-control sign-up-text" name="repeatEmail" placeholder="email@example.com">
+                    </div>
+                </form>
+                <div class="text-right">
+                    <a class="btn actionButton inverse sign-up prev" href="#">Previous</a>
+                    <a class="btn actionButton inverse sign-up" id="userInfoNext" href="#">Next</a>
+                </div>
+            </div>
+            <div id="step2" class="tab-pane">
+                <div class="text-center mobile-wizard">
+                    <div class="wizard-section">
+                        <i class="fa fa-folder"></i>
+                    </div><br />
+                    <h4 class="mobile-wizard-text">Personal Information</h4>
+                </div>
+                <form name="personalInfoForm" id="personalInfoForm" class="sign-up-form">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" value="" id="firstname" class="form-control sign-up-text" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" value="" id="lastname" class="form-control sign-up-text" name="lastname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" value="" id="address" class="form-control sign-up-text" name="address" placeholder="123 Main St.">
+                    </div>
+                    <div class="form-group">
+                        <label>Zip Code</label>
+                        <input type="text" value="" id="zipcode" class="form-control sign-up-text" name="zipcode" placeholder="15201">
+                    </div>
+                    <div class="form-group">
+                        <label for="bday">Birthday</label>
+                        <input type="date" value="" id="birthday" class="form-control sign-up-text" name="birthday" placeholder="06/18/1992">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" value="" id="companyName" class="form-control sign-up-text" name="companyName">
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" class="i-checks" checked name="newsletter">
+                        Sign up for our newsletter
+                    </div>
+                    <div class="text-right m-t-xs">
+                        <a class="btn actionButton inverse sign-up prev" href="#">Previous</a>
+                        <a class="btn actionButton inverse sign-up" id="personalInfoNext" href="#">Next</a>
+                    </div>
+                </form> 
+            </div>
+            <div id="step3" class="tab-pane">
+                <div class="text-center mobile-wizard">
+                    <div class="wizard-section">
+                        <i class="fa fa-check"></i>
+                    </div><br />
+                    <h4 class="mobile-wizard-text">Summary Information </h4>
+                </div>
+                <div class="row text-center m-t-lg m-b-lg form-adjust">
+                    <div class="col-lg-12">
+                        <i class="pe-7s-check fa-5x text-muted desktop-wizard"></i>
+                        <p class="small m-t-md">
+                            <strong>There are many</strong> variations of passages of Lorem Ipsum available, but the majority have suffered
+                        </p>
+                    </div>
+                    <div class="checkbox col-lg-12">
+                        <input type="checkbox" class="i-checks approveCheck" name="approve">
+                        Approve this form
+                    </div>
+                </div>
+                <div class="text-right m-t-xs">
+                    <a class="btn btn-default prev" href="#">Previous</a>
+                    <a class="btn btn-success" id="submitButton" href="#">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div> 
 </div>
-<hr/>
-<div class="sign-up-container">
-    <h2 class="pre-header">Create your</h2>
-    <h1 class="title-header">Titan account</h1>
-</div>
+
+<!-- Section for main scripts render -->
+<script src="/Vendor/jquery/dist/jquery.min.js"></script>
+<script src="/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/Vendor/metisMenu/dist/metisMenu.min.js"></script>
+<script src="/Vendor/iCheck/icheck.min.js"></script>
+<script src="/Vendor/sparkline/index.js"></script>
+<script src="/Scripts/homer.js"></script>
+
+
+
+
+

@@ -14,6 +14,7 @@
 
 div ul.wizardLine {
     list-style-type: none;
+    margin-bottom: 50px;
 }
 
 li a.wizardMargin {
@@ -35,6 +36,8 @@ li.wizard-section {
     text-align: center;
     margin-right: 60px;
     position: relative;
+    -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+    filter: drop-shadow(1px 1px 17px #62cb31);
     
 }
 li.wizard-section a {
@@ -66,10 +69,13 @@ li.wizard-section.activeSection ~ li {
     background-color: white;
     border-color: lightgray;
     border-width: 2px;
+    -webkit-filter:none;
+    filter: none;
 }
 
 li.wizard-section.activeSection ~ li a {
     color:lightgray;
+    
 }
 
 li.wizard-section.activeSection ~ li:before {
@@ -91,6 +97,16 @@ ul li div.wizardSubtitle {
 @media(max-width: 514px) {
     .desktop-wizard {
         display:none;
+    }
+
+    .mobile-wizard {
+        padding-top: 15px;
+        -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+        filter: drop-shadow(1px 1px 17px #62cb31);
+    }
+
+    .mobile-wizard-text {
+        font-weight: 600;
     }
 
     div.wizard-section {
