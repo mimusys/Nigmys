@@ -47,7 +47,7 @@ $transition-time: 0.3s;
 /*Hover Variables*/
 $hover-color: #D8F5C6;
 
-body * {
+body .side-bar-content *, header * {
     -webkit-transition: all $transition-time;
     -o-transition: all $transition-time;
     transition: all $transition-time;

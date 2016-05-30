@@ -8,7 +8,7 @@
 /*Menu Item Variables*/
 /*Transition Variables*/
 /*Hover Variables*/
-body * {
+body .side-bar-content *, header * {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; }

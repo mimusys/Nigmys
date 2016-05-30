@@ -54,3 +54,23 @@ form.sign-up-form {
 .icheckbox_square-green {
   background-position: -24px 0;
 }
+
+.summary-group {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+
+    &.first {
+        padding-top: 5px;
+    }
+}
+
+div.approval-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    padding-left: 10px;
+}
