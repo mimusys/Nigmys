@@ -14,6 +14,7 @@
 
 div ul.wizardLine {
     list-style-type: none;
+    margin-bottom: 50px;
 }
 
 li a.wizardMargin {
@@ -26,15 +27,18 @@ li.wizard-section {
     height: 38px;
     padding: 6px;
     border-radius: 20px;
-    border-color: #34495e;
+    border-color: #62cb31;
     border-width:2px;
     text-align: center;
     font-size: 16px;
     line-height: 1.428571429;
-    background-color: #34495e;
+    background-color: #62cb31;
     text-align: center;
     margin-right: 60px;
     position: relative;
+    -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+    filter: drop-shadow(1px 1px 17px #62cb31);
+    
 }
 li.wizard-section a {
     color:white;
@@ -46,7 +50,7 @@ li.wizard-section::before{
   left: -67px;
   width: 66px;
   height: .2em;
-  background: #34495e;
+  background: #62cb31;
   z-index: 1;
 }
 
@@ -55,18 +59,23 @@ li.wizard-section:first-child::before{
 }
 
 li.wizard-section.activeSection {
-    background-color: #34495e;
-    border-color: #34495e;
+    background-color: #62cb31;
+    border-color: #62cb31;
+    -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+    filter: drop-shadow(1px 1px 17px #62cb31);
 }
 
 li.wizard-section.activeSection ~ li {
     background-color: white;
     border-color: lightgray;
     border-width: 2px;
+    -webkit-filter:none;
+    filter: none;
 }
 
 li.wizard-section.activeSection ~ li a {
     color:lightgray;
+    
 }
 
 li.wizard-section.activeSection ~ li:before {
@@ -90,6 +99,16 @@ ul li div.wizardSubtitle {
         display:none;
     }
 
+    .mobile-wizard {
+        padding-top: 15px;
+        -webkit-filter: drop-shadow(1px 1px 17px #62cb31);
+        filter: drop-shadow(1px 1px 17px #62cb31);
+    }
+
+    .mobile-wizard-text {
+        font-weight: 600;
+    }
+
     div.wizard-section {
         border-style: solid;
         display:inline-block;
@@ -98,12 +117,12 @@ ul li div.wizardSubtitle {
         padding: 10px;
         margin-bottom:10px;
         border-radius: 38px;
-        border-color: #34495e;
+        border-color: #62cb31;
         border-width:2px;
         text-align: center;
         font-size: xx-large;
         line-height: 1.428571429;
-        background-color: #34495e;
+        background-color: #62cb31;
         text-align: center;
         position: relative;
         color: white;

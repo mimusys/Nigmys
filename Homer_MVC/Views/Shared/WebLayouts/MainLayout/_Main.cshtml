@@ -5,11 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    
     <!--Title-->
     <title>Titan | @ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    
+
     <!-- Add local styles, mostly for plugins css file -->
     @if (IsSectionDefined("Styles"))
     {@RenderSection("Styles", required: false)}
@@ -21,26 +21,24 @@
     @Styles.Render("~/bundles/peicon7stroke/css")
     @Styles.Render("~/bundles/homer/css")
 
+
     <!-- Nigmys Styles -->
     @Styles.Render("~/bundles/nigmyscomponents/css")
-
 </head>
-<body class="home">
-    
-    @Html.Partial("_Home_Header")
+<body>
+    <!--Main Header-->
+    @Html.Partial("WebLayouts/PartialLayouts/_Main_Header")
+    <article class="main-background"></article>
 
     <!--Main Body-->
     @RenderBody()
-    
-    @Html.Partial("_Web_Sidebar")
+
+    @Html.Partial("WebLayouts/PartialLayouts/_Web_Sidebar")
 
     <!-- Section for main scripts render -->
     @Scripts.Render("~/bundles/jquery/js")
     @Scripts.Render("~/bundles/bootstrap/js")
     @Scripts.Render("~/bundles/homer/js")
     @Scripts.Render("~/bundles/nigmyscomponents/js")
-
-    <!-- Handler for local scripts -->
-    @RenderSection("scripts", required: false)
 </body>
 </html>

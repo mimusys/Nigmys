@@ -169,6 +169,8 @@
     <Compile Include="Controllers\InvestmentViewController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,14 +211,31 @@
     <Content Include="Content\NigmysComponents\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\navigation.css">
       <DependentUpon>navigation.scss</DependentUpon>
     </Content>
     <Content Include="Content\NigmysComponents\navigation.min.css">
       <DependentUpon>navigation.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\signIn.css">
+      <DependentUpon>signIn.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\signIn.min.css">
+      <DependentUpon>signIn.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
-    <Content Include="Content\SignupComponents\signup.css" />
+    <Content Include="Content\SignupComponents\signup.css">
+      <DependentUpon>signup.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\SignupComponents\signup.min.css">
+      <DependentUpon>signup.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css" />
     <Content Include="Content\NigmysComponents\wizard.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\helper.css" />
@@ -239,6 +258,8 @@
     <Content Include="Images\loading-bars.svg" />
     <Content Include="Images\logo\Nigmys-Logo.png" />
     <Content Include="Images\logo\Nigmys_Logo_Small.png" />
+    <Content Include="Images\main\house.jpg" />
+    <Content Include="Images\main\skyline.jpg" />
     <Content Include="Images\profile.jpg" />
     <Content Include="Scripts\addInvestment.js" />
     <Content Include="Scripts\charts.js" />
@@ -2215,7 +2236,7 @@
     <Content Include="Vendor\numeral-js\package.json" />
     <Content Include="Vendor\numeral-js\README.md" />
     <Content Include="Views\InvestmentView\Index.cshtml" />
-    <Content Include="Views\Shared\_Home.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\HomeLayout\_Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Content\NigmysComponents\navigation.scss" />
     <None Include=".bin\git.cmd" />
@@ -2226,8 +2247,17 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\NigmysComponents\home.scss" />
-    <Content Include="Views\Shared\_Web_Sidebar.cshtml" />
-    <Content Include="Views\Shared\_Home_Header.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Web_Sidebar.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Home_Header.cshtml" />
+    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
+    <Content Include="Content\NigmysComponents\main.scss" />
+    <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
+    <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
+    <Content Include="Content\NigmysComponents\signIn.scss" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Content\SignupComponents\signup.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -2257,7 +2287,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\ApplicationLayouts\MainLayout\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
@@ -2657,10 +2687,10 @@
     <Content Include="Icons\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\ApplicationLayouts\PartialLayouts\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\ApplicationLayouts\PartialLayouts\_Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\CommonViews\Login.cshtml" />
@@ -2697,10 +2727,10 @@
     <Content Include="Vendor\blueimp-gallery\bower.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\ApplicationLayouts\PartialLayouts\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Right_Sidebar.cshtml" />
+    <Content Include="Views\Shared\ApplicationLayouts\PartialLayouts\_Right_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vendor\fooTable\.csslintrc" />
@@ -2711,7 +2741,7 @@
     <Content Include="Vendor\fooTable\css\fonts\footable.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

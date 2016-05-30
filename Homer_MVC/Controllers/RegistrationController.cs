@@ -10,59 +10,48 @@ using System.Web.Mvc.Html;
 
 namespace Nigmys.Controllers
 {
-    public class SignUpController : Controller
-    {
+    public class RegistrationController : Controller {
         private ISqlUserDatabase userSql;
         private ISqlPortfolioDatabase portfolioSql;
 
         [InjectionConstructor]
-        public SignUpController(ISqlUserDatabase userSql, ISqlPortfolioDatabase portfolioSql)
-        {
+        public RegistrationController(ISqlUserDatabase userSql, ISqlPortfolioDatabase portfolioSql) {
             this.userSql = userSql;
             this.portfolioSql = portfolioSql;
         }
 
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
 
         [HttpPost]
-        public JsonResult CheckUsername(String username)
-        {
+        public JsonResult CheckUsername(String username) {
             return Json(!userSql.doesUsernameExist(username));
         }
 
         [HttpPost]
-        public JsonResult CheckEmail(String email)
-        {
+        public JsonResult CheckEmail(String email) {
             return Json(!userSql.doesEmailExist(email));
         }
 
         [HttpPost]
-        public JsonResult NewUser(User user)
-        {
+        public JsonResult NewUser(User user) {
             user.PortfolioID = portfolioSql.createNewPortfolioID();
             int userId = userSql.addNewUser(user);
-            if (userId != -1)
-            {
+            if (userId != -1) {
                 user.UserID = userId.ToString();
                 Session["user"] = user;
                 return Json(true);
-            }
-            else
-            {
+            } else {
                 portfolioSql.deletePortfolioID(user.PortfolioID);
             }
             return Json(false);
         }
 
         [HttpPost]
-        public JsonResult UploadPicture()
-        {
+        public JsonResult UploadPicture() {
             var file = Request.Files[0];
-            if (Session["user"] != null && file != null)
-            {
+            if (Session["user"] != null && file != null) {
                 User user = (User)Session["user"];
                 var filename = user.UserID + Path.GetExtension(file.FileName);
                 string urlPath = "~/Images/Profile/" + filename;
@@ -70,8 +59,7 @@ namespace Nigmys.Controllers
                 Directory.CreateDirectory(Server.MapPath("~/Images/Profile"));
                 var path = Path.Combine(Server.MapPath("~/Images/Profile/"), filename);
                 file.SaveAs(path);
-                if (userSql.setProfileUrl(user.UserID, urlPath))
-                {
+                if (userSql.setProfileUrl(user.UserID, urlPath)) {
                     return Json(true);
                 }
             }
