@@ -8,7 +8,7 @@
 /*Menu Item Variables*/
 /*Transition Variables*/
 /*Hover Variables*/
-body * {
+body .side-bar-content *, header * {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; }
@@ -188,6 +188,15 @@ p.page-title {
       display: none; } }
   .btn.actionButton:hover {
     text-shadow: 0 0 10px #D8F5C6; }
+  .btn.actionButton.inverse {
+    background-color: #000;
+    color: #fff; }
+  .btn.actionButton.sign-up {
+    position: relative;
+    display: inline-block; }
+    @media screen and (max-width: 382px) {
+      .btn.actionButton.sign-up {
+        width: 110px; } }
 
 .home-icon {
   font-size: 2em;

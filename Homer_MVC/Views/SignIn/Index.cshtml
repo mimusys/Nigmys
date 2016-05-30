@@ -1,6 +1,5 @@
 ﻿@{
     ViewBag.Title = "Sign In";
-    ViewBag.PageHeading = "Sign In";
     Layout = "~/Views/Shared/WebLayouts/RegisterLayout/_Register.cshtml";
 }
 
@@ -12,9 +11,11 @@
         <div class="sign-in-form">
             <div id="usernameGroup">
                 <input type="text" placeholder="Your username" class="sign-in-text" />
-                <input type="text" placeholder="Your password" class="sign-in-text" />
-                <a class="btn btn-success btn-block sign-up-button" id="Login_Button">Sign In</a>
             </div>
+            <div id="passwordGroup">
+                <input type="text" placeholder="Your password" class="sign-in-text" />
+            </div>
+            <a class="btn btn-success btn-block sign-up-button" id="Login_Button">Sign In</a>
         </div>
     </div>
 </div>

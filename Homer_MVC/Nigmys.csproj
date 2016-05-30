@@ -170,6 +170,7 @@
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,7 +230,12 @@
       <DependentUpon>signIn.css</DependentUpon>
     </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
-    <Content Include="Content\SignupComponents\signup.css" />
+    <Content Include="Content\SignupComponents\signup.css">
+      <DependentUpon>signup.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\SignupComponents\signup.min.css">
+      <DependentUpon>signup.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css" />
     <Content Include="Content\NigmysComponents\wizard.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\helper.css" />
@@ -2250,6 +2256,8 @@
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
     <Content Include="Content\NigmysComponents\signIn.scss" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Content\SignupComponents\signup.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -2733,7 +2741,7 @@
     <Content Include="Vendor\fooTable\css\fonts\footable.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

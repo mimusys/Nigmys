@@ -1,4 +1,5 @@
-﻿.center-container {
+﻿/*Sign in styling*/
+.center-container {
   margin: 20px auto 0px auto;
   max-width: 400px;
   padding: 10px; }
@@ -7,6 +8,9 @@ h2.pre-header, h1.title-header {
   margin: 0;
   font-weight: 600;
   text-align: center; }
+  @media screen and (min-width: 514px) {
+    h2.pre-header.sign-up-header, h1.title-header.sign-up-header {
+      padding-right: 15px; } }
 
 h2.pre-header {
   color: black; }

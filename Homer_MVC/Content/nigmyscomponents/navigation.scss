@@ -47,7 +47,7 @@ $transition-time: 0.3s;
 /*Hover Variables*/
 $hover-color: #D8F5C6;
 
-body * {
+body .side-bar-content *, header * {
     -webkit-transition: all $transition-time;
     -o-transition: all $transition-time;
     transition: all $transition-time;
@@ -270,6 +270,21 @@ p.page-title {
     &:hover {
         text-shadow: 0 0 10px $hover-color;
     }
+
+    &.inverse {
+        background-color:#000;
+        color: #fff;
+    }
+
+    &.sign-up {
+        position: relative;
+        display:inline-block;
+
+        @media screen and (max-width: 382px) {
+            width: 110px;
+        }
+    }
+
 }
 
 .home-icon {
