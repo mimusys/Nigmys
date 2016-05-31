@@ -18,5 +18,17 @@
   {
     "outputFile": "Content/SignupComponents/signup.css",
     "inputFile": "Content/SignupComponents/signup.scss"
+  },
+  {
+    "outputFile": "Content/NigmysComponents/side-bar.css",
+    "inputFile": "Content/NigmysComponents/side-bar.scss"
+  },
+  {
+    "outputFile": "Content/NigmysComponents/buttons.css",
+    "inputFile": "Content/NigmysComponents/buttons.scss"
+  },
+  {
+    "outputFile": "Content/SignUp/sign-up.css",
+    "inputFile": "Content/SignUp/sign-up.scss"
   }
 ]

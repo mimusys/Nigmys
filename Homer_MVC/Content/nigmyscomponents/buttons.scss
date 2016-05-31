@@ -1,0 +1,53 @@
+﻿@import "../Home/home.scss";
+
+.btn.homeButton {
+    background-color:#212121;
+    border-radius: 0px;
+    border: 0px;
+    color:white;
+    width: 150px;
+    margin-top: 15px;
+    margin-left: 7px;
+    margin-right: 7px;
+
+     @media screen and (max-width: 768px) {
+        width: 125px;
+        font-size: 12px;
+    }
+
+    &:hover {
+        text-shadow: 0 0 10px $hover-color;
+    }
+}
+
+.btn.actionButton {
+    background-color:#fff;
+    border-radius: 0px;
+    border: 0px;
+    color: #000;
+    width: 150px;
+    margin-left: 7px;
+    margin-right: 7px;
+
+     @media screen and (max-width: 992px) {
+        display: none;
+    }
+
+    &:hover {
+        text-shadow: 0 0 10px $hover-color;
+    }
+
+    &.inverse {
+        background-color:#000;
+        color: #fff;
+    }
+
+    &.sign-up {
+        position: relative;
+        display:inline-block;
+
+        @media screen and (max-width: 382px) {
+            width: 110px;
+        }
+    }
+}

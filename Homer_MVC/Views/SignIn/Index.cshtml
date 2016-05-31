@@ -2,7 +2,9 @@
     ViewBag.Title = "Sign In";
     Layout = "~/Views/Shared/WebLayouts/RegisterLayout/_Register.cshtml";
 }
-
+@section Styles {
+    @Styles.Render("~/bundles/signin/css")
+}
 <div class="container render-body">
     <div class="center-container">
         <h2 class="pre-header">Sign In to your</h2>
