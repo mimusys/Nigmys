@@ -195,15 +195,37 @@ namespace Nigmys
                 "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/navigation.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/NigmysComponents/home.css").Include(
-                "~/Content/NigmysComponents/main.css").Include(
-                "~/Content/NigmysComponents/signIn.css"));
+                "~/Content/NigmysComponents/side-bar.css", new CssRewriteUrlTransform()).Include(
+                "~/Content/NigmysComponents/signIn.css", new CssRewriteUrlTransform()));
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
                 "~/Scripts/nigmyscomponents/wizard.js").Include(
                 "~/Scripts/nigmyscomponents/upload.js").Include(
                 "~/Scripts/nigmyscomponents/navigation.js"));
+
+            /*Individual Styles*/
+
+            //Side-Bar Style
+            bundles.Add(new StyleBundle("~/bundles/side-bar/css").Include(
+                "~/Content/NigmysComponents/side-bar.css"));
+
+            //Navigation Style
+            bundles.Add(new StyleBundle("~/bundles/navigation/css").Include(
+                "~/Content/NigmysComponents/navigation.css"));
+            #endregion
+
+            
+            #region Home Layout
+            //Home Styles
+            bundles.Add(new StyleBundle("~/bundles/home/css").Include(
+                "~/Content/home/home.css", new CssRewriteUrlTransform()));
+            #endregion
+
+            #region Main Layout
+            //Main Styles
+            bundles.Add(new StyleBundle("~/bundle/main/css").Include(
+                "~/Content/main/main.css"));
             #endregion
 
             #region Signup Components
@@ -211,6 +233,7 @@ namespace Nigmys
             bundles.Add(new StyleBundle("~/bundles/signupcomponents/css").Include(
                 "~/Content/SignupComponents/signup.css", new CssRewriteUrlTransform()));
             #endregion
+
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));

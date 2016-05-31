@@ -18,5 +18,9 @@
   {
     "outputFile": "Content/SignupComponents/signup.css",
     "inputFile": "Content/SignupComponents/signup.scss"
+  },
+  {
+    "outputFile": "Content/NigmysComponents/side-bar.css",
+    "inputFile": "Content/NigmysComponents/side-bar.scss"
   }
 ]

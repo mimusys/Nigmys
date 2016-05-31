@@ -205,16 +205,16 @@
     <Content Include="Content\investmentview.css" />
     <Content Include="Content\landingStyle.css" />
     <Content Include="Content\loginCustom.css" />
-    <Content Include="Content\NigmysComponents\home.css">
+    <Content Include="Content\Home\home.css">
       <DependentUpon>home.scss</DependentUpon>
     </Content>
-    <Content Include="Content\NigmysComponents\home.min.css">
+    <Content Include="Content\Home\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
-    <Content Include="Content\NigmysComponents\main.css">
+    <Content Include="Content\Main\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
-    <Content Include="Content\NigmysComponents\main.min.css">
+    <Content Include="Content\Main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="Content\NigmysComponents\navigation.css">
@@ -222,6 +222,12 @@
     </Content>
     <Content Include="Content\NigmysComponents\navigation.min.css">
       <DependentUpon>navigation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\side-bar.css">
+      <DependentUpon>side-bar.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\side-bar.min.css">
+      <DependentUpon>side-bar.css</DependentUpon>
     </Content>
     <Content Include="Content\NigmysComponents\signIn.css">
       <DependentUpon>signIn.scss</DependentUpon>
@@ -2246,18 +2252,19 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Content\NigmysComponents\home.scss" />
+    <Content Include="Content\Home\home.scss" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Web_Sidebar.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Home_Header.cshtml" />
     <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
-    <Content Include="Content\NigmysComponents\main.scss" />
+    <Content Include="Content\Main\main.scss" />
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
     <Content Include="Content\NigmysComponents\signIn.scss" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Content\SignupComponents\signup.scss" />
+    <Content Include="Content\NigmysComponents\side-bar.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
