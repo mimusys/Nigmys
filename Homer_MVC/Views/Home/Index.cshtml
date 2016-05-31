@@ -2,8 +2,11 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/WebLayouts/HomeLayout/_Home.cshtml";
 }
+@section Styles {
+    @Styles.Render("~/bundles/home/css")
+    @Styles.Render("~/bundles/button/css")
+}
 
-@Styles.Render("~/bundles/home/css")
 <div class="container render-body" data-page="Home">
     <section class="content">
         <h1 class="homeMainHeader">TITAN ANALYZER</h1>

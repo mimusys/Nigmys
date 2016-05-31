@@ -192,30 +192,45 @@ namespace Nigmys
             #region Nigmys Components
             //Nigmys Styles
             bundles.Add(new StyleBundle("~/bundles/nigmyscomponents/css").Include(
+                "~/Content/NigmysComponents/button.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/upload.css", new CssRewriteUrlTransform()).Include(
                 "~/Content/NigmysComponents/navigation.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/NigmysComponents/side-bar.css", new CssRewriteUrlTransform()).Include(
-                "~/Content/NigmysComponents/signIn.css", new CssRewriteUrlTransform()));
+                "~/Content/NigmysComponents/side-bar.css", new CssRewriteUrlTransform()));
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
                 "~/Scripts/nigmyscomponents/wizard.js").Include(
                 "~/Scripts/nigmyscomponents/upload.js").Include(
-                "~/Scripts/nigmyscomponents/navigation.js"));
+                "~/Scripts/nigmyscomponents/side-bar.js"));
 
             /*Individual Styles*/
 
             //Side-Bar Style
             bundles.Add(new StyleBundle("~/bundles/side-bar/css").Include(
-                "~/Content/NigmysComponents/side-bar.css"));
+                "~/Content/NigmysComponents/side-bar.css", new CssRewriteUrlTransform()));
 
             //Navigation Style
             bundles.Add(new StyleBundle("~/bundles/navigation/css").Include(
-                "~/Content/NigmysComponents/navigation.css"));
+                "~/Content/NigmysComponents/navigation.css", new CssRewriteUrlTransform()));
+
+            //Button Style
+            bundles.Add(new StyleBundle("~/bundles/buttons/css").Include(
+                "~/Content/NigmysComponents/buttons.css", new CssRewriteUrlTransform()));
+
+            //Wizard Style
+            bundles.Add(new StyleBundle("~/bundles/wizard/css").Include(
+                "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()));
+
+            /*Individual Scripts*/
+
+            //Side-Bar Scripts
+            bundles.Add(new StyleBundle("~/bundles/side-bar/js").Include(
+                "~/Scripts/nigmyscomponents/side-bar.js"));
             #endregion
 
-            
+
+
             #region Home Layout
             //Home Styles
             bundles.Add(new StyleBundle("~/bundles/home/css").Include(
@@ -228,10 +243,16 @@ namespace Nigmys
                 "~/Content/main/main.css"));
             #endregion
 
-            #region Signup Components
+            #region Sign Up Components
             //Sign up
-            bundles.Add(new StyleBundle("~/bundles/signupcomponents/css").Include(
-                "~/Content/SignupComponents/signup.css", new CssRewriteUrlTransform()));
+            bundles.Add(new StyleBundle("~/bundles/signup/css").Include(
+                "~/Content/SignUp/sign-up.css", new CssRewriteUrlTransform()));
+            #endregion
+
+            #region Sign In Components
+            //Sign In
+            bundles.Add(new StyleBundle("~/bundles/signin/css").Include(
+                "~/Content/SignIn/signIn.css"));
             #endregion
 
             //Landing-Page Custom

@@ -217,6 +217,12 @@
     <Content Include="Content\Main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="Content\NigmysComponents\buttons.css">
+      <DependentUpon>buttons.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\NigmysComponents\buttons.min.css">
+      <DependentUpon>buttons.css</DependentUpon>
+    </Content>
     <Content Include="Content\NigmysComponents\navigation.css">
       <DependentUpon>navigation.scss</DependentUpon>
     </Content>
@@ -229,18 +235,18 @@
     <Content Include="Content\NigmysComponents\side-bar.min.css">
       <DependentUpon>side-bar.css</DependentUpon>
     </Content>
-    <Content Include="Content\NigmysComponents\signIn.css">
+    <Content Include="Content\SignIn\signIn.css">
       <DependentUpon>signIn.scss</DependentUpon>
     </Content>
-    <Content Include="Content\NigmysComponents\signIn.min.css">
+    <Content Include="Content\SignIn\signIn.min.css">
       <DependentUpon>signIn.css</DependentUpon>
     </Content>
     <Content Include="Content\NigmysComponents\upload.css" />
-    <Content Include="Content\SignupComponents\signup.css">
-      <DependentUpon>signup.scss</DependentUpon>
+    <Content Include="Content\SignUp\sign-up.css">
+      <DependentUpon>sign-up.scss</DependentUpon>
     </Content>
-    <Content Include="Content\SignupComponents\signup.min.css">
-      <DependentUpon>signup.css</DependentUpon>
+    <Content Include="Content\SignUp\sign-up.min.css">
+      <DependentUpon>sign-up.css</DependentUpon>
     </Content>
     <Content Include="Content\style.css" />
     <Content Include="Content\NigmysComponents\wizard.css" />
@@ -272,7 +278,7 @@
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
     <Content Include="Scripts\login.js" />
-    <Content Include="Scripts\nigmyscomponents\navigation.js" />
+    <Content Include="Scripts\nigmyscomponents\side-bar.js" />
     <Content Include="Scripts\nigmyscomponents\upload.js" />
     <Content Include="Scripts\sha256.js" />
     <Content Include="Scripts\signup.js" />
@@ -2261,10 +2267,11 @@
     <Content Include="Content\Main\main.scss" />
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
-    <Content Include="Content\NigmysComponents\signIn.scss" />
+    <Content Include="Content\SignIn\signIn.scss" />
     <Content Include="Views\SignUp\Index.cshtml" />
-    <Content Include="Content\SignupComponents\signup.scss" />
+    <Content Include="Content\SignUp\sign-up.scss" />
     <Content Include="Content\NigmysComponents\side-bar.scss" />
+    <Content Include="Content\NigmysComponents\buttons.scss" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

@@ -3,8 +3,13 @@
     Layout = "~/Views/Shared/WebLayouts/RegisterLayout/_Register.cshtml";
 }
 
-@Styles.Render("~/bundles/signupcomponents/css")
+@section Styles {
+@Styles.Render("~/bundles/signup/css")
 @Styles.Render("~/bundles/sweetAlert/css")
+@Styles.Render("~/bundles/signin/css")
+@Styles.Render("~/bundles/wizard/css")
+@Styles.Render("~/bundles/buttons/css")
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/validation/js")
