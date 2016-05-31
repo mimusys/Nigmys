@@ -225,8 +225,12 @@ namespace Nigmys
             /*Individual Scripts*/
 
             //Side-Bar Scripts
-            bundles.Add(new StyleBundle("~/bundles/side-bar/js").Include(
+            bundles.Add(new ScriptBundle("~/bundles/side-bar/js").Include(
                 "~/Scripts/nigmyscomponents/side-bar.js"));
+
+            //Wizard Scripts
+            bundles.Add(new ScriptBundle("~/bundles/wizard/js").Include(
+                "~/Scripts/nigmyscomponents/wizard.js"));
             #endregion
 
 
