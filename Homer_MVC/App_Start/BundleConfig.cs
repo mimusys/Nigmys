@@ -222,6 +222,10 @@ namespace Nigmys
             bundles.Add(new StyleBundle("~/bundles/wizard/css").Include(
                 "~/Content/NigmysComponents/wizard.css", new CssRewriteUrlTransform()));
 
+            //Upload Style
+            bundles.Add(new StyleBundle("~/bundles/upload/css").Include(
+                "~/Content/NigmysComponents/upload.css"));
+
             /*Individual Scripts*/
 
             //Side-Bar Scripts
@@ -231,6 +235,10 @@ namespace Nigmys
             //Wizard Scripts
             bundles.Add(new ScriptBundle("~/bundles/wizard/js").Include(
                 "~/Scripts/nigmyscomponents/wizard.js"));
+
+            //Upload Scripts
+            bundles.Add(new ScriptBundle("~/bundles/upload/js").Include(
+                "~/Scripts/nigmyscomponents/upload.js"));
             #endregion
 
 

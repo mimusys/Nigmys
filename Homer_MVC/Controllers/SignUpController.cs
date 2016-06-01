@@ -64,7 +64,8 @@ namespace Nigmys.Controllers
             if (Session["user"] != null && file != null)
             {
                 User user = (User)Session["user"];
-                var filename = user.UserID + Path.GetExtension(file.FileName);
+                String identifier = Guid.NewGuid().ToString();
+                var filename = identifier + Path.GetExtension(file.FileName);
                 string urlPath = "~/Images/Profile/" + filename;
                 user.PictureURL = urlPath;
                 Directory.CreateDirectory(Server.MapPath("~/Images/Profile"));
@@ -73,6 +74,10 @@ namespace Nigmys.Controllers
                 if (userSql.setProfileUrl(user.UserID, urlPath))
                 {
                     return Json(true);
+                }
+                else
+                {
+                    return Json(false);
                 }
             }
             return Json(false);
