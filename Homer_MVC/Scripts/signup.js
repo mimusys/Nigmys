@@ -186,6 +186,7 @@ function doFullValidation() {
                     dataType: 'json',
                     contentType: false,
                     processData: false,
+                    async: false,
                     success: function (data) {
                         if (data == true) {
                             successPhoto = true;
