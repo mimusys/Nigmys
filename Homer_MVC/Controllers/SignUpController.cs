@@ -74,6 +74,10 @@ namespace Nigmys.Controllers
                 {
                     return Json(true);
                 }
+                else
+                {
+                    return Json(false);
+                }
             }
             return Json(false);
         }
