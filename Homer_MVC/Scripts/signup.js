@@ -204,21 +204,41 @@ function doFullValidation() {
                     swal({
                         title: "Thank you!",
                         text: "Your account has been successfuly created!",
-                        type: "success"
+                        type: "success",
+                        showCancelButton: true,
+                        cancelButtonColor: '#3085D6',
+                        cancelButtonText: 'Return Home',
+                        confirmButtonColor: '#62cb31',
+                        confirmButtonText: 'Go to Titan'
                     },
                     function (isConfirm) {
-                        $("body").removeClass('stop-scrolling');
-                        window.location.href = "/Dashboard/Index";
+                        if (isConfirm) {
+                            $("body").removeClass('stop-scrolling');
+                            window.location.href = "/Dashboard/Index";
+                        } else {
+                            $("body").removeClass('stop-scrolling');
+                            window.location.href = "/";
+                        }
                     });
                 } else {
                     swal({
                         title: "Thank you!",
                         text: "Your account has been successfuly created (You can upload a profile picture later)",
-                        type: "success"
+                        type: "success",
+                        showCancelButton: true,
+                        cancelButtonColor: '#3085D6',
+                        cancelButtonText: 'Return Home',
+                        confirmButtonColor: '#62cb31',
+                        confirmButtonText: 'Go to Titan'
                     },
                     function (isConfirm) {
-                        $("body").removeClass('stop-scrolling');
-                        window.location.href = "/Dashboard/Index";
+                        if (isConfirm) {
+                            $("body").removeClass('stop-scrolling');
+                            window.location.href = "/Dashboard/Index";
+                        } else {
+                            $("body").removeClass('stop-scrolling');
+                            window.location.href = "/";
+                        }
                     });
                 }
             } else {
