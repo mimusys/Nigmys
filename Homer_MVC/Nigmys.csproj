@@ -2269,14 +2269,14 @@
     <Content Include="Content\Home\home.scss" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Web_Sidebar.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Home_Header.cshtml" />
-    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\Registration\SignIn.cshtml" />
     <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
     <Content Include="Content\Main\main.scss" />
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
     <Content Include="Content\SignIn\signIn.scss" />
-    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Registration\SignUp.cshtml" />
     <Content Include="Content\SignUp\sign-up.scss" />
     <Content Include="Content\NigmysComponents\side-bar.scss" />
     <Content Include="Content\NigmysComponents\buttons.scss" />
@@ -2761,9 +2761,6 @@
     <Content Include="Vendor\fooTable\css\fonts\footable.eot" />
     <Content Include="Vendor\fooTable\css\fonts\footable.ttf" />
     <Content Include="Vendor\fooTable\css\fonts\footable.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
