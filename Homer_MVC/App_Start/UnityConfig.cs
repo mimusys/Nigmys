@@ -59,11 +59,6 @@ namespace Nigmys.App_Start
                 new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
                 ));
 
-            container.RegisterType<IController, RegistrationController>(new InjectionConstructor(
-                new ResolvedParameter<SqlUserDatabase>("UserDB"),
-                new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
-                ));
-
             container.RegisterType<IController, InvestmentsController>(new InjectionConstructor(
                 new ResolvedParameter<SqlInvestmentInformationDatabase>("InvestmentInformationDB"),
                 new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")

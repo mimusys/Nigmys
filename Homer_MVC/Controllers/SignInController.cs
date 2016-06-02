@@ -8,8 +8,6 @@ namespace Nigmys.Controllers
 {
     public class SignInController : Controller
     {
-        //
-        // GET: /SignIn/
 
         public ActionResult Index()
         {
