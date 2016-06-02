@@ -18,5 +18,15 @@ namespace Nigmys.Models {
         public string CompanyName { get; set; }
         public string PictureURL { get; set; }
         public int PortfolioID { get; set; }
+        public status status { get; set; }
     }
+
+    public enum status
+    {
+        freeTrial,
+        premium,
+        pending,
+        inactive,
+        administrator
+    };
 }

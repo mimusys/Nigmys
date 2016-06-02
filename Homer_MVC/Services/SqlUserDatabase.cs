@@ -122,8 +122,8 @@ namespace Nigmys.Services {
 
                     int passwordID = Convert.ToInt32(passwordIdRet);
                     // construct our insert statement
-                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID) VALUES ";
-                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID); select LAST_INSERT_ID();";
+                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
+                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";
                     cmd.CommandText = query;
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@username", user.Username);
@@ -136,6 +136,7 @@ namespace Nigmys.Services {
                     cmd.Parameters.AddWithValue("@birthday", user.Birthday);
                     cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
                     cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
+                    cmd.Parameters.AddWithValue("@status", status.freeTrial);
                     //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
                     // ExecuteScalar should return the id of the user added, null otherwise
@@ -194,6 +195,41 @@ namespace Nigmys.Services {
                 return num != 0; // if 0 email does not exist
             }
             return true;
+        }
+
+        public String createTrialAccount(String customerId)
+        {
+            if(Open())
+            {
+                MySqlCommand cmd = new MySqlCommand("insert into trialaccounts(customerID, date) VALUES (@customerID, @date);" + 
+                    "select LAST_INSERT_ID();", conn);
+
+                String today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@customerID", customerId);
+                cmd.Parameters.AddWithValue("@date", today);
+                cmd.ExecuteScalar();
+
+                return today;    
+            }
+
+            return null;
+        }
+
+        public bool deleteTrialAccount(String customerId)
+        {
+            bool success = false;
+            if (Open())
+            {
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM trialaccounts WHERE customerID = @customerID", conn);
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@customerID", customerId);
+
+                success = (cmd.ExecuteNonQuery() == 1);
+                Close();
+            }
+            return success;
         }
     }
 }
