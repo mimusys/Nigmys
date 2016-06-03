@@ -34,8 +34,11 @@ namespace Nigmys.App_Start
             RegisterPortfolioDoa(container, portfolioConnString);
             RegisterInvestInformationDoa(container, investmentInformationConnString);
 
+            /*Register Objects*/
+            RegisterRandom(container);
+
             /*Controller Registrations*/
-            RegisterLoginController(container);
+            RegisterSignInController(container);
             RegisterSignUpController(container);
             RegisterInvestmentController(container);
             
@@ -123,13 +126,24 @@ namespace Nigmys.App_Start
         }
 
         /// <summary>
-        /// Register the login controller with the proper objects
+        /// Register the random object for injection into the controller
+        /// </summary>
+        /// <param name="container"></param>
+        private static void RegisterRandom(IUnityContainer container)
+        {
+            container.RegisterType<Random>("Random", new InjectionConstructor());
+        }
+
+        /// <summary>
+        /// Register the Sign In controller with the proper objects
         /// </summary>
         /// <param name="container">Container object used to resolve dependencies</param>
-        private static void RegisterLoginController(IUnityContainer container)
+        private static void RegisterSignInController(IUnityContainer container)
         {
-            container.RegisterType<IController, LoginController>(new InjectionConstructor(
-                new ResolvedParameter<SqlUserDatabase>("UserDB")));
+            container.RegisterType<IController, SignInController>(new InjectionConstructor(
+                new ResolvedParameter<SqlUserDatabase>("UserDB"), 
+                new ResolvedParameter<Random>("Random")
+                ));
         }
 
         /// <summary>
@@ -155,5 +169,8 @@ namespace Nigmys.App_Start
                 new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
                 ));
         }
+
+
+        
     }
 }
