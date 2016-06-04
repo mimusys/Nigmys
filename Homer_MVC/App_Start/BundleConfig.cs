@@ -200,9 +200,9 @@ namespace Nigmys
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
-                "~/Scripts/nigmyscomponents/wizard.js").Include(
-                "~/Scripts/nigmyscomponents/upload.js").Include(
-                "~/Scripts/nigmyscomponents/side-bar.js"));
+                "~/Scripts/NigmysComponents/wizard.js").Include(
+                "~/Scripts/NigmysComponents/upload.js").Include(
+                "~/Scripts/NigmysComponents/side-bar.js"));
 
             /*Individual Styles*/
 
