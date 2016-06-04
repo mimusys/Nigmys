@@ -200,9 +200,9 @@ namespace Nigmys
 
             //Nigmys Scripts
             bundles.Add(new ScriptBundle("~/bundles/nigmyscomponents/js").Include(
-                "~/Scripts/nigmyscomponents/wizard.js").Include(
-                "~/Scripts/nigmyscomponents/upload.js").Include(
-                "~/Scripts/nigmyscomponents/side-bar.js"));
+                "~/Scripts/NigmysComponents/wizard.js").Include(
+                "~/Scripts/NigmysComponents/upload.js").Include(
+                "~/Scripts/NigmysComponents/side-bar.js"));
 
             /*Individual Styles*/
 
@@ -241,8 +241,6 @@ namespace Nigmys
                 "~/Scripts/nigmyscomponents/upload.js"));
             #endregion
 
-
-
             #region Home Layout
             //Home Styles
             bundles.Add(new StyleBundle("~/bundles/home/css").Include(
@@ -259,33 +257,38 @@ namespace Nigmys
             //Sign up
             bundles.Add(new StyleBundle("~/bundles/signup/css").Include(
                 "~/Content/SignUp/sign-up.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new ScriptBundle("~/bundles/signup/js").Include(
+                "~/Scripts/SignUp/signup.js").Include(
+                "~/Scripts/Sha256/sha256.js"));
             #endregion
 
             #region Sign In Components
             //Sign In
             bundles.Add(new StyleBundle("~/bundles/signin/css").Include(
                 "~/Content/SignIn/signIn.css"));
+
+            
+            bundles.Add(new ScriptBundle("~/bundles/signin/js").Include(
+                "~/Scripts/SignIn/signin.js").Include(
+                "~/Scripts/Sha256/sha256.js"));
+            #endregion
+
+            #region SHA256 Hash
+
+            //SHA256 Hash Script
+            bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(
+                "~/Scripts/Sha256/sha256.js"));
+
             #endregion
 
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
 
-            //Login Custom Script
-            bundles.Add(new ScriptBundle("~/bundles/login-page/js").Include(
-                "~/Scripts/login.js"));
-
-            //SHA256 Hash Script
-            bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(
-                "~/Scripts/sha256.js"));
-
             //Login Custom Style
             bundles.Add(new StyleBundle("~/bundles/login-page/css").Include(
                 "~/Content/loginCustom.css", new CssRewriteUrlTransform()));
-
-            //Sign Up Script
-            bundles.Add(new ScriptBundle("~/bundles/sign-up/js").Include(
-                "~/Scripts/signup.js"));
 
             //Add New Investment Script
             bundles.Add(new ScriptBundle("~/bundles/add-new-investment/js").Include(
