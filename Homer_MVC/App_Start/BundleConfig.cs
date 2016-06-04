@@ -265,15 +265,16 @@ namespace Nigmys
             //Sign In
             bundles.Add(new StyleBundle("~/bundles/signin/css").Include(
                 "~/Content/SignIn/signIn.css"));
+
+            
+            bundles.Add(new ScriptBundle("~/bundles/signin/js").Include(
+                "~/Scripts/SignIn/sign-in.js").Include(
+                "~/Scripts/sha256.js"));
             #endregion
 
             //Landing-Page Custom
             bundles.Add(new StyleBundle("~/bundles/landing-page/css").Include(
                 "~/Content/landingStyle.css", new CssRewriteUrlTransform()));
-
-            //Login Custom Script
-            bundles.Add(new ScriptBundle("~/bundles/login-page/js").Include(
-                "~/Scripts/login.js"));
 
             //SHA256 Hash Script
             bundles.Add(new ScriptBundle("~/bundles/sha256/js").Include(

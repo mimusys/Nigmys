@@ -11,7 +11,7 @@ $("#Login_Button").click( function() {
     // get login metadata; i.e. salt and nonce
     $.ajax({
         type: 'POST',
-        url: '/Login/GetLoginMetadata',
+        url: '/SignIn/GetLoginMetadata',
         datatype: 'json',
         cache: false,
         async: false,
@@ -46,7 +46,7 @@ $("#Login_Button").click( function() {
 
         $.ajax({
             type: 'POST',
-            url: '/Login/VerifyLogin',
+            url: '/SignIn/VerifyLogin',
             datatype: 'json',
             cache: false,
             async: false,
