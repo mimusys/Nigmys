@@ -277,11 +277,11 @@
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
-    <Content Include="Scripts\SignIn\sign-in.js" />
+    <Content Include="Scripts\SignIn\signin.js" />
     <Content Include="Scripts\nigmyscomponents\side-bar.js" />
     <Content Include="Scripts\nigmyscomponents\upload.js" />
-    <Content Include="Scripts\sha256.js" />
-    <Content Include="Scripts\signup.js" />
+    <Content Include="Scripts\Sha256\sha256.js" />
+    <Content Include="Scripts\SignUp\signup.js" />
     <Content Include="Scripts\nigmyscomponents\wizard.js" />
     <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
