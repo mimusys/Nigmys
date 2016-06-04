@@ -32,9 +32,9 @@ $("#Login_Button").click( function() {
     // password info not found in database
     if (salt == "") {
         $("#loginError").removeClass("hidden-error");
-        $("#usernameGroup").addClass("has-error");
-        $("#passwordGroup").addClass("has-error");
-        e.preventDefault();
+        $("#username").addClass("has-error");
+        $("#password").addClass("has-error");
+        //e.preventDefault();
     } else {
         // hash given password with salt then
         // do hash again with nonce and send

@@ -51,8 +51,16 @@ h5.subline {
   filter: drop-shadow(1px 15px 35px rgba(0, 0, 0, 0.5)); }
   .sign-in-text:focus {
     outline-color: #62cb31; }
+  .sign-in-text.has-error {
+    border: 1px solid #d62c1a; }
 
 a.btn-success.sign-up-button {
   margin-top: 30px;
   border-radius: 0px; }
+
+.hidden-error {
+  display: none; }
+
+.error {
+  color: #d62c1a; }
 
