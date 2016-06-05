@@ -11,7 +11,7 @@ $("#Login_Button").click( function() {
     // get login metadata; i.e. salt and nonce
     $.ajax({
         type: 'POST',
-        url: '/Login/GetLoginMetadata',
+        url: '/SignIn/GetLoginMetadata',
         datatype: 'json',
         cache: false,
         async: false,
@@ -32,9 +32,9 @@ $("#Login_Button").click( function() {
     // password info not found in database
     if (salt == "") {
         $("#loginError").removeClass("hidden-error");
-        $("#usernameGroup").addClass("has-error");
-        $("#passwordGroup").addClass("has-error");
-        e.preventDefault();
+        $("#username").addClass("has-error");
+        $("#password").addClass("has-error");
+        //e.preventDefault();
     } else {
         // hash given password with salt then
         // do hash again with nonce and send
@@ -46,7 +46,7 @@ $("#Login_Button").click( function() {
 
         $.ajax({
             type: 'POST',
-            url: '/Login/VerifyLogin',
+            url: '/SignIn/VerifyLogin',
             datatype: 'json',
             cache: false,
             async: false,

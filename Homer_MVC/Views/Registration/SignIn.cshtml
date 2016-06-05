@@ -2,8 +2,13 @@
     ViewBag.Title = "Sign In";
     Layout = "~/Views/Shared/WebLayouts/RegisterLayout/_Register.cshtml";
 }
+
 @section Styles {
     @Styles.Render("~/bundles/signin/css")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/signin/js")
 }
 <div class="container render-body">
     <div class="center-container">
@@ -12,12 +17,17 @@
         <h5 class="subline">Or sign up for a <a href="#" class="sign-up-link">30-Day Free Trial</a> now!</h5>
         <div class="sign-in-form">
             <div id="usernameGroup">
-                <input type="text" placeholder="Your username" class="sign-in-text" />
+                <input type="text" id="username" placeholder="Your username" class="sign-in-text" />
             </div>
             <div id="passwordGroup">
-                <input type="text" placeholder="Your password" class="sign-in-text" />
+                <input type="password" id="password" placeholder="Your password" class="sign-in-text" />
+                <span class="help-block small error hidden-error" id="loginError">Password and username do not match</span>
             </div>
             <a class="btn btn-success btn-block sign-up-button" id="Login_Button">Sign In</a>
         </div>
     </div>
 </div>
+
+<!-- Section for main scripts render -->
+<script src="/Vendor/jquery/dist/jquery.min.js"></script>
+<script src="/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>

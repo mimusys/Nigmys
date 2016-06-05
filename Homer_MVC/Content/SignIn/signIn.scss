@@ -68,9 +68,22 @@ h5.subline {
     &:focus {
         outline-color: #62cb31;
     }
+
+    &.has-error {
+       border: 1px solid #d62c1a;
+
+    }
 }
 
 a.btn-success.sign-up-button {
     margin-top: 30px;
     border-radius: 0px;
+}
+
+.hidden-error {
+    display: none;
+}
+
+.error {
+    color: #d62c1a;
 }

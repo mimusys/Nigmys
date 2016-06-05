@@ -167,6 +167,7 @@
   <ItemGroup>
     <Compile Include="ActionFilters\LoggedInFilter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\StripeConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Configurations\SQLConfig.cs" />
     <Compile Include="Controllers\CommonViewsController.cs" />
@@ -285,12 +286,12 @@
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\homer.js" />
     <Content Include="Scripts\investmentList.js" />
-    <Content Include="Scripts\login.js" />
-    <Content Include="Scripts\nigmyscomponents\side-bar.js" />
-    <Content Include="Scripts\nigmyscomponents\upload.js" />
-    <Content Include="Scripts\sha256.js" />
-    <Content Include="Scripts\signup.js" />
-    <Content Include="Scripts\nigmyscomponents\wizard.js" />
+    <Content Include="Scripts\SignIn\signin.js" />
+    <Content Include="Scripts\NigmysComponents\side-bar.js" />
+    <Content Include="Scripts\NigmysComponents\upload.js" />
+    <Content Include="Scripts\Sha256\sha256.js" />
+    <Content Include="Scripts\SignUp\signup.js" />
+    <Content Include="Scripts\NigmysComponents\wizard.js" />
     <Content Include="SQL_Files\users.sql" />
     <Content Include="Vendor\animate.css\animate.css" />
     <Content Include="Vendor\animate.css\animate.min.css" />
@@ -2269,14 +2270,14 @@
     <Content Include="Content\Home\home.scss" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Web_Sidebar.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Home_Header.cshtml" />
-    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\Registration\SignIn.cshtml" />
     <Content Include="Views\Shared\WebLayouts\MainLayout\_Main.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Main_Header.cshtml" />
     <Content Include="Content\Main\main.scss" />
     <Content Include="Views\Shared\WebLayouts\RegisterLayout\_Register.cshtml" />
     <Content Include="Views\Shared\WebLayouts\PartialLayouts\_Register_Header.cshtml" />
     <Content Include="Content\SignIn\signIn.scss" />
-    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Registration\SignUp.cshtml" />
     <Content Include="Content\SignUp\sign-up.scss" />
     <Content Include="Content\NigmysComponents\side-bar.scss" />
     <Content Include="Content\NigmysComponents\buttons.scss" />
@@ -2761,9 +2762,6 @@
     <Content Include="Vendor\fooTable\css\fonts\footable.eot" />
     <Content Include="Vendor\fooTable\css\fonts\footable.ttf" />
     <Content Include="Vendor\fooTable\css\fonts\footable.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
