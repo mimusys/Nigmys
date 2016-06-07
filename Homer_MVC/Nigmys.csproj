@@ -200,6 +200,7 @@
     <Compile Include="Services\SqlInvestmentInformationDatabase\SqlInvestmentInformationDatabase.cs" />
     <Compile Include="Services\SqlPortfolioDatabaseService\SqlPortfolioDatabase.cs" />
     <Compile Include="Services\SqlUserDatabaseService\SqlUserDatabase.cs" />
+    <Compile Include="Services\StripeService\IStripeService.cs" />
     <Compile Include="Support\NigmysDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
