@@ -49,8 +49,22 @@ namespace Nigmys.Services.StripeService
         /// <summary>
         /// Cancel a subscription within stripe
         /// </summary>
+        /// <param name="customerId">The customer who holds the subscription</param>
         /// <param name="subscriptionId"> the subscription id being canceled</param>
         /// <returns>the canceled subscription id</returns>
-        String CancelSubscription(String subscriptionId);
+        String CancelSubscription(String customerId, String subscriptionId);
+
+        /// <summary>
+        /// Charge the customer a pro-rated amount (or full amount if chargeDay == subscription
+        /// </summary>
+        /// <param name="customerId">The customer who is being charged</param>
+        /// <param name="cMonth">The month which the charge is occuring</param>
+        /// <param name="cDay">The day which the customer is being charged (1 - 31)</param>
+        /// <param name="cYear">The year which the charge is made</param>
+        /// <param name="subscriptionDay">The day which the subscription starts for the customer</param>
+        /// <param name="price">The full charge to the customer</param>
+        /// <returns>The id of the customer who was charged</returns>
+        String ChargeCustomer(String customerId, int cMonth, int cDay, int cYear, int subscriptionDay, int price);
+
     }
 }
