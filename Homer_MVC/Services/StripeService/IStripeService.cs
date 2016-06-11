@@ -44,7 +44,7 @@ namespace Nigmys.Services.StripeService
         /// <param name="subscriptionId">the unique subscription id which is being changed</param>
         /// <param name="planId">the new plan id which is being associated with the subscription</param>
         /// <returns>the subscription id which was updated</returns>
-        String UpdateSubscription(String subscriptionId, String planId);
+        String UpdateSubscription(String customerId, String subscriptionId, String planId);
 
         /// <summary>
         /// Cancel a subscription within stripe

@@ -10,11 +10,13 @@ namespace Nigmys.Services.StripeService
     {
         StripeSubscriptionService subService;
         StripeChargeService charService;
+        StripeCustomerService cusService;
 
-        public StripeService(StripeSubscriptionService subService, StripeChargeService charService)
+        public StripeService(StripeSubscriptionService subService, StripeChargeService charService, StripeCustomerService cusService)
         {
             this.subService = subService;
             this.charService = charService;
+            this.cusService = cusService;
         }
 
         public string CancelSubscription(string customerId, string subscriptionId)
@@ -23,14 +25,16 @@ namespace Nigmys.Services.StripeService
             {
                 subService.Cancel(customerId, subscriptionId);
                 return subscriptionId;
-            } catch (StripeException ex)
-            {
-                StripeError err = ex.StripeError;
-                return err.Error;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
             }
         }
 
@@ -56,35 +60,106 @@ namespace Nigmys.Services.StripeService
                 StripeCharge charge = charService.Create(chargeOptions);
                 return charge.Id;
             }
-            catch (StripeException ex)
-            {
-                StripeError err = ex.StripeError;
-                return err.Error;
-            }
             catch (Exception ex)
             {
-                return ex.Message;
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
             }
         }
 
         public string CreateCustomer(string email, string firstName, string lastName)
         {
-            throw new NotImplementedException();
+            string description = firstName + " " + lastName + " (" + email + ")";
+            try
+            {
+                var customerOptions = new StripeCustomerCreateOptions();
+                customerOptions.Email = email;
+                customerOptions.Description = description;
+
+                StripeCustomer customer = cusService.Create(customerOptions);
+                return customer.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException) ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
+            }
+          
         }
 
         public string SubscribeCustomer(string customerId, string planId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                StripeSubscription subscription = subService.Create(customerId, planId);
+                return subscription.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
+            }
         }
 
         public string UpdateCustomer(string customerId, string email, string firstName, string lastName)
         {
-            throw new NotImplementedException();
+            string description = firstName + " " + lastName + " (" + email + ")";
+            try
+            {
+                var customerUpdate = new StripeCustomerUpdateOptions();
+                customerUpdate.Email = email;
+                customerUpdate.Description = description;
+
+                StripeCustomer customer = cusService.Update(customerId, customerUpdate);
+                return customer.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
+            }
         }
 
-        public string UpdateSubscription(string subscriptionId, string planId)
+        public string UpdateSubscription(string customerId, string subscriptionId, string planId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var subscriptionUpdate = new StripeSubscriptionUpdateOptions();
+                subscriptionUpdate.PlanId = planId;
+
+                StripeSubscription subscription = subService.Update(customerId, subscriptionId, subscriptionUpdate);
+                return subscription.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    return err.ErrorType;
+                }
+                return null;
+            }
         }
     }
 
