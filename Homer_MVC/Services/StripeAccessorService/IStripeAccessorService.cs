@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-
-namespace Nigmys.Services.StripeService
+namespace Nigmys.Services.StripeAccessorService
 {
     /// <summary>
     /// Stripe Service used to interface with the stripe API
     /// </summary>
-    interface IStripeService
+    public interface IStripeAccessorService
     {
         /// <summary>
         /// Create a customer in stripe
