@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using Nigmys.Models;
+using Nigmys.Services.StripeAccessorService;
+using Stripe;
+
 
 namespace Nigmys.Services {
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
+        IStripeAccessorService stripeAccessor;
         
-        public SqlUserDatabase(MySqlConnection conn) : base(conn) {
-
+        public SqlUserDatabase(MySqlConnection conn, StripeAccessorService.StripeAccessorService stripeAccessor) : base(conn) {
+            this.stripeAccessor = stripeAccessor;
         }
 
         // retrieve all the data for our users
@@ -105,6 +109,7 @@ namespace Nigmys.Services {
         public int addNewUser(User user) { 
             int userId = -1;
             if (Open()) {
+
                 // first we insert the password information so we have a passwordID key to insert into users table
                 // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
                 // password row
@@ -121,6 +126,10 @@ namespace Nigmys.Services {
                     }
 
                     int passwordID = Convert.ToInt32(passwordIdRet);
+
+                    //Stripe Creation
+                    
+
                     // construct our insert statement
                     String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
                     query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";

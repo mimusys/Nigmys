@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Stripe;
 namespace Nigmys.Services.StripeAccessorService
 {
     /// <summary>
@@ -12,8 +12,8 @@ namespace Nigmys.Services.StripeAccessorService
         /// </summary>
         /// <param name="email">customer's associated email</param>
         /// <param name="description">customer's first name and last name</param>
-        /// <returns>customer id created in stripe</returns>
-        String CreateCustomer(String email, String firstName, String lastName);
+        /// <returns>customer created in stripe or error</returns>
+        StripeObject CreateCustomer(String email, String firstName, String lastName);
 
         /// <summary>
         /// Update an existing customer's information within stripe
