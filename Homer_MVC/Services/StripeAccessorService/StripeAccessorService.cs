@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Stripe;
 
-namespace Nigmys.Services.StripeService
+namespace Nigmys.Services.StripeAccessorService
 {
-    public class StripeService : IStripeService
+    public class StripeAccessorService : IStripeAccessorService
     {
         StripeSubscriptionService subService;
         StripeChargeService charService;
         StripeCustomerService cusService;
 
-        public StripeService(StripeSubscriptionService subService, StripeChargeService charService, StripeCustomerService cusService)
+        public StripeAccessorService(StripeSubscriptionService subService, StripeChargeService charService, StripeCustomerService cusService)
         {
             this.subService = subService;
             this.charService = charService;
