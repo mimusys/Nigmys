@@ -7,7 +7,7 @@ namespace Nigmys.App_Start
     /// </summary>
     public class StripeConfig
     {
-        static string stripeApiKey = " sk_test_r1Vca4XiVpofCmbndcrhTF52";
+        static string stripeApiKey = "sk_test_r1Vca4XiVpofCmbndcrhTF52";
 
         /// <summary>
         /// Set Stripe Configuration Key

@@ -107,19 +107,25 @@ namespace Nigmys.Services {
         }
 
         public int addNewUser(User user) { 
+
             int userId = -1;
+
             if (Open()) {
 
-                // first we insert the password information so we have a passwordID key to insert into users table
-                // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
-                // password row
+               /* first we insert the password information so we have a passwordID key to insert into users table
+                * select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
+                * password row
+                */
+
                 MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
+
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
                 cmd.Parameters.AddWithValue("@passwordSalt", user.Salt);
 
                 object passwordIdRet = cmd.ExecuteScalar();
+
                 if (passwordIdRet != null) {
                     if (user.CompanyName == null) {
                         user.CompanyName = "None";
@@ -128,32 +134,41 @@ namespace Nigmys.Services {
                     int passwordID = Convert.ToInt32(passwordIdRet);
 
                     //Stripe Creation
-                    
+                    StripeObject accessorReturn = stripeAccessor.CreateCustomer(user.Email, user.FirstName, user.LastName);
 
-                    // construct our insert statement
-                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
-                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";
-                    cmd.CommandText = query;
-                    cmd.Prepare();
-                    cmd.Parameters.AddWithValue("@username", user.Username);
-                    cmd.Parameters.AddWithValue("@firstName", user.FirstName);
-                    cmd.Parameters.AddWithValue("@lastName", user.LastName);
-                    cmd.Parameters.AddWithValue("@passwordID", passwordID);
-                    cmd.Parameters.AddWithValue("@address", user.Address);
-                    cmd.Parameters.AddWithValue("@zip", user.Zipcode);
-                    cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@birthday", user.Birthday);
-                    cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
-                    cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
-                    cmd.Parameters.AddWithValue("@status", status.freeTrial);
-                    //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
+                    if (accessorReturn is StripeCustomer)
+                    {
+                        StripeCustomer createdCustomer = (StripeCustomer)accessorReturn;
+                        // construct our insert statement
+                        String query = "insert into users(stripeID, username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
+                        query += "(@stripeID, @username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";
 
-                    // ExecuteScalar should return the id of the user added, null otherwise
-                    object userIdRet = cmd.ExecuteScalar();
-                    Close();
+                        cmd.CommandText = query;
+                        cmd.Prepare();
+                        cmd.Parameters.AddWithValue("@stripeID", createdCustomer.Id);
+                        cmd.Parameters.AddWithValue("@username", user.Username);
+                        cmd.Parameters.AddWithValue("@firstName", user.FirstName);
+                        cmd.Parameters.AddWithValue("@lastName", user.LastName);
+                        cmd.Parameters.AddWithValue("@passwordID", passwordID);
+                        cmd.Parameters.AddWithValue("@address", user.Address);
+                        cmd.Parameters.AddWithValue("@zip", user.Zipcode);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@birthday", user.Birthday);
+                        cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
+                        cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
+                        cmd.Parameters.AddWithValue("@status", status.freeTrial);
+                        //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
-                    if (userIdRet != null) {
-                        userId = Convert.ToInt32(userIdRet);
+                        // ExecuteScalar should return the id of the user added, null otherwise
+                        object userIdRet = cmd.ExecuteScalar();
+                        Close();
+
+                        user.stripeObject = createdCustomer;
+
+                        if (userIdRet != null)
+                        {
+                            userId = Convert.ToInt32(userIdRet);
+                        }
                     }
                 } else {
                     // failed to insert password for some reason

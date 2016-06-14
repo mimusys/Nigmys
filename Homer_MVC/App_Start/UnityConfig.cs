@@ -27,6 +27,7 @@ namespace Nigmys.App_Start
             /*Registrations*/
 
             /*MySQL Object Registrations*/
+            RegisterStripeAccessor(container);
             RegisterUserDoa(container, userConnString);
             RegisterPortfolioDoa(container, portfolioConnString);
             RegisterInvestInformationDoa(container, investmentInformationConnString);
@@ -92,9 +93,11 @@ namespace Nigmys.App_Start
         /// <param name="container">Container object used to resolve dependencies</param>
         private static void RegisterStripeAccessor(IUnityContainer container)
         {
-            container.RegisterType<StripeSubscriptionService>("StripeSubscriptionService");
-            container.RegisterType<StripeChargeService>("StripeChargeService");
-            container.RegisterType<StripeCustomerService>("StripeCustomerService");
+            string stripe_key = "sk_test_r1Vca4XiVpofCmbndcrhTF52";
+            
+            container.RegisterType<StripeSubscriptionService>("StripeSubscriptionService", new InjectionConstructor(stripe_key));
+            container.RegisterType<StripeChargeService>("StripeChargeService", new InjectionConstructor(stripe_key));
+            container.RegisterType<StripeCustomerService>("StripeCustomerService", new InjectionConstructor(stripe_key));
 
             container.RegisterType<IStripeAccessorService, StripeAccessorService>("StripeAccessor", 
                 new InjectionConstructor(
