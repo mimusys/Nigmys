@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Nigmys.Models {
+using Stripe;
+namespace Nigmys.Models
+{
     public class User {
         public string UserID { get; set; }
         public string Username { get; set; }
@@ -19,6 +17,7 @@ namespace Nigmys.Models {
         public string PictureURL { get; set; }
         public int PortfolioID { get; set; }
         public status status { get; set; }
+        public StripeCustomer stripeObject { get; set; }
     }
 
     public enum status

@@ -1,4 +1,5 @@
 ﻿using System;
+using Nigmys.Errors.StripeAccessorErrors;
 using Stripe;
 
 namespace Nigmys.Services.StripeAccessorService
@@ -69,7 +70,7 @@ namespace Nigmys.Services.StripeAccessorService
             }
         }
 
-        public string CreateCustomer(string email, string firstName, string lastName)
+        public StripeObject CreateCustomer(string email, string firstName, string lastName)
         {
             string description = firstName + " " + lastName + " (" + email + ")";
             try
@@ -79,7 +80,7 @@ namespace Nigmys.Services.StripeAccessorService
                 customerOptions.Description = description;
 
                 StripeCustomer customer = cusService.Create(customerOptions);
-                return customer.Id;
+                return customer;
             }
             catch (Exception ex)
             {
@@ -87,7 +88,9 @@ namespace Nigmys.Services.StripeAccessorService
                 {
                     StripeException exception = (StripeException) ex;
                     StripeError err = exception.StripeError;
-                    return err.ErrorType;
+                    StripeAccessError error = new CreateCustomerError();
+                    error.Error_Type = err.ErrorType;
+                    return error;
                 }
                 return null;
             }

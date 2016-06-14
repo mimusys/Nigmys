@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using NUnit.Framework;
 using Moq;
 using Stripe;
 using Nigmys.Services.StripeAccessorService;
+using Nigmys.Errors.StripeAccessorErrors;
 
 namespace NigmysTest
 {
@@ -182,10 +178,11 @@ namespace NigmysTest
             stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
 
             //Act
-            string returnedId = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
+            StripeObject returnedCustomer = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
 
             //Assert
-            Assert.That(returnedId, Is.EqualTo(customerId));
+            Assert.That(returnedCustomer.Id, Is.EqualTo(customerId));
+            Assert.That(returnedCustomer, Is.InstanceOf<StripeCustomer>());
         }
 
         /// <summary>
@@ -197,6 +194,7 @@ namespace NigmysTest
             //Arrange
             StripeException exception = new StripeException();
             exception.StripeError = new StripeError();
+            CreateCustomerError error;
             exception.StripeError.ErrorType = "invalid_request";
 
             Mock<StripeCustomerService> custCustService = new Mock<StripeCustomerService>(null);
@@ -205,10 +203,12 @@ namespace NigmysTest
             stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
 
             //Act
-            string returnedException = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
+            StripeObject returnedException = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
+            error = (CreateCustomerError)returnedException;
 
             //Assert
-            Assert.That(returnedException, Is.EqualTo("invalid_request"));
+            Assert.That(returnedException, Is.InstanceOf<CreateCustomerError>());
+            Assert.That(error.Error_Type, Is.EqualTo("invalid_request"));
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace NigmysTest
             stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
 
             //Act
-            string returnedException = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
+            StripeObject returnedException = stripeAccessor.CreateCustomer("email", "Hal", "Wilkerson");
 
             //Assert
             Assert.That(returnedException, Is.Null);

@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.Practices.Unity;
 using MySql.Data.MySqlClient;
-using System.Collections.Specialized;
 using System.Web.Mvc;
 using Nigmys.Support;
 using Nigmys.Controllers;
 using Nigmys.Services;
-using Configurations;
+using Nigmys.Services.StripeAccessorService;
+using Stripe;
 
 namespace Nigmys.App_Start
 {
@@ -30,6 +27,7 @@ namespace Nigmys.App_Start
             /*Registrations*/
 
             /*MySQL Object Registrations*/
+            RegisterStripeAccessor(container);
             RegisterUserDoa(container, userConnString);
             RegisterPortfolioDoa(container, portfolioConnString);
             RegisterInvestInformationDoa(container, investmentInformationConnString);
@@ -90,6 +88,26 @@ namespace Nigmys.App_Start
         }
 
         /// <summary>
+        /// Register the stripe accessor for stripe operations
+        /// </summary>
+        /// <param name="container">Container object used to resolve dependencies</param>
+        private static void RegisterStripeAccessor(IUnityContainer container)
+        {
+            string stripe_key = "sk_test_r1Vca4XiVpofCmbndcrhTF52";
+            
+            container.RegisterType<StripeSubscriptionService>("StripeSubscriptionService", new InjectionConstructor(stripe_key));
+            container.RegisterType<StripeChargeService>("StripeChargeService", new InjectionConstructor(stripe_key));
+            container.RegisterType<StripeCustomerService>("StripeCustomerService", new InjectionConstructor(stripe_key));
+
+            container.RegisterType<IStripeAccessorService, StripeAccessorService>("StripeAccessor", 
+                new InjectionConstructor(
+                new ResolvedParameter<StripeSubscriptionService>("StripeSubscriptionService"),
+                new ResolvedParameter<StripeChargeService>("StripeChargeService"),
+                new ResolvedParameter<StripeCustomerService>("StripeCustomerService"))
+                );
+        }
+
+        /// <summary>
         /// Register the connection string to create a user data access object dependency
         /// </summary>
         /// <param name="container">Container object used to resolve dependencies</param>
@@ -98,7 +116,10 @@ namespace Nigmys.App_Start
         {
             container.RegisterType<MySqlConnection>("UserConnect", new InjectionConstructor(userConnString));
             container.RegisterType<ISqlUserDatabase, SqlUserDatabase>("UserDB",
-                new InjectionConstructor(new ResolvedParameter<MySqlConnection>("UserConnect")));
+                new InjectionConstructor(
+                    new ResolvedParameter<MySqlConnection>("UserConnect"),
+                    new ResolvedParameter<StripeAccessorService>("StripeAccessor"))
+                    );
         }
 
         /// <summary>
@@ -168,9 +189,6 @@ namespace Nigmys.App_Start
                 new ResolvedParameter<SqlInvestmentInformationDatabase>("InvestmentInformationDB"),
                 new ResolvedParameter<SqlPortfolioDatabase>("PortfolioDB")
                 ));
-        }
-
-
-        
+        }       
     }
 }
