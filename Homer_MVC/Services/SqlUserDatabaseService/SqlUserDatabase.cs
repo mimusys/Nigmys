@@ -15,7 +15,6 @@ namespace Nigmys.Services {
             this.stripeAccessor = stripeAccessor;
         }
 
-        // retrieve all the data for our users
         public List<string>[] getUsers() {
             if (Open()) {
                 List<string>[] list = new List<string>[11];
@@ -46,8 +45,7 @@ namespace Nigmys.Services {
             }
             return null;
         }
-
-        // construct User from SQL data
+ 
         public User getUser(String usernameOrEmail) {
             User user = null;
             if (Open()) {
@@ -78,8 +76,6 @@ namespace Nigmys.Services {
             return user;
         }
 
-        // given a user's username or email address, retrieve the applicable password information
-        // return null if username/email does not exist
         public String[] getPasswordInfo(String usernameOrEmail) {
             if (Open()) {
                 String[] passwordInfo = null;  // keep null until we're sure we have info to return
@@ -105,17 +101,12 @@ namespace Nigmys.Services {
             }
             return null;
         }
-
+  
         public int addNewUser(User user) { 
 
             int userId = -1;
 
             if (Open()) {
-
-               /* first we insert the password information so we have a passwordID key to insert into users table
-                * select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
-                * password row
-                */
 
                 MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
@@ -133,13 +124,14 @@ namespace Nigmys.Services {
 
                     int passwordID = Convert.ToInt32(passwordIdRet);
 
-                    //Stripe Creation
+                    /*Stripe Creation*/
                     StripeObject accessorReturn = stripeAccessor.CreateCustomer(user.Email, user.FirstName, user.LastName);
 
                     if (accessorReturn is StripeCustomer)
                     {
                         StripeCustomer createdCustomer = (StripeCustomer)accessorReturn;
-                        // construct our insert statement
+
+                        /*Construct Insert Statement*/
                         String query = "insert into users(stripeID, username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
                         query += "(@stripeID, @username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";
 
@@ -157,9 +149,8 @@ namespace Nigmys.Services {
                         cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
                         cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
                         cmd.Parameters.AddWithValue("@status", status.freeTrial);
-                        //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
-                        // ExecuteScalar should return the id of the user added, null otherwise
+                        /*Execute Scalar returns the id of the user added, null otherwise*/
                         object userIdRet = cmd.ExecuteScalar();
                         Close();
 
@@ -171,7 +162,7 @@ namespace Nigmys.Services {
                         }
                     }
                 } else {
-                    // failed to insert password for some reason
+                    /*Failed to Insert Password*/
                     Close();
                 }
             }
@@ -187,7 +178,6 @@ namespace Nigmys.Services {
                 cmd.Parameters.AddWithValue("@url", url);
                 cmd.Parameters.AddWithValue("@customerID", userId);
 
-                //int ret = Convert.ToInt32(cmd.ExecuteScalar());
                 int ret = cmd.ExecuteNonQuery();
                 success = (ret == 1);
                 Close();
@@ -195,7 +185,6 @@ namespace Nigmys.Services {
             return success;
         }
 
-        // return true if username exists in database, false otherwise
         public bool doesUsernameExist(String username) {
             if (Open()) {
                 MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.username = @username;", conn);
@@ -203,12 +192,12 @@ namespace Nigmys.Services {
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
 
-                return num != 0; // if 0 username does not exist
+                /*If 0 username does not exist*/
+                return num != 0; 
             }
             return true;
         }
 
-        // return true if email exists in database, false otherwise
         public bool doesEmailExist(String email) {
             if (Open()) {
                 MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.email = @email;", conn);
@@ -216,7 +205,8 @@ namespace Nigmys.Services {
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
 
-                return num != 0; // if 0 email does not exist
+                /*If 0 email does not exist*/
+                return num != 0; 
             }
             return true;
         }
