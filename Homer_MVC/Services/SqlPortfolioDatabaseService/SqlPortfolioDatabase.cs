@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace Nigmys.Services {
+namespace Nigmys.Services.SqlPortfolioDatabaseService
+{
     public class SqlPortfolioDatabase : SqlDatabase, ISqlPortfolioDatabase {
 
         public SqlPortfolioDatabase(MySqlConnection conn) : base(conn) {

@@ -6,7 +6,8 @@ using Nigmys.Services.StripeAccessorService;
 using Stripe;
 
 
-namespace Nigmys.Services {
+namespace Nigmys.Services.SqlUserDatabaseService
+{
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
         IStripeAccessorService stripeAccessor;
