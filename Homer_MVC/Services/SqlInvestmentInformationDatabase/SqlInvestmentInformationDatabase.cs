@@ -1,11 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Nigmys.Models;
 
-namespace Nigmys.Services {
+namespace Nigmys.Services.SqlInvestmentInformationDatabase
+{
     public class SqlInvestmentInformationDatabase : SqlDatabase, ISqlInvestmentInformationDatabase {
         public SqlInvestmentInformationDatabase(MySqlConnection conn) : base(conn) {
 

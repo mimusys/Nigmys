@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using Nigmys.Models;
+using Nigmys.Services.StripeAccessorService;
+using Stripe;
 
-namespace Nigmys.Services {
+
+namespace Nigmys.Services.SqlUserDatabaseService
+{
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
+        IStripeAccessorService stripeAccessor;
         
-        public SqlUserDatabase(MySqlConnection conn) : base(conn) {
-
+        public SqlUserDatabase(MySqlConnection conn, StripeAccessorService.StripeAccessorService stripeAccessor) : base(conn) {
+            this.stripeAccessor = stripeAccessor;
         }
 
-        // retrieve all the data for our users
         public List<string>[] getUsers() {
             if (Open()) {
                 List<string>[] list = new List<string>[11];
@@ -42,8 +46,7 @@ namespace Nigmys.Services {
             }
             return null;
         }
-
-        // construct User from SQL data
+ 
         public User getUser(String usernameOrEmail) {
             User user = null;
             if (Open()) {
@@ -54,18 +57,27 @@ namespace Nigmys.Services {
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read()) {
-                    user = new User();
-                    user.UserID = reader["customerID"] + "";
-                    user.Username = reader["username"] + "";
-                    user.FirstName = reader["firstName"] + "";
-                    user.LastName = reader["lastName"] + "";
-                    user.Email = reader["email"] + "";
-                    user.Address = reader["address"] + "";
-                    user.Zipcode = reader["zip"] + "";
-                    user.CompanyName = reader["companyName"] + "";
-                    user.PictureURL = reader["pictureURL"] + "";
-                    user.Birthday = DateTime.Parse(reader["birthDate"] + "");
-                    user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
+                    StripeObject stripeObj = stripeAccessor.GetCustomer((string)reader["stripeID"]);
+                    if (stripeObj is StripeCustomer)
+                    {
+                        StripeCustomer customerObj = (StripeCustomer)stripeObj;
+                        user = new User();
+                        user.UserID = reader["customerID"] + "";
+                        user.Username = reader["username"] + "";
+                        user.FirstName = reader["firstName"] + "";
+                        user.LastName = reader["lastName"] + "";
+                        user.Email = reader["email"] + "";
+                        user.Address = reader["address"] + "";
+                        user.Zipcode = reader["zip"] + "";
+                        user.CompanyName = reader["companyName"] + "";
+                        user.PictureURL = reader["pictureURL"] + "";
+                        user.Birthday = DateTime.Parse(reader["birthDate"] + "");
+                        user.stripeId = reader["stripeID"] + "";
+                        user.stripeObject = customerObj;
+                        user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
+                    }
+
+                    
                 }
                 reader.Close();
 
@@ -74,8 +86,6 @@ namespace Nigmys.Services {
             return user;
         }
 
-        // given a user's username or email address, retrieve the applicable password information
-        // return null if username/email does not exist
         public String[] getPasswordInfo(String usernameOrEmail) {
             if (Open()) {
                 String[] passwordInfo = null;  // keep null until we're sure we have info to return
@@ -101,52 +111,68 @@ namespace Nigmys.Services {
             }
             return null;
         }
-
+  
         public int addNewUser(User user) { 
+
             int userId = -1;
+
             if (Open()) {
-                // first we insert the password information so we have a passwordID key to insert into users table
-                // "select LAST_INSERT_ID() makes it return the first row which was updated, in this case the new
-                // password row
+
                 MySqlCommand cmd = new MySqlCommand("insert into passwordInformation(passwordHash, salt) VALUES (@passwordHash, @passwordSalt); " +
                     "select LAST_INSERT_ID();", conn);
+
                 cmd.Prepare();
                 cmd.Parameters.AddWithValue("@passwordHash", user.PasswordHash);
                 cmd.Parameters.AddWithValue("@passwordSalt", user.Salt);
 
                 object passwordIdRet = cmd.ExecuteScalar();
+
                 if (passwordIdRet != null) {
                     if (user.CompanyName == null) {
                         user.CompanyName = "None";
                     }
 
                     int passwordID = Convert.ToInt32(passwordIdRet);
-                    // construct our insert statement
-                    String query = "insert into users(username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID) VALUES ";
-                    query += "(@username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID); select LAST_INSERT_ID();";
-                    cmd.CommandText = query;
-                    cmd.Prepare();
-                    cmd.Parameters.AddWithValue("@username", user.Username);
-                    cmd.Parameters.AddWithValue("@firstName", user.FirstName);
-                    cmd.Parameters.AddWithValue("@lastName", user.LastName);
-                    cmd.Parameters.AddWithValue("@passwordID", passwordID);
-                    cmd.Parameters.AddWithValue("@address", user.Address);
-                    cmd.Parameters.AddWithValue("@zip", user.Zipcode);
-                    cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@birthday", user.Birthday);
-                    cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
-                    cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
-                    //cmd.Parameters.AddWithValue("@pictureUrl", pictureUrl);
 
-                    // ExecuteScalar should return the id of the user added, null otherwise
-                    object userIdRet = cmd.ExecuteScalar();
-                    Close();
+                    /*Stripe Creation*/
+                    StripeObject accessorReturn = stripeAccessor.CreateCustomer(user.Email, user.FirstName, user.LastName);
 
-                    if (userIdRet != null) {
-                        userId = Convert.ToInt32(userIdRet);
+                    if (accessorReturn is StripeCustomer)
+                    {
+                        StripeCustomer createdCustomer = (StripeCustomer)accessorReturn;
+
+                        /*Construct Insert Statement*/
+                        String query = "insert into users(stripeID, username, firstName, lastName, passwordID, address, zip, email, birthdate, companyName, portfolioID, status) VALUES ";
+                        query += "(@stripeID, @username, @firstName, @lastName, @passwordID, @address, @zip, @email, @birthday, @companyName, @portfolioID, @status); select LAST_INSERT_ID();";
+
+                        cmd.CommandText = query;
+                        cmd.Prepare();
+                        cmd.Parameters.AddWithValue("@stripeID", createdCustomer.Id);
+                        cmd.Parameters.AddWithValue("@username", user.Username);
+                        cmd.Parameters.AddWithValue("@firstName", user.FirstName);
+                        cmd.Parameters.AddWithValue("@lastName", user.LastName);
+                        cmd.Parameters.AddWithValue("@passwordID", passwordID);
+                        cmd.Parameters.AddWithValue("@address", user.Address);
+                        cmd.Parameters.AddWithValue("@zip", user.Zipcode);
+                        cmd.Parameters.AddWithValue("@email", user.Email);
+                        cmd.Parameters.AddWithValue("@birthday", user.Birthday);
+                        cmd.Parameters.AddWithValue("@companyName", user.CompanyName);
+                        cmd.Parameters.AddWithValue("@portfolioID", user.PortfolioID);
+                        cmd.Parameters.AddWithValue("@status", status.freeTrial);
+
+                        /*Execute Scalar returns the id of the user added, null otherwise*/
+                        object userIdRet = cmd.ExecuteScalar();
+                        Close();
+
+                        user.stripeObject = createdCustomer;
+
+                        if (userIdRet != null)
+                        {
+                            userId = Convert.ToInt32(userIdRet);
+                        }
                     }
                 } else {
-                    // failed to insert password for some reason
+                    /*Failed to Insert Password*/
                     Close();
                 }
             }
@@ -162,7 +188,6 @@ namespace Nigmys.Services {
                 cmd.Parameters.AddWithValue("@url", url);
                 cmd.Parameters.AddWithValue("@customerID", userId);
 
-                //int ret = Convert.ToInt32(cmd.ExecuteScalar());
                 int ret = cmd.ExecuteNonQuery();
                 success = (ret == 1);
                 Close();
@@ -170,7 +195,6 @@ namespace Nigmys.Services {
             return success;
         }
 
-        // return true if username exists in database, false otherwise
         public bool doesUsernameExist(String username) {
             if (Open()) {
                 MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.username = @username;", conn);
@@ -178,12 +202,12 @@ namespace Nigmys.Services {
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
 
-                return num != 0; // if 0 username does not exist
+                /*If 0 username does not exist*/
+                return num != 0; 
             }
             return true;
         }
 
-        // return true if email exists in database, false otherwise
         public bool doesEmailExist(String email) {
             if (Open()) {
                 MySqlCommand cmd = new MySqlCommand("select count(*) from users U where U.email = @email;", conn);
@@ -191,9 +215,45 @@ namespace Nigmys.Services {
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 Close();
 
-                return num != 0; // if 0 email does not exist
+                /*If 0 email does not exist*/
+                return num != 0; 
             }
             return true;
+        }
+
+        public String createTrialAccount(String customerId)
+        {
+            if(Open())
+            {
+                MySqlCommand cmd = new MySqlCommand("insert into trialaccounts(customerID, date) VALUES (@customerID, @date);" + 
+                    "select LAST_INSERT_ID();", conn);
+
+                String today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@customerID", customerId);
+                cmd.Parameters.AddWithValue("@date", today);
+                cmd.ExecuteScalar();
+
+                return today;    
+            }
+
+            return null;
+        }
+
+        public bool deleteTrialAccount(String customerId)
+        {
+            bool success = false;
+            if (Open())
+            {
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM trialaccounts WHERE customerID = @customerID", conn);
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@customerID", customerId);
+
+                success = (cmd.ExecuteNonQuery() == 1);
+                Close();
+            }
+            return success;
         }
     }
 }

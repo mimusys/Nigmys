@@ -38,7 +38,7 @@ namespace Nigmys.Controllers
         {
             return Json(!userSql.doesEmailExist(email));
         }
-
+        
         [HttpPost]
         public JsonResult NewUser(User user)
         {
@@ -46,9 +46,20 @@ namespace Nigmys.Controllers
             int userId = userSql.addNewUser(user);
             if (userId != -1)
             {
-                user.UserID = userId.ToString();
-                Session["user"] = user;
-                return Json(true);
+                //Add Free Trial Date
+                String today = userSql.createTrialAccount(userId.ToString());
+
+                if (today != null)
+                {
+                    user.UserID = userId.ToString();
+                    Session["user"] = user;
+                    Session["trialDate"] = today;
+                    return Json(true);
+                }
+                else
+                {
+                    return Json(false);
+                }
             }
             else
             {

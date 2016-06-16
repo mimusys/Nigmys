@@ -22,6 +22,7 @@ namespace Nigmys
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             UnityConfig.ConfigureDependencies();
+            StripeConfig.ConfigureStripe();
         }
     }
 }
