@@ -17,6 +17,7 @@ namespace Nigmys.Models
         public string PictureURL { get; set; }
         public int PortfolioID { get; set; }
         public status status { get; set; }
+        public string stripeId { get; set; }
         public StripeCustomer stripeObject { get; set; }
     }
 

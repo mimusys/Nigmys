@@ -233,6 +233,78 @@ namespace NigmysTest
         }
 
         /// <summary>
+        /// Test succesful customer retrieval
+        /// </summary>
+        [Test]
+        public void GetCustomer_ValidParameters_Successful()
+        {
+            //Arrange
+            StripeCustomer customer = new StripeCustomer();
+            customer.Id = customerId;
+
+            Mock<StripeCustomerService> custCustService = new Mock<StripeCustomerService>(null);
+            custCustService.Setup(cust => cust.Get(It.IsAny<String>(), null))
+                .Returns(customer);
+            stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
+
+            //Act
+            StripeObject returnedCustomer = stripeAccessor.GetCustomer(customerId);
+
+            //Assert
+            Assert.That(returnedCustomer.Id, Is.EqualTo(customerId));
+            Assert.That(returnedCustomer, Is.InstanceOf<StripeCustomer>());
+        }
+
+        /// <summary>
+        /// Test a get customer call with Stripe Exception
+        /// </summary>
+        [Test]
+        public void GetCustomer_InvalidParameters_ThrowsStripeException()
+        {
+            //Arrange
+            StripeException exception = new StripeException();
+            exception.StripeError = new StripeError();
+            CreateCustomerError error;
+            exception.StripeError.ErrorType = "invalid_request";
+
+            Mock<StripeCustomerService> custCustService = new Mock<StripeCustomerService>(null);
+            custCustService.Setup(cust => cust.Get(It.IsAny<string>(), null))
+                .Throws(exception);
+            stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
+
+            //Act
+            StripeObject returnedException = stripeAccessor.GetCustomer(customerId);
+            error = (CreateCustomerError)returnedException;
+
+            //Assert
+            Assert.That(returnedException, Is.InstanceOf<CreateCustomerError>());
+            Assert.That(error.Error_Type, Is.EqualTo("invalid_request"));
+        }
+
+        /// <summary>
+        /// Test a get customer call with Exception
+        /// </summary>
+        [Test]
+        public void GetCustomer_InvalidParameters_ThrowsException()
+        {
+            //Arrange
+            Exception exception = new Exception();
+
+            Mock<StripeCustomerService> custCustService = new Mock<StripeCustomerService>(null);
+            custCustService.Setup(cust => cust.Get(It.IsAny<string>(), null))
+                .Throws(exception);
+            stripeAccessor = new StripeAccessorService(subService.Object, charService.Object, custCustService.Object);
+
+            //Act
+            StripeObject returnedException = stripeAccessor.GetCustomer(customerId);
+            
+
+            //Assert
+            
+            Assert.That(returnedException, Is.Null);
+        }
+
+        /// <summary>
         /// Test proper creation of subscription
         /// </summary>
         [Test]
