@@ -97,6 +97,28 @@ namespace Nigmys.Services.StripeAccessorService
           
         }
 
+        public StripeObject GetCustomer(string customerId)
+        {
+            try
+            {
+                StripeCustomer customer = cusService.Get(customerId);
+                return customer;
+            }
+            catch (Exception ex)
+            {
+                if (ex is StripeException)
+                {
+                    StripeException exception = (StripeException)ex;
+                    StripeError err = exception.StripeError;
+                    StripeAccessError error = new CreateCustomerError();
+                    error.Error_Type = err.ErrorType;
+                    return error;
+                }
+                return null;
+            }
+
+        }
+
         public string SubscribeCustomer(string customerId, string planId)
         {
             try

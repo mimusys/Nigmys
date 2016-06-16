@@ -6,7 +6,8 @@ using Nigmys.Services.StripeAccessorService;
 using Stripe;
 
 
-namespace Nigmys.Services {
+namespace Nigmys.Services.SqlUserDatabaseService
+{
     public class SqlUserDatabase : SqlDatabase, ISqlUserDatabase {
         private Random rnd = new Random();
         IStripeAccessorService stripeAccessor;
@@ -56,18 +57,27 @@ namespace Nigmys.Services {
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read()) {
-                    user = new User();
-                    user.UserID = reader["customerID"] + "";
-                    user.Username = reader["username"] + "";
-                    user.FirstName = reader["firstName"] + "";
-                    user.LastName = reader["lastName"] + "";
-                    user.Email = reader["email"] + "";
-                    user.Address = reader["address"] + "";
-                    user.Zipcode = reader["zip"] + "";
-                    user.CompanyName = reader["companyName"] + "";
-                    user.PictureURL = reader["pictureURL"] + "";
-                    user.Birthday = DateTime.Parse(reader["birthDate"] + "");
-                    user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
+                    StripeObject stripeObj = stripeAccessor.GetCustomer((string)reader["stripeID"]);
+                    if (stripeObj is StripeCustomer)
+                    {
+                        StripeCustomer customerObj = (StripeCustomer)stripeObj;
+                        user = new User();
+                        user.UserID = reader["customerID"] + "";
+                        user.Username = reader["username"] + "";
+                        user.FirstName = reader["firstName"] + "";
+                        user.LastName = reader["lastName"] + "";
+                        user.Email = reader["email"] + "";
+                        user.Address = reader["address"] + "";
+                        user.Zipcode = reader["zip"] + "";
+                        user.CompanyName = reader["companyName"] + "";
+                        user.PictureURL = reader["pictureURL"] + "";
+                        user.Birthday = DateTime.Parse(reader["birthDate"] + "");
+                        user.stripeId = reader["stripeID"] + "";
+                        user.stripeObject = customerObj;
+                        user.PortfolioID = Convert.ToInt32(reader["portfolioID"]);
+                    }
+
+                    
                 }
                 reader.Close();
 

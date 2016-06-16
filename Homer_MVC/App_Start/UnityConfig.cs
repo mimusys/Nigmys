@@ -4,7 +4,9 @@ using MySql.Data.MySqlClient;
 using System.Web.Mvc;
 using Nigmys.Support;
 using Nigmys.Controllers;
-using Nigmys.Services;
+using Nigmys.Services.SqlUserDatabaseService;
+using Nigmys.Services.SqlPortfolioDatabaseService;
+using Nigmys.Services.SqlInvestmentInformationDatabase;
 using Nigmys.Services.StripeAccessorService;
 using Stripe;
 

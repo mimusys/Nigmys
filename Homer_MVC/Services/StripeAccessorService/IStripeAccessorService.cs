@@ -16,6 +16,13 @@ namespace Nigmys.Services.StripeAccessorService
         StripeObject CreateCustomer(String email, String firstName, String lastName);
 
         /// <summary>
+        /// Obtain a customer give their unique identification
+        /// </summary>
+        /// <param name="customerId">The customer's unique ID</param>
+        /// <returns></returns>
+        StripeObject GetCustomer(string customerId);
+
+        /// <summary>
         /// Update an existing customer's information within stripe
         /// </summary>
         /// <param name="customerId">The customer's unique id in stripe</param>
